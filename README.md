@@ -30,7 +30,7 @@
 2. (応用問題) 配布した応用問題集を解き, その解答を黒板を用いて発表する. その場合の演習点は
 「解いた問題の難易度」と「発表の仕方・解答の方法」などから定まり, 演習点は1--12 点.
 
-詳しくは[ガイダンス資料](https://masataka123.github.io/2025_summer_set_theory/material/0_集合問題集_2025_基礎問題集)をご覧ください
+詳しくは[ガイダンス資料](https://masataka123.github.io/2025_summer_set_theory/material/0_集合問題集_2025_基礎問題集.pdf)をご覧ください
 
 <!--
 ## 中間レポート1 
@@ -133,8 +133,8 @@
 
 ## 演習問題のpdf 
 
-1. [ガイダンス資料+基礎問題集](https://masataka123.github.io/2025_summer_set_theory/material/0_集合問題集_2025_基礎問題集)
-2. [応用問題集](https://masataka123.github.io/2025_summer_set_theory/material/0_集合問題集_2025_応用問題集)
+1. [ガイダンス資料+基礎問題集](https://masataka123.github.io/2025_summer_set_theory/material/0_集合問題集_2025_基礎問題集.pdf)
+2. [応用問題集](https://masataka123.github.io/2025_summer_set_theory/material/0_集合問題集_2025_応用問題集.pdf)
 
 
 ## 授業日一覧
