@@ -1,0 +1,1122 @@
+\documentclass[dvipdfmx,a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[dvipdfmx]{hyperref} %リンクを有効にする
+\usepackage{url} %同上
+\usepackage{amsmath,amssymb} %もちろん
+\usepackage{amsfonts,amsthm,mathtools} %もちろん
+\usepackage{braket,physics} %あると便利なやつ
+\usepackage{bm} %ラプラシアンで使った
+\usepackage[top=20truemm,bottom=20truemm,left=22truemm,right=22truemm]{geometry} %余白設定
+\usepackage{latexsym} %ごくたまに必要になる
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\usepackage{otf} %宗教上の理由でmin10が嫌いなので
+%\usepackage{showkeys}\renewcommand*{\showkeyslabelformat}[1]{\fbox{\parbox{2cm}{ \normalfont\tiny\sffamily#1\vspace{6mm}}}}
+\usepackage[driverfallback=dvipdfm]{hyperref}
+
+
+\usepackage[all]{xy}
+\usepackage{amsthm,amsmath,amssymb,comment}
+\usepackage{amsmath}    % \UTF{00E6}\UTF{0095}°\UTF{00E5}\UTF{00AD}\UTF{00A6}\UTF{00E7}\UTF{0094}¨
+\usepackage{amssymb}  
+\usepackage{color}
+\usepackage{amscd}
+\usepackage{amsthm}  
+\usepackage{wrapfig}
+\usepackage{comment}	
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{pxrubrica}
+\usepackage{enumitem}
+\usepackage{mathrsfs} 
+\usepackage{caption}
+\usepackage{ascmac}
+
+\setstretch{1.2}
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}} 
+\newcommand{\Sin}{\text{Sin}^{-1}} 
+\newcommand{\Cos}{\text{Cos}^{-1}} 
+\newcommand{\Tan}{\text{Tan}^{-1}} 
+\newcommand{\invsin}{\text{Sin}^{-1}} 
+\newcommand{\invcos}{\text{Cos}^{-1}} 
+\newcommand{\invtan}{\text{Tan}^{-1}} 
+\newcommand{\Area}{\text{Area}}
+\newcommand{\vol}{\text{Vol}}
+\newcommand{\maru}[1]{\raise0.2ex\hbox{\textcircled{\tiny{#1}}}}
+\newcommand{\sgn}{{\rm sgn}}
+%\newcommand{\rank}{{\rm rank}}
+\newcommand{\id}{{\rm id}}
+\newcommand{\Sym}{{\rm Sym}}
+\newcommand{\Supp}{{\rm Supp}}
+\newcommand{\Ker}{{\rm Ker}}
+\newcommand{\ima}{{\rm Im}}
+
+
+\allowdisplaybreaks[4]
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins, theorems}
+
+\theoremstyle{definition}
+\newtheorem{thm}{定理}
+\newtheorem{lem}[thm]{補題}
+\newtheorem{prop}[thm]{命題}
+\newtheorem{cor}[thm]{系}
+\newtheorem{claim}[thm]{主張}
+\newtheorem{dfn}[thm]{定義}
+\newtheorem{rema}[thm]{注意}
+\newtheorem{exa}[thm]{例}
+\newtheorem{conj}[thm]{予想}
+\newtheorem{prob}[thm]{問題}
+\newtheorem{rem}[thm]{補足}
+\newtheorem{asum}[thm]{仮説}
+
+\DeclareMathOperator{\Ric}{Ric}
+\DeclareMathOperator{\Vol}{Vol}
+ \newcommand{\pdrv}[2]{\frac{\partial #1}{\partial #2}}
+ \newcommand{\drv}[2]{\frac{d #1}{d#2}}
+  \newcommand{\ppdrv}[3]{\frac{\partial #1}{\partial #2 \partial #3}}
+
+
+\title{2025年度春夏学期 大阪大学 理学部数学科 \\ 幾何学基礎1演義 演習問題(応用問題)}
+\author{岩井雅崇 (大阪大学)}
+\date{\today \, ver 1.00}
+%ここから本文．
+\pagestyle{empty}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\begin{center}
+\section{集合と集合の演算・集合の直積・写像(応用問題)}
+\label{sec-1}
+\end{center}
+
+\begin{enumerate}[label=\textbf{問}\ref*{sec-1}.\arabic*]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{7pt} 
+  \item (ラッセルのパラドックス)　
+  $$
+  V=\{ X | \text{$X$は集合}\}
+  \quad 
+ M := \{ X \in V | X \not \in X\}
+  $$
+  とおく. 
+  $M, V$は集合ではないことを示せ. 
+  つまり"集合の集合"は集合ではない. 
+  
+  \item $^{* \sim **}$\label{1-regular}(公理的集合論)上の問題より集合を"ものの集まり"として定義するのは良くないことがわかる. 
+  今日ではZF (ツェルメロ=フレンケル) 公理系という8つの公理によって, 集合の定義や空集合・和集合などの存在を保証している. 
+  
+  ZF公理系の一つに正則性公理がある. これは「空でない集合は必ず自分自身と交わらない要素を持つ」ことを要請するものである. 
+ 正則性公理を論理式で書くならば, 
+$$
+\forall A (A \neq \varnothing \rightarrow \exists x \in A, \forall t \in A (t \notin x)).
+$$
+である. 
+任意の集合$A$について$A \not \in A$であることを正則性公理を用いて示せ. 
+また公理的集合論において集合の集合 $V=\{ X | \text{$X$は集合}\}$は集合ではないことを示せ. \footnote{$V$はクラスというものになる.}
+
+
+\item  集合$A, B$について, 対称差
+$$
+A \circ B := (A \setminus B) \cup (B \setminus A)
+$$
+と定義する. 次の問いに答えよ. ただし板書で解答する際はある程度省略して書いて良い.("以下同様"などで議論を省略して良い.)
+\begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item $A \circ B = B \circ A$を示せ. 
+\item $(A \circ B) \circ C = A \circ (B \circ C)$を示せ. 
+\item $A \circ A=\varnothing$, $A \circ \varnothing =A$をそれぞれ示せ. 
+\item $A, B$を任意に与えたとき, $A \circ X=B$となる集合$X$がただ一つ存在することを示せ.
+  \end{enumerate}
+
+\item \label{1-bool-alge}集合$L$と\( L \) 上の二項演算\footnote{二項演算とは写像$\mu : L \times L \to L$のこと. }
+結び \( \vee \)と交わり\( \wedge \)の組
+ \( (L, \vee, \wedge) \) が次を満たすとき, \underline{束(lattice)}と言う. 
+\begin{itemize}
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+   \item (ベキ等律): $x \wedge x =x$, $x \vee x =x$
+    \item (交換則): \( x \wedge y = y \wedge x \), \( x \vee y = y \vee x \)
+    \item (結合則): \( (x \wedge y) \wedge z = x \wedge (y \wedge z) \), \( (x \vee y) \vee z = x \vee (y \vee z) \)
+    \item (吸収則): \( (x \wedge y) \vee x = x \),  \( (x \vee y) \wedge x = x \)
+\end{itemize}
+
+さらに(分配則):
+$ 
+(x \vee y) \wedge z = (x \wedge z) \vee (y \wedge z), 
+ (x \wedge y) \vee z = (x \vee z) \wedge (y \vee z) 
+ $
+ を満たすとき, $( L, \vee, \wedge ) $を\underline{分配束}と呼ぶ
+
+また\( L \) の特別な元 \( 0, 1 \) と単項演算\footnote{単行演算とは写像$\neg : L \to L$のこと} \( \neg \) について
+(補元則)
+$$ x \vee \neg x = 1 
+\quad
+x \wedge \neg x = 0 
+$$
+が成り立つとき, 組 \(  (L, \vee, \wedge, \neg, 0, 1) \) を \underline{ブール束(ブール代数, 可補分配束)}と呼ぶ.
+
+任意の集合$X$についてその冪集合$\mathfrak{P}(X)$はブール束(ブール代数)の構造を持つことを示せ.
+ただし板書で解答する際はある程度省略して書いて良い.("以下同様"などで議論を省略して良い.)
+
+\item \label{1-boolean-eing} 集合 \( R \) 上の2つの二項演算 \( (+, \cdot) \) を持つ代数系 \( (R, +, \cdot) \) が\underline{(単位的)環(ring with unit)}であるとは、以下の条件を満たすことをいう。
+
+\begin{enumerate}[label=(\alph*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+    \item (加法の結合法則): 任意の\( a, b, c \in R \) について
+          $
+          (a + b) + c = a + (b + c)
+          $.
+    \item (加法の可換法則): 任意の\(a,b\in R \) について
+          $
+          a + b = b + a
+          $.
+    \item (加法単位元の存在): ある \( 0_R \in R \) があって, 任意の\(a \in  R \) について
+          $
+          0_R + a = a + 0_R = a
+          $ .
+    \item (加法の逆元の存在): 任意の\(a \in  R \) について, \( a + (-a) = (-a) + a = 0 \) となる \( -a \in R \) が存在する. 
+    \item (乗法の結合法則): 任意の\(a,b,c \in R \) について
+          $
+          (a \cdot b) \cdot c = a \cdot (b \cdot c)
+         $.
+    \item (乗法単位元の存在): ある\( 1_R \in R \) があって, 任意の\(a \in R \) について
+          $
+          1_R \cdot a = a \cdot 1_R = a
+          $.
+    \item (分配法則): 任意の\(a,b,c \in  R \) について
+          $
+          a \cdot (b + c) = (a \cdot b) + (a \cdot c)
+          $かつ
+          $
+          (b + c) \cdot a = (b \cdot a) + (c \cdot a)
+          $.
+\end{enumerate}
+以下, 環$(R, +, \cdot) $について$xy:=x \cdot y$と書くことにする. 
+
+さらに, 任意の$x \in X$について$x^2=x$が成り立つとき, 環$(R, +, \cdot) $を\underline{ブール環(Boolean ring)}と呼ぶ.
+
+ 次の問いに答えよ. ただし板書で解答する際はある程度省略して書いて良い.((a)-(g)の証明を全てする必要はなく, 以下同様などである程度省略して良い. )
+\begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $x \in R$について$2x:=x+x$と定める. $(R, +, \cdot) $がブール環ならば$2x=0$が成り立つことを示せ. 
+  \item $(R, +, \cdot) $がブール環ならば, $x,y\in R$について$xy=yx$が成り立つことを示せ. 
+  \item 任意の集合$X$についてその冪集合$\mathfrak{P}(X)$はブール環の構造を持つことを示せ.
+  \end{enumerate}
+
+\item $^{* \sim **}$次の問いに答えよ. ただし板書で解答する際はある程度省略して書いて良い.("以下同様"などである程度省略して良い. )
+\begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item ブール束(ブール代数)$ (L, \vee, \wedge, \neg, 0, 1) $について, 二項演算$(+, \cdot)$を
+  $$
+ x + y := (x\wedge \neg y ) \vee (\neg x \wedge y )
+ \quad
+ x\cdot y :=x \wedge y
+  $$
+  で定めると$(L, +, \cdot)$はブール環になることを示せ. %\footnote{もしかしたら束論の基礎的なことを多く示さないといけないかもしれない. }
+  \item 逆にブール環$(R, +, \cdot) $について
+  $$
+  x \wedge y := xy
+  \quad
+  x \vee y := x + y + xy
+  \quad
+  \neg x := 1- x
+  $$
+  で定めると, $ ( R; \vee, \wedge, \neg, 0_R, 1_R)$はブール束(ブール代数)となることを示せ. 
+  よってブール束(ブール代数)とブール環は一対一に対応する.
+
+  \end{enumerate}
+  \item$^{***}$  冪集合$\mathfrak{P}(X)$と同型でないブール環は存在するか?
+  \footnote{ちょっと考えたがわからなかった "ストーンの表現定理"を見る限り存在すると思うが... }
+  
+  \newpage
+  
+  \item $^{*}$(Zagier's one sentence proof)
+  $p$を4で割って1余る素数とする. 
+ $S = \{ (x, y, z) \in \mathbb{N}^3 : x^2 + 4yz = p \}$とし$f : S \to S$を
+\[
+(x, y, z) \mapsto 
+\begin{cases}
+(x + 2z, z, y - x - z) &  x < y - z \text{のとき}\\
+(2y - x, y, x - y + z) & y - z < x < 2y \text{のとき}\\
+(x - 2y, x - y + z, y) & x > 2y\text{のとき}
+\end{cases}
+\]
+で定める. 次の問いに答えよ. 
+\begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $S$は有限集合であることを示せ.
+  \item $f :S \to S$について, $f((x,y,z))=(x,y,z)$となる点はただ一つであることを示せ.
+  \item $S$の元の数(位数$|S|$)は奇数であることを示せ.
+  \item $\nu : S \to S$を$\nu((x, y, z)) = (x, z, y)$とすると, $\nu((x,y,z))=(x,y,z)$となる点も存在することを示せ.
+  \item 4で割って1余る素数は二つの平方数の和($n^2 + m^2$という形)で表せられることを示せ. 
+  \end{enumerate}
+
+\medskip
+以下の問題は私が最近勉強したことをそのまま出した. %難易度がわからないので, 時間があるか興味がある人だけやってほしい.
+なお問題が難易度順に並んでいないため, 「\ref{1-ordinal}を仮定して\ref{1-suc}を解く」など解答の順番が前後して良い. 
+ 
+\item $^{* \sim **}$ \label{1-ordinal}集合$\alpha$が次の2つを満たすとき, $\alpha$は\underline{順序数(ordinal number)}という. 
+\begin{enumerate}[label=(\alph*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item (推移的) $x \in \alpha$かつ$y \in x$ならば, $y \in \alpha$である. 
+\item (全順序性) 任意の$x,y \in \alpha$について, $x \in y$または$x=y$または$y \in x$.
+  \end{enumerate}
+  次の問いに答えよ.
+  \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $x,y,z \in \alpha$について, $x \in y$かつ$y \in z$ならば, $x \in z$であることを示せ
+ \item (整列性)「任意の空でない部分集合$S \subset \alpha$について, ある$a\in S$があって, 任意の$x \in S$について, $a \in x$または$a=x$」であることを示せ.
+  \end{enumerate}
+ ただし以後, 順序数に関する問題の解答に関して, 正則性公理(\ref{1-regular})や次を仮定して良い. (これは正則性公理から導かれ, $\in$無限下降列の非存在と呼ばれる. )
+ $$
+ \text{集合列$X_1, X_2, \ldots, $について$X_1\ni X_2\ni \, \ldots $となる無限下降列は存在しない. }
+ $$
+以上により順序数$\alpha$は$\in$に関して整列順序を持つ. 
+つまり$x,y \in \alpha$について順序$x < y$を$x \in y$として定めることができる. 
+ 
+ \item $^{* \sim **}$ $\alpha$を順序数, $x,y \in \alpha$とする. 「$x \subset y$」は「$x \in y$または$x = y$」と同値であることを示せ.
+  よって順序数$\alpha$は$\subset$に関して整列順序を持つ. 
+つまり$x,y \in \alpha$について順序$x \le y$を$x \subset y$として定めることができる.  (それは\ref{1-ordinal}の順序と同じである.)
+
+ \item $^{* \sim **}$$\alpha$を順序数とする. 任意の$\beta \in \alpha$について$\beta$もまた順序数であることを示せ.
+
+ 
+ \item $^{* \sim **}$ 順序数$\alpha, \beta$について$\alpha \subset \beta$または$\beta \subset \alpha$が成り立つことを示せ.
+ (つまり$\alpha \in \beta, \alpha=\beta, \beta \in \alpha$のどれかが成り立つ.)
+ 
+ \newpage 
+ \item \label{1-OR} $^{* \sim **}$ (ブラリ・フォルティのパラドックス)
+ $$
+ OR := \{ \alpha | \text{$\alpha$は順序数}\}
+ $$
+ とする. ORについて次が成り立つことを示せ.
+ \begin{enumerate}[label=(\alph*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item (推移的) $x \in OR$かつ$y \in x$ならば, $y \in OR$である. 
+\item (全順序性) 任意の$x,y \in OR$について, $x \in y$または$x=y$または$y \in x$.
+\item  (整列性) 任意の空でない部分"集合"$S \subset OR$について, ある$a\in S$があって, 任意の$x \in S$について$a \in x$または$a=x$である.
+  \end{enumerate}
+またORは"集合ではない"ことを示せ. 
+
+\item $^{* \sim **}$ \label{1-suc}$\alpha$を順序数とする. 
+ $$
+ \alpha +1:= \alpha \cup \{ \alpha \}
+ $$
+ と定義する. 次の問いに答えよ. 
+   \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $\alpha$を順序数とするとき, $\alpha +1$も順序数であることを示せ.
+  \item $\alpha \in \beta \in \alpha+1$となる順序数は存在しないことを示せ. よって$\alpha+1$は$\alpha$の直後順序数となる. 
+  \end{enumerate}
+  
+\item \label{1-natural} $^{* \sim **}$ $\alpha$を順序数とする. 
+\begin{enumerate}[label=(\alph*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item $\alpha$が後続型順序数(第一種順序数)とは, 「$\alpha=\varnothing$」または「ある順序数$\beta$があって$\alpha=\beta+1$となる」こと. ($\beta+1$については\ref{1-suc}参照.)
+\item $\alpha$が極限順序数(第二種順序数)とは, $\alpha$が後続型順序数でないこと. 
+\item $\alpha$が自然数とは, $\alpha$が後続型順序数であり「任意の$s \in \alpha$について$s$は後続型順序数となる」こと.
+  \end{enumerate}
+次の問いに答えよ.
+   \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $0$という順序数を$0:=\varnothing$とする. 
+  順序数$1$を$1:=0+1$と定義し, 順序数$2,3$を$2:=1+1$, $3 := 2+1$と定義する. 
+  $1,2,3$をそれぞれ"$\varnothing$"と"$\{$"と"$\}$"のみを用いて表せ.
+  \item $1,2,3$は自然数であることを示せ.
+  \item $\omega:= \{ \alpha | \text{$\alpha$は順序数かつ自然数}\}$とする. $\omega$は極限順序数であることを示せ. 
+  \end{enumerate}
+
+\item $^{* \sim **}$\ref{1-natural}と同様に, $\omega:= \{ \alpha | \text{$\alpha$は順序数かつ自然数}\}$, $0:=\varnothing$とする. 
+$\omega$は次のペアノの公理を全て満たすことを示せ. \footnote{つまり順序数を用いた自然数の構成である. 今後「自然数とはなんですか?」と聞かれたら, 「順序数$x$で, $x$や$x$のすべての元は後続型順序数であるもの」と答えれば良い. この$\omega$の構成はフォン・ノイマンによる自然数の構成であるらしい. ただ実はちょっと穴がある. 「$\varnothing \in A$かつ, $x \in A$ならば$x \cup \{ x\} \in A$」となる集合$A$は存在するかという問題がある. 公理的集合論の無限公理でこの集合$A$は存在する. そこで自然数の集合を$\{ x \in A | \text{$x$は順序数で, $x$や$x$のすべての元は後続型順序数}\}$と定義する. 実はこれは$A$の取り方によらないことが言えて, 最終的に上の$\omega$に一致する.  }
+   \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $0 \in \omega$.
+  \item $n \in \omega$ならば$n+1 \in \omega$. ($n+1$の定義は\ref{1-suc}での定義である.)
+  \item $n+1 = 0$となる$n \in \omega$は存在しない.
+  \item  $n, m\in \omega$かつ$n+1 = m+1$ならば, $n=m$.
+  \item $E \subset \omega$を部分集合とする. $0 \in E$であり「任意の$e \in E$について$e+1 \in E$」であるとする. このとき$E = \omega$である. 
+  \end{enumerate}
+   \end{enumerate}
+%%%%%%%%%%%%%%%
+\begin{comment}
+
+\item $^{*}$ \ref{1-natural}と同様に, 順序数$\omega:= \{ \alpha | \text{$\alpha$は順序数かつ自然数}\}$, $0:=\varnothing$,$1:=0+1$とする. ($0+1$の定義は\ref{1-suc}での定義である.)
+以下, 順序数$0,1, \ldots, \mathfrak{n}$が定義されている状況下で順序数$\mathfrak{n}+1$を
+$$
+\mathfrak{n}+1:= \mathfrak{n} \cup \{ \mathfrak{n} \} 
+$$
+として定義する. (つまり$\mathfrak{n}+1:=\mathfrak{n}+1$である. 後者の定義は\ref{1-suc}での定義である.)
+
+このとき順序数$\mathfrak{n}$は\ref{1-natural}での定義の自然数であることを示せ.
+また任意の$\alpha \in \omega$について, ある$\mathfrak{n}$があって$\alpha=\mathfrak{n}$であることを示せ. 
+よって$\omega$は自然数の集合$\N$と対応する. \footnote{つまり順序数を用いた自然数の構成である. 今後「自然数とはなんですか?」と聞かれたら, 「順序数$x$で, $x$や$x$のすべての元は後続型順序数であるもの」と答えれば良い. この$\omega$の構成はフォン・ノイマンによる自然数の構成であるらしい. ただ実はちょっと穴がある. 「$\varnothing \in A$かつ, $x \in A$ならば$x \cup \{ x\} \in A$」となる集合$A$は存在するかという問題がある. 公理的集合論の無限公理でこの集合$A$は存在する. そこで自然数の集合を$\{ x \in A | \text{$x$は順序数で, $x$や$x$のすべての元は後続型順序数}\}$と定義する. 実はこれは$A$の取り方によらないことが言えて, 最終的に上の$\omega$に一致する.  }
+%\footnote{この問題は偉い人から見ればバカな問題であり, 悪問である. というのも$\N$の定義はこのように定義するからである. 実際この$\omega$はフォン・ノイマンによる自然数の構成であるらしい. 公理的集合論の本では別の定義をするが, 最終的に$\{ x |\text{$x$は順序数で, $x$や$x$のすべての元は後続型順序数}\}$と一致し上の$\omega$と一致する. }
+\end{comment}
+%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+\begin{enumerate}[label=\textbf{問}\ref*{sec-2}.\arabic*]
+
+\item \label{2-adjoint}$X, Y$を空でない集合とし, $f : X \to Y$を写像とする. 
+次の問いに答えよ.
+\begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item $A, B \in \mathfrak{P}(X)$とする. 「任意の$C \in \mathfrak{P}(X)$について, $C \subset A$かつ$C \subset B$ならば$C \subset A \cap B$」を示せ.
+特に$A \cap B$は$A$と$B$に含まれる最大の集合となる. 
+\item $A, B \in \mathfrak{P}(X)$とする. 「任意の$C \in \mathfrak{P}(X)$について, $A \subset C$かつ$B \subset C$ならば$A \cup B \subset C$」を示せ.特に$A \cup B$は$A$と$B$を含む最小の集合となる. 
+\item  $f : X \to Y$について次を定める. 
+$$
+\begin{matrix}
+f: & \mathfrak{P}(X)& \rightarrow & \mathfrak{P}(Y)& 
+& f^{-1}: & \mathfrak{P}(Y)& \rightarrow & \mathfrak{P}(X)& \\
+&A& \rightarrow & f(A)& 
+&  & B& \rightarrow & f^{-1}(B)& \\
+\end{matrix}
+$$
+$A\in  \mathfrak{P}(X), B \in \mathfrak{P}(Y)$について, 
+$
+F(f(A), B)$と$
+F(A, f^{-1}(B))
+$
+の間に全単射が存在することを示せ.
+ここで集合$C, D$について, $F(C,D)$を以下のように定義する. \footnote{教科書の記法に合わせたが, これは一般的ではない. {\rm Map}などが一般的?}
+$$
+F(C,D):=\{ g : C \to D |\text{$g$は写像}\}
+$$
+  \end{enumerate}
+\item $X, Y$を空でない集合とし, $f : X \to Y$を写像とする. 
+$$
+\begin{matrix}
+f^{\sharp}: & \mathfrak{P}(X)& \rightarrow & \mathfrak{P}(Y) \\
+ & A& \rightarrow & Y \setminus f^{\sharp}(X \setminus A) \\
+\end{matrix}
+$$
+とおく. $A\in  \mathfrak{P}(X), B \in \mathfrak{P}(Y)$について, 
+$F(f^{-1}(B), A)$と$F(B, f^{\sharp}(A))$の間に全単射が存在することを示せ.
+\footnote{知っている人に言うと, これは$f^{-1}$が$f^{\sharp}$の左随伴であることなどを示している. 左随伴は余極限を保つので, この問題から$f^{-1}(B \cup C)=f^{-1}(B) \cup f^{-1}(C)$が圏論的に理解できる. この問題は\url{https://www.youtube.com/watch?v=QjYN9MAtpvI}を参考にした.}
+
+
+\item 集合の写像$f : X \to Y$が\underline{モニック (左簡約可能)}であるとは, 「任意の写像$g_1, g_2 : W \to X$について, $f \circ g_1 = f \circ g_2$ならば$g_1=g_2$」が成り立つこととする.
+次の問いに答えよ. 
+   \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item $f$が単射ならばモニックであることを示せ.
+\item $f$がモニックならば単射であることを示せ. つまり集合においては二つの概念は同じである. 
+\end{enumerate}
+
+\item 集合の写像$f : X \to Y$が\underline{エピ (右簡約可能)}であるとは, 「任意の写像$g_1, g_2 : Y \to W$について, $g_1 \circ f = g_2 \circ $ならば$g_1=g_2$」が成り立つこととする.
+次の問いに答えよ. 
+   \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item $f$が全射ならばエピであることを示せ. 
+\item $f$がエピならば全射であることを示せ. つまり集合においては二つの概念は同じである. 
+\end{enumerate}
+\end{enumerate}
+ 
+  \newpage
+  
+ \begin{center}
+\section{濃度の大小(応用問題)}
+\label{sec-5}
+\end{center}
+\end{comment}
+%%%%%%%%%%%%%%%%%%
+
+ \newpage
+ \begin{center}
+\section{集合系の演算・全射・単射・濃度の大小(応用問題)}
+\label{sec-2}
+\end{center}
+   \begin{enumerate}[label=\textbf{問}\ref*{sec-2}.\arabic*]
+   \item 集合の写像$f : X \to Y$が\underline{モニック (左簡約可能)}であるとは, 「任意の写像$g_1, g_2 : W \to X$について, $f \circ g_1 = f \circ g_2$ならば$g_1=g_2$」が成り立つこととする.
+次の問いに答えよ. 
+   \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item $f$が単射ならばモニックであることを示せ.
+\item $f$がモニックならば単射であることを示せ. つまり集合においては二つの概念は同じである. 
+\end{enumerate}
+
+\item 集合の写像$f : X \to Y$が\underline{エピ (右簡約可能)}であるとは, 「任意の写像$g_1, g_2 : Y \to W$について, $g_1 \circ f = g_2 \circ f$ならば$g_1=g_2$」が成り立つこととする.
+次の問いに答えよ. 
+   \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item $f$が全射ならばエピであることを示せ. 
+\item $f$がエピならば全射であることを示せ. つまり集合においては二つの概念は同じである. 
+\end{enumerate}
+   \item  集合$A, B, C$について$F(A \times B, C) \sim F(A, F(B,C))$を示せ. ここで集合$C, D$について, $F(C,D)$を以下のように定義する.
+$$
+F(C,D):=\{ g : C \to D |\text{$g$は写像}\}
+$$
+   \item $\R \setminus \Q \sim \R$を示せ. これより無理数は存在する. 
+ \item $\Lambda$を可算集合とし, 任意の$\lambda \in \Lambda$について$A_{\lambda}$も可算集合とする. このとき$\bigcup_{\lambda \in \Lambda}A_{\lambda}$も可算であることを示せ.
+% \item $\Lambda$を可算集合, $A_{\lambda}$を可算集合とすると$\prod_{\lambda \in \Lambda}A_{\lambda}$は非加算
+ \item $\R \sim \mathfrak{P}(\N)$を示せ.
+  \item $F(\N, \N) \sim F(\N, \R)\sim \R$を示せ.
+ % \item $\R^\N \sim \R$を示せ.
+ \item $F(\R, \R)\sim \mathfrak{P}(\R)$を示せ.
+ \item 連続関数$f : \R \to \R$からなる集合の濃度は$\R$に等しいことを示せ. 
+ \item 係数が全て整数である代数方程式$a_n x^n + a_{n-1}x^{n-1} + \cdots + a_1 x + a_0$
+ の解となる複素数を代数的数という. 代数的数の集合は可算であることを示せ. 
+ \item 超越数(代数的ではない複素数)の集合の濃度は$\R$に等しいことを示せ. よって超越数は存在する. 
+ \item $X = (\R \setminus \Q)^2$とおく. $X$上の相異なる2点は$X$上の線分二つで結べることを示せ. つまり任意の$x, y \in X$についてある$a \in X$があって, $x$と$a$を結ぶ線分$L$と$a$と$y$を結ぶ線分$M$について$L \subset X, M \subset X$とできることを示せ.
+ \end{enumerate}
+
+ \newpage
+
+ \begin{center}
+\section{同値関係(二項関係)・商集合(応用問題)}
+\label{sec-6}
+\end{center}
+
+  \begin{enumerate}[label=\textbf{問}\ref*{sec-6}.\arabic*]
+ \item \label{4-bin} 集合$X$上の冪集合$\mathfrak{P}(X)$の二項関係を
+ $$
+ A \sim B \Longleftrightarrow
+ \text{$(A \setminus B) \cup (B \setminus A)$が有限集合}
+ $$
+ として定義すると, これは$\mathfrak{P}(X)$上の同値関係になることを示せ. 
+ \item  半順序集合$(X, \le)$について, 任意の二つの元が上限と下限を持つとき, $(X, \le)$は\underline{束(lattice)}と呼ばれる.
+ 次の問いに答えよ. ただし板書で解答する際はある程度省略して書いて良い.("以下同様"などである程度省略して良い. )
+    \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $x, y \in L$について
+  $$
+  x \vee y := \sup(x, y) \quad
+  x \wedge y := \inf(x,y)
+  $$
+  とする. このとき以下の4つが成り立つことを示せ. 
+\begin{itemize}
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+     \item (ベキ等律): $x \wedge x =x$, $x \vee x =x$
+    \item (交換則): \( x \wedge y = y \wedge x \), \( x \vee y = y \vee x \)
+    \item (結合則): \( (x \wedge y) \wedge z = x \wedge (y \wedge z) \), \( (x \vee y) \vee z = x \vee (y \vee z) \)
+    \item (吸収則): \( (x \wedge y) \vee x = x \), \( (x \vee y) \wedge x = x \)
+\end{itemize}
+\item  逆に集合$L$と\( L \) 上の二項演算 \( \vee \)と\( \wedge \)が上の4つを満たすとする. 
+ このとき
+ $$
+ x \le y \Longleftrightarrow  x = x \wedge y
+ $$
+ として定義すると$(L, \le)$は束になることを示せ. 
+  \end{enumerate}
+  
+ \item $(R, +, \cdot)$をブール環とする. (\ref{1-boolean-eing}参照.)
+ $$
+  x \le y \Longleftrightarrow  x = xy
+ $$
+ として定義すると$(R, \le)$は束になることを示せ. ただし板書で解答する際はある程度省略して書いて良い.("以下同様"などである程度省略して良い. )
+ 
+ 
+ \item \label{3-complete-lattice}半順序集合$(X, \le)$が\underline{完備束}とは$(X, \le)$が束で任意の空でない部分集合の上限と下限が常に存在するものとする.
+集合$A$について$\mathfrak{P}(A)$は包含関係に関して完備束になることを示せ.
+(つまり$X, Y\ \in \mathfrak{P}(A)$について$X \le Y$を$X \subset Y$で定めるとき, $(\mathfrak{P}(A), \le)$は完備束であることを示せ.)
+ 
+ \item $X$を集合とし, $\varphi : \mathfrak{P}(X) \to \mathfrak{P}(X)$を包含関係による順序を保つ写像とする．($\mathfrak{P}(X)$の順序に関しては\ref{3-complete-lattice}参照.)
+ $$E:=\bigcap_{\{ A \in \mathfrak{P}(X) | \varphi(A) \subset A\}} A$$
+ とおくとき$\varphi(E) =E$であることを示せ.
+ 
+ \newpage
+ \item $R$を環とする. (\ref{1-boolean-eing}参照.)
+任意の$x,y \in R$について$xy=yx$が成り立つとき, $R$を\underline{可換環}という. 
+
+可換環$R$の部分集合$I \subset R$が次の二つを満たすとき\underline{イデアル(ideal)}と呼ばれる．
+ \begin{itemize}
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+    \item $x,y \in I$ならば, $x+y \in I$.
+    \item $x\in R$かつ$a \in I$ならば, $xa \in I$
+\end{itemize}
+さらにイデアル$\mathfrak{p}\subset R$が次を満たすとき\underline{素イデアル(prime ideal)}と呼ばれる.
+ \begin{itemize}
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $\mathfrak{p} \neq R$\footnote{今回はアティヤーマクドナルドの本「可換代数入門」の定義に従う. }
+    \item $xy \in \mathfrak{p}$ならば, $x \in \mathfrak{p}$または$y \in \mathfrak{p}$.
+\end{itemize}
+次の問いに答えよ.  
+    \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item 整数の集合$\Z$は可換環の構造を持つことがわかる. そこで整数$a$について
+  $$
+  (a):= \{ an | n \in \Z \}
+  $$
+  とする. このとき$(a)$は$\Z$のイデアルであることを示せ.
+  \item $(a)$が素イデアルになるような$a$を全て求めよ. 
+  \item $\Z$の素イデアルを全て求めよ.
+  \end{enumerate}
+  
+  
+\item 次の問いに答えよ. 
+    \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item $R$を可換環とし, $I$をイデアルとする. $x,y \in R$について
+$$
+x \sim y \Leftrightarrow x - y \in I
+$$
+と定める. $\sim$は同値関係であることをしめせ. 
+\item 商集合$R/I:=R/\sim$と置くとき, $R/I$は可換環になることを示せ.
+ただし板書で解答する際はある程度省略して書いて良い.("以下同様"などである程度省略して良い. )
+\item  整数$a$について$\Z/a\Z:=\Z/(a)$とする. ($(a)$については上を参照すること.) $\Z/a\Z$の元の個数を求めよ. 
+\item $p \in \Z$を正の素数とする. $\Z/p\Z$は(1)より可換環になる.このとき任意の0でない元$x \in \Z/p\Z$についてある$y \in \Z/p\Z$があって$xy=1$となることをしめせ. 
+\end{enumerate}
+
+  
+\item \label{3-maxi}
+可換環$R$についてイデアル$\mathfrak{m}\subset R$が次の二つを満たすとき\underline{極大イデアル(maximal ideal)}と呼ばれる．
+ \begin{itemize}
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $\mathfrak{m} \neq R$.
+    \item イデアル$I$が$\mathfrak{m} \subset I \subset R$を満たすならば, $\mathfrak{m}=I$または$I=R$.
+\end{itemize}
+次の問いに答えよ.
+    \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item 極大イデアル$\mathfrak{m}$は素イデアルであることを示せ.
+\item $\Z$の$(0)$ではない素イデアルは極大であることを示せ. 
+\item $\mathfrak{m}$を極大イデアルとする. 可換環$R/\mathfrak{m}$について, 任意の0でない元$x \in R/\mathfrak{m}$についてある$y \in R/\mathfrak{m}$があって$xy=1$となることをしめせ.\footnote{ちなみに逆も言える. 要は$R/\mathfrak{m}$が体になるということである. また$\mathfrak{p}$が素イデアルならば$R/\mathfrak{p}$は整域(integral domain)になる. これも逆が言える. またアティヤーマクドナルドの本「可換代数入門」参照のこと. }
+\end{enumerate}
+
+\item $^{*}$ブール環$R$の素イデアル$\mathfrak{p}$は極大であり, $R/\mathfrak{p}$は2つの元しか持たないことを示せ.
+
+\item $p \in \Z$を正の素数とし, $\mathbb{F}_p :=\Z/p\Z $とおく.
+$n$を0以上の整数とする. 
+$(x_1, \ldots, x_{n+1}), (y_1, \ldots, y_{n+1}) \in \mathbb{F}_{p}^{n+1}\setminus \{ (0,0,\ldots, 0)\}$について二項関係$\sim$を
+$$
+(x_1, \ldots, x_{n+1}) \sim (y_1, \ldots, y_{n+1})  \Leftrightarrow \text{$0$でない$\lambda \in \mathbb{F}_p$があって, 任意の$1\le i \le n+1$について$x_i = \lambda y_i$.}
+$$
+とする.
+次の問いに答えよ
+    \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $\sim$は$ \mathbb{F}_{p}^{n+1}\setminus \{ (0,0,\ldots, 0)\}$における同値関係であることを示せ.
+  \item $\mathbb{F}_{p}\mathbb{P}^n:=(F_{p}^{n+1}\setminus \{ (0,0,\ldots, 0)\})/\sim$とおく. $\mathbb{F}_{p}\mathbb{P}^n$の元の個数を求めよ. 
+  \end{enumerate}
+  
+\item $^*$(ドブル1)
+次の問いに答えよ.
+    \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $\mathbb{F}_{2}\mathbb{P}^2$の元で$(0: x_2 : x_3)$と書けるものの個数を求めよ. ここで$x= (x_{1}, x_{2}, \ldots, x_{n+1})$を$\mathbb{F}_{p}\mathbb{P}^n$の元とみなしたものを$(x_{1}: \cdots : x_{n+1})$と書き同次座標と呼ぶ.
+  \item 7色(赤, 橙, 黄, 緑, 青, 藍, 紫)のペンと7枚のカードある. 
+ 次のルールを考える. 
+ \begin{itemize}
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item どのカードにも相異なる3色の$\bullet$印がある.
+  \item どの2枚のカードを取っても, 1つだけ共通する色の$\bullet$印がある.
+\end{itemize}
+上のルール2つを満たすように色ペンを使ってカードに$\bullet$印を書くことはできるだろうか?
+  \end{enumerate}
+\item $^*$ (ドブル2)
+次の問いに答えよ.
+    \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $\mathbb{F}_{7}\mathbb{P}^2$の元で$(0: x_2 : x_3)$と書けるものの個数を求めよ. 
+  \item ポケモンのドブルの説明書にはこう書かれていた.  
+  
+   「8匹のポケモンが描かれたカードが55枚入っているよ。 2枚のカードに1つだけ共通するポケモンを誰よりも早く見つけよう！\footnote{要は二つのカード$A, B$について, ただ一つのポケモン$x$が存在して, $x$は$A$にも$B$にも描かれている, ということ.}」  
+ % 「ドブルは8匹のポケモンが描かれた55枚のカードで遊ぶゲームです. すべてのカードは他のカードとたった1匹だけ共通するポケモンが描かれており, それを探すのが目的です!\footnote{要は二つのカード$A, B$について, ただ一つのポケモン$x$が存在して, $x$は$A$にも$B$にも描かれている, ということ.}」  
+ 
+  さらにポケモンのドブルの説明書を読むとドブルに描かれているポケモンの総数は計57匹である. なぜこのようなことが可能なのだろうか. このドブルの仕組みを$\mathbb{F}_{7}\mathbb{P}^2$の視点から論ぜよ. 
+  \item 実はポケモンのドブルのカード数は57枚でも可能である. その理由を答えよ. 
+  %と55枚のカードがある. 1枚のカードには8種類のポケモンが描かれている. カードは不思議な仕組みになっており, どの2枚のカードを取っても同じ柄のポケモンが必ず１匹のみ存在する.」
+  \end{enumerate}
+  
+ \end{enumerate}
+
+ \newpage
+
+ 
+ \begin{center}
+\section{整列集合・選択公理・ツォルンの補題・整列可能定理(応用問題)}
+\label{sec-9}
+\end{center}
+
+ \begin{enumerate}[label=\textbf{問}\ref*{sec-9}.\arabic*]
+ 
+  \item  \label{5-complete-rep}$X$を空でない集合$\sim$を同値関係とする. $x \in X$について$C(x) \subset X$を$x$の同値類とする.
+ $X$の部分集合$S \subset X$が
+ \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $X/\sim = \{ C(x) | x \in S\}$
+  \item $x, y \in S$かつ$x \neq y$ならば$C(x) \neq C(y)$
+  \end{enumerate}
+を満たすとき, $S$は$X /\sim$の完全代表系という. 
+このとき$X = \cup_{x \in S}C(x)$とかける. 
+ 
+ 選択公理を仮定すれば, 完全代表系は存在することを示せ. (ヒント: $\Lambda=X/\sim$とし, $\lambda=C(x) \in X/\sim$として$A_{\lambda}=C(x)$と定める．)
+
+\item   $n \in \N$について集合$X_n$を
+ $$
+ X_0:=\varnothing 
+ \quad
+ X_{n}:=\{ 0,1,\ldots, n-1\}
+ $$
+ として定義する.
+ 集合$A$について次の用語を定義する. 
+  \begin{itemize}
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item $A$が有限とは, ある全単射$f : X \to X_n$が存在すること.
+\item $A$が無限とは, $A$が有限ではないこと.
+\item $A$がデデキンド無限とは, ある全射ではない単射$f : A \to A$が存在すること.
+\end{itemize}
+選択公理を仮定すれば, 「$A$が無限であること」と「$A$がデデキンド無限である」ことは同値であることを示せ. 
+
+\item  関数$f : \R \to \R$が任意の$x,y \in \R$について
+$$
+f(x+y)=f(x) + f(y)
+$$
+を満たしているとする. 次の問いに答えよ. 
+ \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $f$が連続ならば, ある$\lambda \in \R$があって$f(x)=\lambda x$とかけることを示せ
+  \item $f$が連続でなければ(1)は必ずしも成り立たない. そのような例を構成せよ. つまり「$f(x+y)=f(x) + f(y)$であるが$f(x) = \lambda x$とかけない関数$f$の例」を一つあげよ. なお選択公理を仮定して良い. 
+  \end{enumerate}
+  
+  \item 選択公理を仮定すれば, 任意の0でない可換環$R$には極大イデアル$\mathfrak{m}$(\ref{3-maxi}参照)が存在することを示せ.
+
+ 
+ \item 選択公理を仮定すると次のような定理が証明できる.
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}[バナッハ・タルスキー 1924)]
+3次元空間内の半径1の球体を有限個(実は5個でいい)に分割したのち、それらを回転・平行移動操作のみを使ってうまく組み合わせることにより半径1の球体を2個作ることが出来る.
+\end{thm}
+ \end{tcolorbox}
+バナッハ・タルスキーの定理を用いた1=2の証明というものがある.
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+[証明?] $D$を半径1の球体とする. 
+バナッハ・タルスキーの定理から, 互いに交わらない部分集合$A_i, B_j$があって
+$$
+D = \bigcup_{i=1}^{n} A_i \cup \bigcup_{j=1}^{m} B_j
+$$
+かつ, $\{A_i | 1 \le i \le n \}$を回転・平行移動の操作のみを使って半径1の球体$D$にでき, $\{B_j | 1 \le j \le n \}$を回転・平行移動の操作のみを使って半径1の球体$D$にできる.
+
+部分集合$X \subset \R^3$に対して$v(X)$を$X$の体積(測度)表すものとする.
+すると
+$$
+v(D) = v\left(\bigcup_{i=1}^{n} A_i \cup \bigcup_{j=1}^{m} B_j\right)
+=\sum_{i=1}^{n}v(A_i) + \sum_{j=1}^{m}v(B_j) 
+$$
+であり, $\{A_i | 1 \le i \le n \}$を回転・平行移動操作のみを使って半径1の球体$D$にできるので$\sum_{i=1}^{n}v(A_i)=v(D)$となる.
+よって
+$$
+v(D) =v(D) + v(D)
+$$
+となる. 
+$v(D)=\frac{4\pi}{3}$であり0でないので, 両辺を$v(D)$でわって$1=2$を得る. 
+ \end{tcolorbox}
+しかし1=2は明らかに間違いである. 
+この証明のどの部分に間違いがあるか指摘せよ. ただし選択公理を仮定し, 選択公理を仮定すればバナッハ・タルスキーの定理は成り立つ. 
+ 
+ \item $^{*}$ 地獄に囚人が可算無限人いる. 獄卒の鬼がやってきてには, 翌日に次のようなゲームを行い囚人側が勝てば囚人たち全員を解放し, 負ければ全員を拷問にかけるとのことである. 
+
+[ゲーム内容]
+鬼は先ず囚人全員を広場に集め, 囚人各人に赤または白の帽子を被せる. 囚人たちは自分の帽子の色を知ることはできないが, 他の囚人の帽子の色は全て見ることができる. 囚人たちは自分の帽子の色を推測し, 全員で一斉にそれが赤か白かを答える. もし自分の帽子の色を間違えた囚人の数が有限なら, 囚人側の勝ちである. もし間違えた囚人の数が無限なら, 囚人側の負けである. 
+ただし, 囚人たちはゲームの開始前にはいくらでも作戦を相談してよいが, ゲームが始まったら意思の疎通は一切禁止されるものとする.
+
+囚人たちがこのゲームに勝てる作戦が必ず存在することを示せ. なお選択公理を仮定して良い.%\footnote{この問題の表記は\url{https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kokai-koza/H27-ozawa.pdf}のPDFでの表記をほとんどそのまま用いた. }
+(ヒント: \ref{4-bin}の同値関係と\ref{5-complete-rep}.)\footnote{実は「囚人は一列に並んでいて, 前の人は後ろの人の帽子の色がわからない」という条件をつけても良い. }
+
+
+ 
+   \item $^{***}$整列集合$(X, \le)$で$X \sim \R$となるものの具体的な例を一つあげよ. \footnote{整列集合の例は可算なものが多い. では非加算なものはどうなるのか? ちょっと考えてもわからなかった. なお選択公理を認めれば, 存在に関しては言える. }
+   \item $^{*} $「任意の全射$f : X \to Y$についてある$g : Y \to X$があって, $f \circ g = id_Y$」という命題は選択公理と同値であることを示せ.
+   \item$^{***}$「任意の体上の任意のベクトル空間は基底を持つ」という命題は選択公理と同値であることを示せ.\footnote{この命題は正しいが, 私には証明がわからなかった. \ref{4-orderset}も同様. 証明を教えてほしい. }
+   \item\label{4-orderset}$^{***}$「帰納的順序集合$X$上の順序を保つ写像$f : X \to X$は不動点($f(a)=a$となる$a \in X$)を持つ」という命題は選択公理と同値であることを示せ.
+ 
+  \newpage
+以下の問題は私が最近勉強したことをそのまま出した. %難易度がわからないので, 時間があるか興味がある人だけやってほしい.
+ \item $^{* \sim **}$授業では「$X$と$Y$の濃度が等しい」など濃度の大小を定義していたが, 濃度自体は定義していなかった. 
+ この問題では濃度を定義することを考える.(ただし選択公理は仮定する.)
+ 
+ $OR:=\{ \alpha | \text{$\alpha$は順序数}\}$とおき
+ 順序数(\ref{1-ordinal}参照)$\alpha, \beta$について
+ $$
+ \alpha \le \beta \Longleftrightarrow 
+ \text{$\alpha \in \beta$または$\alpha=\beta$}
+ $$
+ として定義する. $OR$は集合ではないが"整列集合"と同じような性質を満たす(\ref{1-OR}参照. 整列クラスと呼ばれる. )
+ 
+ $X$を集合として
+$$
+|X| = \min\{ \alpha \in OR  | \text{$X$にある順序$\le$があって$(X, \le)$と$(\alpha, \in)$は順序同型} \}
+$$
+ と定義し, $|X|$を$X$の\underline{濃度(cardinality)}という.\footnote{$\min$が存在するのは$OR$が整列クラスになることからわかる. $\min$の右側の集合が空でないことの証明は難しい. つまり「任意の整列集合はある順序数と順序同型になる」ことの証明は難しい. 詳しくは田中尚夫「公理的集合論」を参照のこと.}
+ $X, Y$を集合とするとき, 次の問いに答えよ. 
+ \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item $X \sim Y$ であることは$|X| = |Y|$と同値であることを示せ.
+\item 集合$\alpha$が順序数ならば, $|\alpha| \le \alpha$であることを示せ. 
+\item $X \subset Y$ならば, $|X| \le |Y|$であることを示せ. 
+\item 単射$f : X \to Y$が存在することは, $|X| \le |Y|$と同値であることを示せ. 
+\end{enumerate}
+ よって「$X$と$Y$の濃度が等しい」を$|X| = |Y|$と定義でき, 「$X$は$Y$より濃度が小さい」を$|X| < |Y|$として定義できる. 
+ 
+ \item $^{* \sim **}$ 順序数$\alpha$が\underline{基数(cardinal number)}であるとは$\alpha=|X|$となる集合$X$が存在することとする. 
+ 次の問いに答えよ. 
+  \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+   \item $\kappa$を基数とする. 順序数$\alpha$が$\alpha < \kappa$を満たすならば$\alpha \not \sim \kappa$であることを示せ.
+  \item 順序数$\kappa$が基数であることは, $\kappa = |\kappa|$であることと同値であることを示せ.
+   \item $\kappa$を基数とする. 集合$Y$について$Y \sim \kappa$ならば$|Y|=\kappa$であることを示せ.
+\end{enumerate}
+
+\item$^{* \sim **}$  \label{4-infinite-card}\ref{1-natural}と同様に, $\omega:= \{ \alpha | \text{$\alpha$は順序数かつ自然数}\}$とする. 次の問いに答えよ. 
+  \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item 順序数$\alpha, \beta$について$\alpha +1\sim \beta+1$ならば$\alpha \sim \beta$である. (ヒント. 全単射$f :\alpha +1\to\beta+1$について$\alpha$の行き先を考える.)
+  \item 任意の$n \in \omega$とする. 順序数$\beta$について$\beta \sim n$ならば$\beta=n$であることを示せ. (ヒント. 順序数$n$は整列集合なので超限帰納法を用いる. $\beta \ge\omega$ならば$\beta\sim \beta+1$も使う.)
+ \item $\omega$の元$n$は基数であることを示せ. $\omega$の元である基数を\underline{有限基数}といい, そうでない基数を\underline{無限基数}という.
+ \item $\omega$は無限基数であり, 無限基数の中で最小であることを示せ. そのため$\omega$は$\aleph_{0}$(アレフゼロ)とも書かれる.
+  \end{enumerate}
+  \end{enumerate}
+ \newpage
+%以下の内容は「田中尚夫 公理的集合論」を参考にした. 
+
+  (コラム1. 連続体仮説)
+  無限基数の集まり(クラス)を${\rm Incard}:=\{ \aleph | \text{$\aleph$は無限基数}\}$とおく. 
+ すると順序数の集まり(クラス)$OR:=\{ \alpha | \text{$\alpha$は順序数}\}$と順序同型であることが示せる.
+ つまり無限基数もまた整列されており, 「0番目, 1番目, 2番目, $\ldots$」と並べることができる:
+ $$
+ \omega = |\N| = \aleph_0 < \aleph_1 < \aleph_2 < \cdots <\aleph_\omega < \aleph_{\omega+1} < \cdots
+ $$
+ \ref{4-infinite-card}から$ \aleph_0 =  \omega = |\N| $である. 
+ 一方カントールの定理から$\aleph_0 = |\N|  < |\mathfrak{P}(\N)| = |\R|$である. 
+ 連続体仮説とは次のような命題である. 
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{asum}[連続体仮説]
+    $\aleph_1 = \R$?
+    つまり集合$Y$について$|\N| \le |Y| \le  |\mathfrak{P}(\N)| = |\R|$ならば$|Y|=|\N|$または$|Y|=|\R|$か?
+    \end{asum}
+ \end{tcolorbox}
+
+連続体仮説に関しては次が知られている. 
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}(ゲーデル1940, コーエン1963)
+連続体仮説はZFC公理系(ZF公理系+選択公理)からは肯定も否定もできない. 
+    \end{thm}
+ \end{tcolorbox}
+一般連続体仮説($\aleph_{\alpha+1} = |\mathfrak{P}(\aleph_{\alpha})|$?)もあり, これもZFC公理系(ZF公理系+選択公理)からは肯定も否定もできない. ちなみに選択公理もまたZF公理系からは肯定も否定もできない.
+
+   (コラム2. 宇宙)
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}%(SGA $4_1$ Expose I, Appendix)
+集合$U$が次を満たすとき, $U$をグロタンディーク宇宙(Grothendieck universe)という. 
+
+\vspace{-13pt}
+  \begin{enumerate}[label=(\alph*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item $\omega\in U$であり, $u \in U$かつ$x \in u$ならば$x \in U$.
+\item $u, v\in U$ならば, $\cup_{x \in u}x, \mathfrak{P}(u), \{u,v \}, (u,v), u \times v \in U$.
+%\item $u \in U$ならば, $\cup_{x \in u}x, \mathfrak{P}(u) \in U$.
+%\item $\omega\in U$.
+\item 全射$f : a \to b$, $a \in U$, $b \subset U$ならば, $b\in U$.
+\end{enumerate}
+ \end{dfn}
+ \end{tcolorbox}
+要はグロタンディーク宇宙とはまともな集合演算で閉じている集合である.
+「マックレーン 圏論の基礎」でも存在を仮定している. 
+グロタンディーク宇宙は基数との関係がある. 
+
+   \begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}
+非可算極限(\ref{1-natural})な基数$\kappa$が次を満たすとき, 強到達不能基数という.
+
+\vspace{-13pt}
+  \begin{enumerate}[label=(\alph*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item (正則性) $|\Lambda|<\kappa$かつ任意の$\lambda \in \Lambda$について$|A_{\lambda}|<\kappa$ならば, $|\cup_{\lambda \in \Lambda}A_{\lambda}|<\kappa$.
+\item (強極限性) $|X| < \kappa$ならば$|\mathfrak{P}(X)|<\kappa$.
+\end{enumerate}
+    \end{dfn}
+ \end{tcolorbox}
+ %実は次が知られている. 
+    \begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+  \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item "グロタンディーク宇宙の存在"と"強到達不能基数の存在"は同値である.
+\item 強到達不能基数の存在はZFC公理系で証明することができない. (ただしZFCは無矛盾と仮定する.)
+\end{enumerate}
+    \end{thm}
+ \end{tcolorbox}
+ なのでグロタンディーク宇宙の存在をZFCで示すことができない. 
+ 「別にグロタンディーク宇宙の存在くらい仮定していいのでは?」と思っていたが,  「ZFCが無矛盾であっても, グロタンディーク宇宙の存在を仮定したZFCは矛盾するかもしれない」とのことである. 
+ \footnote{この辺りは巨大基数の話に繋がるらしい. 私は全くの素人なので, alg-dさんの動画\url{https://www.youtube.com/watch?v=z7jXyjFnjfU}に委ねる. ちなみに定理6の(1)を演習問題にしようとしたが解けなかったのでやめた.}
+調べれば調べるほど, 「今研究している数学は果たして大丈夫なのか?」と心配する限りである.\footnote{ここ最近調べたり勉強したりして「基礎論・(公理的)集合論が一番難しい」と思った. ある集会でとある数学者が「数学者は公理的集合論に疎かである」と言っていた. 身にしみる言葉である.}
+ 
+ 
+ 
+ 
+ \newpage
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+\item $^{* \sim **}$
+順序数$\omega=\{ \alpha | \text{$\alpha$は順序数かつ自然数}\}$とする.(\ref{1-natural}参照).
+$\omega$は基数であることを示せ. 
+また無限基数$\alpha$について$\omega \subset \alpha$であることを示せ.
+つまり$\omega$は最小の無限基数である($\omega$を基数としてみるときは, $\aleph_{0}$(アレフゼロ)とも書かれる.)
+
+\newpage
+\item $^{**}$  問題のために次の用語を定義する.
+  \begin{itemize}
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item 全順序集合$(A,\le)$とする. $B \subset A$が\underline{共終部分集合}であるとは, 任意の$a \in A$についてある$b \in B$が存在して$a\le b$が成り立つことする. 
+\item 順序数$\alpha, \beta$について\underline{$\beta$が$\alpha$に共終}とは
+$A \subset \alpha$なる共終部分集合で順序同型$(A, \in) \cong (\beta, \in)$があるとする. 
+\item 順序数$\alpha$の\underline{共終数(cofinality)}$cf(\alpha)$を$cf(\alpha):= \min\{ \beta |\text{$\beta$が$\alpha$に共終}\}$と定義する. %(定義から$cf(\alpha)\le \alpha$である.)
+\item $cf(\alpha) = \alpha$なる順序数を\underline{正則基数(regular cardinal)}という. 
+\end{itemize}
+次の問いに答えよ.
+  \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item $cf(\omega)$と$cf(\omega+1)$を求めよ. 
+%\item $A \subset \alpha$なる共終部分集合ならば$cf(\alpha) \le |A|$であることを示せ. 
+\item $cf(\alpha)$は正則基数であることを示せ.
+\end{enumerate}
+
+\item $^{*}$ 基数$\kappa$が次の3つを満たすとき, $\kappa$は\underline{非加算強極限基数(uncountable strong limit cardinal)}であるという. 
+  \begin{itemize}
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item (非加算) $\kappa$は加算ではない無限集合である. 
+\item (極限) $\kappa \neq 0$かつ, どの順序数$\alpha$についても$\kappa \neq \alpha + 1$.
+\item (強極限) 基数$\lambda$について, $\lambda < \kappa$ならば$2^{\lambda} < \kappa$.
+\end{itemize}
+ここで基数$\lambda$について, $\lambda=|X|$となる集合$X$をとって$2^{\lambda}:=|\mathfrak{P}(X)|$と定義する. 
+
+今$\beth_0 := \omega$とし, 自然数$n$について
+$\beth_{n+1}= 2^{\beth_{n}}$と帰納的に定義する. そして
+$\beth_{\omega}:= \sup_{n \in \omega}\beth_{n}$
+と定義する. $\beth_{\omega}$は非加算強極限基数であることを示せ.  ($\beth_{\omega}$はベート数と呼ばれる.)
+
+\item $^{***}$  (SGA $4_1$ Expose I, Appendix)
+$U$を集合とする. 
+
+$U$が\underline{グロタンディーク宇宙(Grothendieck universe)}とは, $U$が次の4つを満たすこととする. 
+  \begin{enumerate}[label=(\alph*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item $u \in U$かつ$t \in u$ならば$t \in U$.
+\item $u \in U$ならば$\mathfrak{P}(u) \in U$.
+\item $\varnothing \in U$.
+\item $I \in U$かつ$u : I \to U$について$\cup_{i \in I} u(i) \in U$.
+\end{enumerate}
+
+次の問いに答えよ
+  \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item 正則かつ非加算強極限である基数が存在するならば, $\omega \in U$となるグロタンディーク宇宙$U$が存在することを示せ. 
+  \item $\omega \in U$となるグロタンディーク宇宙$U$が存在するならば, 正則かつ非加算強極限である基数が存在することを示せ. 
+%\item 基数$\delta$は正則基数かつ非加算強極限基数であるとする.  $$V_{\delta} := \{ \text{集合} V  |  |V| < \delta\}$$とおくと$V_{\delta}$はグロタンディーク宇宙になることを示せ. 
+%\item $V$がグロタンディーク宇宙ならば, $V = V_{\delta}$となる正則かつ非加算強極限である基数$\delta$が存在することを示せ. 
+%$V$がグロタンディーク宇宙かつ$\omega \in V_{\delta}$ならば, $V = V_{\delta}$となる正則かつ非加算強極限である基数$\delta$が存在することを示せ. 
+\end{enumerate}
+ちなみに「正則かつ非加算強極限である基数」を強到達不能基数という. 
+強到達不能基数の存在はZFC(ツェルメロ・フレンケル公理系+選択公理)では証明することはできない.
+グロタンディーク宇宙は圏論の基礎を読んでも出てくる概念だが, この存在もZFCで証明することはできない. \footnote{この辺りは巨大基数の話に繋がるらしい. 私は全くの素人なので, alg-dさんの動画\url{https://www.youtube.com/watch?v=z7jXyjFnjfU}に委ねる. }
+ \end{comment}
+ %%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \begin{center}
+\section{ユークリッド空間・距離空間(応用問題)}
+\label{sec-11}
+\end{center}
+
+ 
+
+
+\begin{enumerate}[label=\textbf{問}\ref*{sec-11}.\arabic*]
+ 
+  \item $(X, d)$を距離空間とし, 部分集合$M\subset X$とする. 
+  次の問いに答えよ.
+
+  \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt} 
+  \item $M^i$は$M$に含まれる最大の開集合であることを示せ. 
+  \item $\overline{M}$は$M$を含む最小の閉集合であることを示せ. 
+  \end{enumerate}
+    \item \label{Hausdorff} $(X,d)$を距離空間とする.
+    $X$の部分集合$A$が\underline{有界}とは, ある正の数$M$があって任意の$x, y \in A$について$d(x,y) \leqq M$であることとする. 
+    $\mathcal{B}(X)$を$X$の有界閉集合のなす集合とする. 次の問いに答えよ.
+  \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+    	\item $A,B \in \mathcal{B}(X)$について$\sup_{x \in A}d(x,B) < + \infty$であることを示せ.
+	\item $A,B \in \mathcal{B}(X)$について
+	$$
+	d_{H}(A,B) := \max \{ \sup_{x \in A}d(x,B), \sup_{y  \in B}d(A,y)\}
+	$$
+	とする. 任意の$x \in X$について
+	$
+	d(x,A) \leqq d(x,B) + d_{H}(A,B) 
+	$
+	が成り立つことを示せ. 
+    \end{enumerate}
+\item \ref{Hausdorff}での$(\mathcal{B}(X), d_{H})$は距離空間になることを示せ. (ハウスドルフ距離と呼ばれる.)
+ %任意の空でない集合$X$について, ある距離関数$d$があって, $(X,d)$は距離空間になることを示せ. 
+
+ 
+ \item \label{p-adic} $p$を素数とする. 
+0でない有理数$r \in \Q$について, $r=p^e\frac{n}{m}$($m,n$はともに$p$と互いに素な整数)と表せるとき, $v_{p}(r):=e$と定義する.
+$r \in \Q$について
+$$|r|_{p}= \begin{cases} p^{- v_{p}(r)}& (r\neq 0)\\0& (r=0)\end{cases}
+$$
+とおく. 次の問いに答えよ.
+
+  \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt} 
+\item 0でない有理数$r,s \in \Q$について, $r+s \neq 0$ならば$v_{p}(r+s) \geqq \min(v_{p}(r), v_{p}(s))$であることを示せ.
+\item $x,y \in \Q$について$d_{p}(x,y) :=|x-y|_{p} $とおくと$d_{p}$は$\Q$の距離になることを示せ.
+\item $a,r \in \Q$かつ$r>0$について, 開球$B(a,r)=\{x \in \Q | d_{p}(x,a) < r \}$で定める. $B(a,r)$は閉集合であることを示せ.
+\item $a_n := \sum_{i=0}^{n-1}2^i =1 + 2 + \cdots + 2^{n-1}$とおく. $d_{2}(-1, a_{n})$の値を求めよ. 
+\end{enumerate}
+
+\newpage
+\item $^{*}$(ハミング符号・グレイコード)
+$\mathbb{F}_{2}=\{0,1\}$を標数2の体とする. ($\mathbb{F}_2=\Z/2\Z$である. )
+$x,y \in \mathbb{F}_{2}^{n}$について
+$$
+d(x,y):= (\text{$x_i \neq y_i$となる$i$の個数})
+$$
+とおく. (ただし, $x=\{ x_i\}_{i=1}^{n}$, $y=\{ y_i\}_{i=1}^{n}$とする.) 次の問いに答えよ.
+  \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item $(\mathbb{F}_{2}^{n}, d)$は距離空間であることを示せ.
+\item $\mathbb{F}_{2}^{n}$の\underline{相異なる}元からなる数列$a_{1}, \ldots, a_{2^n }$で$a_1=\{ 0\}_{i=1}^{n}$, $d(a_{2^n }, a_{1})=1$, 任意の$2 \leqq k \leqq 2^{n}$について$d(a_{k-1},a_{k})=1$
+ となるものが存在することを示せ.
+ 
+ \hspace{-22pt}以下$f : \mathbb{F}_{2}^{4} \to \mathbb{F}_{2}^{7}$を次で定める.
+$$
+\begin{array}{ccccc}
+f: &\mathbb{F}_{2}^{4}& \rightarrow & \mathbb{F}_{2}^{7}& \\
+&(a,b,c,d) & \longmapsto & 
+(a,b,c,d,a+b+d, a+c+d, b+c+d)&
+\end{array}
+$$
+
+
+\item $x, y \in \mathbb{F}_{2}^{4}$について, $x\neq y$ならば$d(f(x), f(y)) \geqq 3$であることを示せ.
+\item 任意の$z \in \mathbb{F}_{2}^{7}$について, $d(f(x), z) \leqq 1$となる$x \in \mathbb{F}_{2}^{4} $がただ一つ存在することを示せ.
+\item I教官はTAから$f(a,b,c,d)$の値を聞きメモをした. ところがメモをする際に$\mathbb{F}_{2}^{7}$の一つの成分を間違ってメモをしてしまった.  I教官のメモには$(1,0,0,1,0,1,0)$とかかれている. $(a,b,c,d)$の値を求めよ. 
+  %\footnote{この問題は位相空間と全く関係ないが出したかった問題です.}
+  \end{enumerate}
+  
+ \end{enumerate}
+\begin{thebibliography}{n}
+\bibitem[Atiyah-MacDonald]{AM}
+M.F.Atiyah,  I.G.MacDonald 可換代数入門 共立出版
+\bibitem[alg]{alg}alg-d 順序数入門
+\url{https://alg-d.com/math/ordinal_number.pdf}
+\bibitem[alg]{alg}alg-d 選択公理と同値な命題とその証明
+\url{https://alg-d.com/math/ac/}
+\bibitem[alg]{alg}alg-d 【実数の闇】本当は怖い$\R$の濃度
+\url{https://www.youtube.com/watch?v=iLBJ0AGluIU}
+\bibitem[alg]{alg}alg-d 最強の巨大基数「0=1」について【集合論】
+\url{https://www.youtube.com/watch?v=z7jXyjFnjfU&t=665s}
+\bibitem[alg]{alg}alg-d 有限集合・無限集合の定義【選択公理】
+\url{https://www.youtube.com/watch?v=U0BGmKdCzak}
+%https://masataka123.github.io/blog3/lecture/2022_集合と位相まとめ.pdf
+\bibitem[内田]{uchi}
+内田伏一 集合と位相 裳華房
+\bibitem[小澤]{Oza}
+小澤登高 バナッハ=タルスキーのパラドックス
+\url{https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kokai-koza/H27-ozawa.pdf}
+\bibitem[田中]{Tana}
+田中尚夫 公理的集合論　培風館
+\bibitem[ドブル]{dobble}
+"ドブル ポケットモンスター" ポケモンセンターオンラインで購入可能
+
+\url{https://www.pokemoncenter-online.com/4970381803407.html?srsltid=AfmBOoqlTFoiTZH-k2ea7zID0u39ZuX3pKW7_m6q4x0e64r1V8nDYXAL}
+\bibitem[マックレーン]{Mac}
+S. マックレーン 圏論の基礎 丸善出版
+\bibitem[Zagier]{Zag}
+D. Zagier A One-Sentence Proof That Every Prime $p\equiv 1(\mod 4)$ Is a Sum of Two Squares
+The American Mathematical Monthly, Vol. 97, No. 2 (Feb., 1990), p. 144.
+\end{thebibliography}
+ 
+ \end{document}

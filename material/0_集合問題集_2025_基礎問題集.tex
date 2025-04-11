@@ -1,0 +1,2991 @@
+\documentclass[dvipdfmx,a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[dvipdfmx]{hyperref} %リンクを有効にする
+\usepackage{url} %同上
+\usepackage{amsmath,amssymb} %もちろん
+\usepackage{amsfonts,amsthm,mathtools} %もちろん
+\usepackage{braket,physics} %あると便利なやつ
+\usepackage{bm} %ラプラシアンで使った
+\usepackage[top=20truemm,bottom=22truemm,left=22truemm,right=22truemm]{geometry} %余白設定
+\usepackage{latexsym} %ごくたまに必要になる
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\usepackage{otf} %宗教上の理由でmin10が嫌いなので
+%\usepackage{showkeys}\renewcommand*{\showkeyslabelformat}[1]{\fbox{\parbox{2cm}{ \normalfont\tiny\sffamily#1\vspace{6mm}}}}
+\usepackage[driverfallback=dvipdfm]{hyperref}
+
+
+\usepackage[all]{xy}
+\usepackage{amsthm,amsmath,amssymb,comment}
+\usepackage{amsmath}    % \UTF{00E6}\UTF{0095}°\UTF{00E5}\UTF{00AD}\UTF{00A6}\UTF{00E7}\UTF{0094}¨
+\usepackage{amssymb}  
+\usepackage{color}
+\usepackage{amscd}
+\usepackage{amsthm}  
+\usepackage{wrapfig}
+\usepackage{comment}	
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{pxrubrica}
+\usepackage{enumitem}
+\usepackage{mathrsfs} 
+\usepackage{caption}
+\usepackage{ascmac}
+
+\setstretch{1.2}
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}} 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}} 
+\newcommand{\Sin}{\text{Sin}^{-1}} 
+\newcommand{\Cos}{\text{Cos}^{-1}} 
+\newcommand{\Tan}{\text{Tan}^{-1}} 
+\newcommand{\invsin}{\text{Sin}^{-1}} 
+\newcommand{\invcos}{\text{Cos}^{-1}} 
+\newcommand{\invtan}{\text{Tan}^{-1}} 
+\newcommand{\Area}{\text{Area}}
+\newcommand{\vol}{\text{Vol}}
+\newcommand{\maru}[1]{\raise0.2ex\hbox{\textcircled{\tiny{#1}}}}
+\newcommand{\sgn}{{\rm sgn}}
+%\newcommand{\rank}{{\rm rank}}
+\newcommand{\id}{{\rm id}}
+\newcommand{\Sym}{{\rm Sym}}
+\newcommand{\Supp}{{\rm Supp}}
+\newcommand{\Ker}{{\rm Ker}}
+\newcommand{\ima}{{\rm Im}}
+
+
+\allowdisplaybreaks[4]
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable, skins, theorems}
+
+\theoremstyle{definition}
+\newtheorem{thm}{定理}
+\newtheorem{lem}[thm]{補題}
+\newtheorem{prop}[thm]{命題}
+\newtheorem{cor}[thm]{系}
+\newtheorem{claim}[thm]{主張}
+\newtheorem{dfn}[thm]{定義}
+\newtheorem{rema}[thm]{注意}
+\newtheorem{exa}[thm]{例}
+\newtheorem{conj}[thm]{予想}
+\newtheorem{prob}[thm]{問題}
+\newtheorem{rem}[thm]{補足}
+
+\DeclareMathOperator{\Ric}{Ric}
+\DeclareMathOperator{\Vol}{Vol}
+ \newcommand{\pdrv}[2]{\frac{\partial #1}{\partial #2}}
+ \newcommand{\drv}[2]{\frac{d #1}{d#2}}
+  \newcommand{\ppdrv}[3]{\frac{\partial #1}{\partial #2 \partial #3}}
+
+
+\title{2025年度春夏学期 大阪大学 理学部数学科 \\ 幾何学基礎1演義 演習問題(基礎問題)}
+\author{岩井雅崇 (大阪大学)}
+\date{\today, \, ver 1.00}
+%ここから本文．
+\pagestyle{empty}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\begin{center}
+\setcounter{section}{-1}
+\section{ガイダンス}
+\label{sec-guide}
+\end{center}
+
+\begin{center}
+{\Large 2025年度春夏学期 大阪大学 理学部数学科 \\ 幾何学基礎1演義} \\
+火曜4限(15:10-16:40) 理学部 D403教室
+\end{center}
+\begin{flushright}
+ 岩井雅崇(いわいまさたか) \\
+\end{flushright}
+
+\hspace{-18pt}{\Large \underline{基本的事項}}
+\begin{itemize}
+  \setlength{\parskip}{0cm} % 段落間
+  \setlength{\itemsep}{0cm} % 項目間
+\item この授業は\underline{対面授業}です. \underline{金曜4限(15:10-16:40)にD403教室}にて演習の授業を行います.
+\item \underline{講義の授業とセットで受講してください.} 演義の授業のみ受講する場合は4月15日の授業後に申し出ること. 
+\item 授業ホームページ(\url{https://masataka123.github.io/2025_summer_set_theory/})およびCLEにて授業の問題等をアップロードしていきます. 
+QRコードは下にあります. 
+\end{itemize}
+
+\begin{figure}[htbp]
+\begin{center}
+ \includegraphics[height=22mm, width=22mm]{set.png}
+\end{center}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+\begin{wrapfigure}{r}[0pt]{0\textwidth}
+\centering
+ \includegraphics[height=25mm, width=25mm]{set.png}
+ \caption*{{\scriptsize 授業のQRコード}}
+\end{wrapfigure}
+
+\begin{figure}[htbp]
+\begin{center}
+ \includegraphics[height=25mm, width=25mm]{set.png}
+\end{center}
+\end{figure}
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%
+
+\hspace{-18pt}{\Large \underline{成績に関して}}
+
+次の1と2を満たしているものに単位を与えます.
+\begin{enumerate}
+  \setlength{\parskip}{0cm} % 段落間
+  \setlength{\itemsep}{0cm} % 項目間
+\item 幾何学1の講義の単位が可以上である.
+\item 最終授業終了時までに8点以上の演習点(後述)を獲得していること.
+\end{enumerate}
+成績は講義の成績と演習点でつける予定です.
+%基本的に演義の成績は講義の成績以上になるようにつける予定です. 
+%演習の成績は”講義の成績”+”演習点”×(点数補正係数)でつける予定です. 点数補正係数は実数かつ全員の成績から定まる係数です.
+
+\medskip
+\hspace{-18pt}{\Large \underline{演習点に関して}}
+
+\begin{enumerate}
+  \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item (基礎問題) 配布した基礎問題を演義授業時に解きCLEに提出する. 演習点は1点.
+\item (応用問題) 配布した応用問題集を解き, その解答を黒板を用いて発表する. その場合の演習点は「解いた問題の難易度」と「発表の仕方・解答の方法」などから定まり, 演習点は1$\sim$12点. 
+\end{enumerate}
+
+
+
+\medskip
+\hspace{-18pt}{\large \underline{1. 基礎問題に関して}}
+
+次の全てをおこなって初めて演習点1点が与えられます. 
+\begin{enumerate}[label=\textbf{手順}\arabic*.]
+  \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item 配布した基礎問題を演義授業時に解く. ノート・教科書を参考にして良いし, 何人かで協力して解いても良い. (何人かで議論しながら解いてもいいです.)
+  %\item  解答後, 後ろにいるTAに採点をしてもらう. 
+  %\item 不正解がある場合は手順1に戻る.
+ %\item 全部正解だった場合, TAからをもらう.
+ %基礎問題の解答が早く終わって帰りたい者や応用問題(後述)を解きたい者は, TAのところに行き解答を見てもらう. 全問正解だった場合にはTAからをもらえ, 帰ることができる. 
+\item 頃合い(16:00-16:30くらい?)を見て解答を配布する. 演習時間に問題を解き終わらなかった者は, 配布した解答を見て演習問題を解ききる. 
+ \item \underline{基礎問題の用紙(両面)をCLEの「基礎問題(〇〇月〇〇日配布)」にアップロード}する. ここで〇〇月〇〇日は問題を解いた日である. アップロードは次の演義時までに完了していること.
+ \end{enumerate}
+ 要するに基礎問題を\underline{「授業をきちんと理解しているかどうかのセルフチェック」}として使って欲しいです. 
+そして 「演義時に基礎問題が解ける・解けない」に関してはそれほど重要ではないです.
+「授業の内容を理解するように取り組む」ことを基礎問題で評価してます. 
+
+%基礎問題クラスの問題が試験に出ると思うので基礎問題は試験対策と思ってください. 
+基礎問題を理解できてれば, 授業の内容を十分に理解できていると思います.(私が試験作るなら基礎問題ぐらいは試験に出すかも?)
+ なお基礎問題は11回行います. そのため3回は欠席可能です. 
+% また基礎問題が解き終わったら応用問題(後述)を解いても良いし帰っても良いです. 
+%おそらく中間レポートと期末レポートを出します. レポート問題は演習問題の$^{\bullet}$がついてる問題(後述)の内容から出す予定です.
+%(中間レポートは10-11月に, 期末レポートは12-1月に詳細を言う予定です.)
+
+\newpage
+%\medskip
+\hspace{-18pt}{\large \underline{2. 応用問題に関して}}
+
+\begin{enumerate}[label=\textbf{手順}\arabic*.]
+  \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item 基礎問題の解答を岩井に見せる. 全問正解した者にのみ応用問題の解答のチャンスを与える. 
+\item 応用問題で解答したい問題を選び板書に解答を書く. なお問題は基本的に先着順である.
+\item その解答を黒板を用いて岩井に発表する. 
+\item 正答後は解答の板書を撮り, CLEの「応用問題解答」にアップロードする. 
+\end{enumerate}
+
+\hspace{-18pt}発表のルールは次のとおりです.
+\begin{itemize}
+  \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+%\item 問題の解答を黒板に書いて発表してください. 
+%正答後その問題はそれ以降解答できなくなります. %不正解だった場合他の人に解答権が移ります. 
+%\item 発表方法があまりにも悪い場合(教科書丸写しなど)は減点します.
+%\item 板書は他人が読めるように, 文字の大きさ・綺麗さ・板書の量に配慮してください. 字は汚くてもいいので, 最低限読めるようにしてください.また発表があまりにも悪い場合(教科書丸写しなど)は減点します.
+\item 板書に関して, 字は汚くてもいいので, 最低限読めるようにしてください.また発表があまりにも悪い場合(教科書丸写しなど)は減点します.
+\item 演義の時間中に発表が終わらない場合は問題の予約をすることができます. 
+%\item もしも複数人が解答したい問題があった場合は, 平和的な手段で解答者を決めます.
+\item あまりにも多く問題を解いていた人は, 他の人に(簡単そうな)問題を譲ってください．
+\end{itemize}
+
+\hspace{-18pt}問題に関する注意点
+\begin{itemize}
+  \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item \underline{基礎問題に関しては初めての試みなので変更する可能性があります.} 「一律にレポート提出にする」とか「授業ごとに解説をする」などやり方が変わるかもしれません.\footnote{いつもは発表のみの方法で演義をしてましたが, それだと「授業に参加しているが理解していない人」を救えない気がしてきました. 「授業に出て授業の内容を理解しようと努力している人」に申し訳なくなったので, 今回このような試みをすることにしました. }
+  \item TAさんが巡回しているので, 気兼ねなく基礎問題に関して質問してください. 
+\item \underline{応用問題の中には極端に難しい問題もあるので全部解く必要はないです. } 岩井やTAが解けない問題も多くあります. (私が学生だったら多分4-5割くらいしか解けないです.)
+\item 応用問題の難易度は一定ではないです. 問題番号の上に$^*$などの記号が書いてありますがこれは次を意味します.
+\begin{enumerate}
+  \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+%\item $^\bullet$がついてる問題は解けないといけない問題です. %演習点は$0.1\sim1.5$点です. ある程度授業を理解している人は他の人に解答を譲ってください.
+\item 何もついてない問題は普通の問題です. ちょっと考えれば解けると思います. %演習点は$0.5\sim2.5$点です.
+\item $^{*}$問題は難しそうな問題です. $^*$の数ほど難しくなります.  基本的に解かせる気はなく自由気ままに出しております. %演習点は$1.5 \sim 7$点です. 
+\end{enumerate}
+難易度が高い問題を解いた場合や解答が素晴らしい場合は演習点を多くもらえます.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+\hspace{-18pt}次のご協力をお願いいたします.
+\begin{itemize}
+  \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item 発表後, スマホ等で黒板にある解答を撮影しても構いません. (ただし黒板のみを撮影してください) %理由としては私の方で解答を用意してないからです. 
+解答者も撮影のご協力お願いします.
+\item 板書は他人が読めるように, 文字の大きさ・綺麗さ・板書の量に配慮してください. 字は汚くてもいいので, 最低限読めるようにしてください. %(私は文字を綺麗に板書できないので, 相当汚い字でも読むことはできますが…)
+\end{itemize}
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%
+
+
+\medskip
+\hspace{-18pt}{\Large \underline{まとめ}}
+\begin{enumerate}
+  \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item \underline{単位が欲しい方は基礎問題を8回提出し, 講義で可以上を取ってください.} %単位だけ欲しい人は一回も黒板で発表せずにレポートを2回提出してください. さらに位相空間論の講義の試験で可以上をもらってください. それで演義の成績の単位ももらえます. (講義の試験が良ければ演義の成績も良いです.)
+\item ちょっと欲張りな人は応用問題を解いてください. なお基礎問題はホームページやCLEで見ることができます.
+%ちょっと欲張りな人は$^\bullet$がついている問題や何もついてない問題を発表してください. なお$^{\bullet}$がついている問題が全て解ければ, 講義の試験の単位は(おそらく)もらえると思います.
+\item 意欲のある人は$^{*}$がついた難しい問題など色々解いてください. そのほうが私は楽しいです.
+\end{enumerate}
+
+
+
+
+\medskip
+\hspace{-18pt}{\Large \underline{休講予定・その他}}
+\begin{itemize}
+  \setlength{\parskip}{0cm} % 段落間
+  \setlength{\itemsep}{0cm} % 項目間
+  \item 休講予定: 2025年4月22日, 2025年6月24日. 
+  %2024年12月13日.(大阪大学で開催する研究集会の世話人のため)  \footnote{他にあるとすれば2024年11月15日です. また授業回数が少ない場合は補講をするかもしれません.} 
+  %\item 休講予定: 2024年1月16日 (休講はほぼ確定) 2023年12月05日または2023年12月12日 (どちらか休講にするかも・未確定)
+    %\item 演習問題と授業内容が噛み合ってない可能性があります.
+    \item 問題のミスがあれば私に言ってください. ミスはかなりあると思います. 
+  \item 休講情報や演習問題の修正をするので, こまめにホームページ, CLEを確認してください.
+    \item オフィスアワーを月曜16:00-17:00に設けています. この時間に私の研究室に来ても構いません(ただし来る場合は前もって連絡してくれると助かります.)
+    %\item TAさんは演義の時間中に巡回しているので, 自由にご質問して構いません. 
+    %\item $\pi$-base \url{https://topology.jdabbs.com}も活用してください. 
+      \item \underline{いちょう祭での数学専攻の展示のアルバイトを募集いたします.} 時間は「5/1(木)13:30〜16:30準備. 5/3(土) 12:30〜17:30 企画本番」です. 業務内容は数学専攻の展示の準備(机運びなど)と企画本番中の手伝いです. 5/3の後に打ち上げがあります. アルバイト代は2日間8時間で8912円です. 興味がある方は菊池先生にメール(\texttt{kikuchi@math.sci.osaka-u.ac.jp})をしてくれると嬉しいです. 
+ \end{itemize}
+ 
+ %%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+ \medskip
+\hspace{-18pt}{\Large \underline{いちょう祭のアルバイトについて}}
+\begin{itemize}
+  \setlength{\parskip}{0cm} % 段落間
+  \setlength{\itemsep}{0cm} % 項目間
+  \item いちょう祭で数学専攻の展示を行います.(５月１日（木）午後に企画準備、５月３日（土／祝）午後に企画本番・後片付け等)
+  \item 学生アルバイトの人を募集してます. (4/１６まで)
+  （大学主催・大阪大学創立記念［新入生歓迎］祭）
+　大学行事として：５月２日（金）〜５月３日（土／祝）
+　数学専攻として：５月１日（木）午後に企画準備、５月３日（土／祝）午後に企画本番・後片付け等
+　・以上は大学・理学研究科（社学連携委員会）として決定済みです。
+　・別途、学生アルバイト１０名を募集します（４月７日（月）〜１６日（水）に募集予定）；
+　　興味のありそうなＢ２〜Ｄ３の学生に菊池にメールするよう声をかけていただけますか；
+　　応募学生が少なくて困ることが多いので、係の先生方には積極的なお声がけをお願いいたします。
+　　（特に数学科の学部生が集まる機会には、数学事務の方々からのお声がけも大へん助かります。）
+　　参照：http://www.math.sci.osaka-u.ac.jp/event/machikaneyama/
+\end{itemize}
+ \end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\begin{center}
+\section{集合と集合の演算}
+\label{sec-1}
+\end{center}
+%\begin{flushright}
+% 岩井雅崇(いわいまさたか)
+%\end{flushright}
+
+\begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8.5cm}}}
+%{\footnotesize }
+\end{flushleft}
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    "集合"とは"ある特定の性質を備えたものの集まり"とする.
+    以下$X, A,B$を集合とする. 
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item$a \in A$ $\stackrel{\mathrm{def}}{\Longleftrightarrow}$$a$は$A$の元である. $a \not \in A$ $\stackrel{\mathrm{def}}{\Longleftrightarrow}$$a$は$A$の元ではない.
+    \item $A \subset B$ $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ $a \in A$ならば$a \in B$.
+     \item 空集合$\varnothing$とは元を一つも含まない集合. いかなる集合$A$についても$\varnothing \subset A$.
+    \item ベキ集合 $\mathfrak{P}(A):=\{ Y\subset A | \text{$Y$は集合}\}$.
+    \item 和集合$A \cup B := \{ x | x \in A \text{または} x \in B\}$.
+    \item 共通部分(共通集合, 交差)$A \cap B := \{ x | x \in A \text{かつ} x \in B\}$.
+    \item 差集合$A \setminus  B := \{ x | x \in A \text{かつ} x \not \in B\}$.
+    \item $A \subset X$について, 補集合 $A^c:=\{ x \in X | x \not \in A\}$.
+    \end{enumerate}
+   ド・モルガン(De Morgan, 1806-1871)の法則.
+   $$
+  X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B)
+   \quad
+   X \setminus (A \cap B) = (X \setminus A) \cup (X \setminus B).
+   $$
+   補集合の言葉で言うなら$(A \cup B)^c = A^c \cap B^c$, $(A \cap B)^c = A^c \cup B^c$.
+ \end{tcolorbox}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+\boxed{\phantom{hogeho}}
+問題1. $A  = (A \setminus B) \cup (A \cap B)$の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を選んで記入すること. %\boxed{\phantom{hoge}
+
+証明.
+
+まず$A \subset (A \setminus B) \cup (A \cap B)$を示す. 
+$x \in A$とする. $x \not \in B$ならば$x \in A \setminus B$である.
+$x \in B$ならば, $x \in A \cap B$である.
+よって, $x \in A \setminus B$または$x \in A \cap B$が成り立つので, $A \subset (A \setminus B) \cup (A \cap B)$である.
+
+次に$(A \setminus B) \cup (A \cap B)\subset A$を示す.
+$x \in (A \setminus B) \cup (A \cap B)$とする.
+$x \in A \setminus B$または$x \in A \cap B$である.
+$x \in A \setminus B$ならば, $A \setminus B \subset A$なので$x \in A$である.
+$x \in A \cap B$ならば$A \cap B \subset A$なので$x \in A$である.
+よって$(A \setminus B) \cup (A \cap B)\subset A$である.
+
+これより$A  = (A \setminus B) \cup (A \cap B)$である,. 
+
+\medskip 
+問題2.  $A \cup B  = (A \setminus B) \cup B$の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を選んで記入すること. 
+
+証明.
+$A \setminus B \subset A$であるので, $(A \setminus B) \cup B \subset A \cup B$が言える. 
+よって逆の包含を示す.
+
+$x \in A \cup B$とする.
+$x \not \in B$ならば, $x \in A$であるので, $x \in A \setminus B$. よって$x \in A \cup (A \setminus B) \cup B$
+$x \in B$ならば定義から$x \in A \cup (A \setminus B) \cup B$.
+以上より$(A \setminus B) \cup B \supset A \cup B$
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\medskip
+問題1. 「集合$A,B$について$A  = (A \setminus B) \cup (A \cap B)$である.」の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること. %\boxed{\phantom{hoge}
+
+[証明.]
+
+まず$A \subset (A \setminus B) \cup (A \cap B)$を示す. 
+$x \in A$とする. $x \not \in B$ならば$x \in \boxed{\phantom{hogehoge}}$である.
+$x \in B$ならば, $x \in \boxed{\phantom{hogehoge}}$である.
+よって, $x \in A \setminus B$または$x \in A \cap B$が成り立つので, $A \subset (A \setminus B) \cup (A \cap B)$である.
+
+次に$(A \setminus B) \cup (A \cap B)\subset A$を示す.
+$x \in (A \setminus B) \cup (A \cap B)$とする.
+$x \in A \setminus B$\boxed{\phantom{hogehoge}}$x \in A \cap B$である.
+$x \in A \setminus B$ならば, $A \setminus B \boxed{\phantom{hogehoge}} A$なので$x \in A$である.
+$x \in A \cap B$ならば$A \cap B \boxed{\phantom{hogehoge}} A$なので$x \in A$である.
+よって$(A \setminus B) \cup (A \cap B)\subset A$である.
+
+これより$A  = (A \setminus B) \cup (A \cap B)$である. 
+
+\begin{itembox}[l]{語句群}
+かつ \quad または \quad $\subset$ \quad $\supset$
+\quad $\in$ \quad $\not\in$ \quad $A$ \quad $B$ \quad $A \setminus B$ \quad $A \cap B$ \quad $A \cup B$
+\end{itembox}
+
+[注意]今回は演習のためにこのように丁寧に書いているが, 試験等で行う証明においてはもう少し簡略して書いて良い. (上は丁寧に書きすぎてわかりづらい.)
+\newpage
+
+
+\medskip 
+問題2.  $A \cup B  = (A \setminus B) \cup B$の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること. 
+
+[証明.]
+$A \setminus B \boxed{\phantom{hogehoge}} A$であるので, $(A \setminus B) \cup B \subset A \cup B$が言える. 
+よって逆の包含を示す.
+
+$x \in A \cup B$とする.
+$x \boxed{\phantom{hogehoge}} B$ならば, $x \in A$であるので, $x \in A \setminus B$. よって$x \in (A \setminus B) \cup B$
+$x \in B$ならば定義から$x \in (A \setminus B) \cup B$.
+以上より$(A \setminus B) \cup B \supset A \cup B$である.
+
+これより$A \cup B  = (A \setminus B) \cup B$である. 
+
+\begin{itembox}[l]{語句群}
+かつ \quad または \quad $\subset$ \quad $\supset$
+\quad $\in$ \quad $\not\in$ \quad $A$ \quad $B$ \quad $A \setminus B$ \quad $A \cap B$ \quad $A \cup B$
+\end{itembox}
+
+
+
+%\item $^{\bullet}$ $B \cap (A \setminus B) = \varnothing$を示せ.
+問題3.  $A = \{ 2, 4, \{ 4, 5\}\}$とする. 次のうち正しい主張を全て選べ．
+\begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $\{ 4, 5\} \in A$
+\item $\{ 4, 5\} \subset A$ 
+\item $\{ \{4,5 \}\} \subset A$
+\item $4 \in \{\{ 4, 5\}\} \cap A$
+%\item $\{ \{4,5 \}\} \in A$
+\item $2 \in A$
+\item $2  \in \{ \{a\} | a \in A \}$
+\item $\{ 5 \} \in A$
+\item $\{ 4 \} \subset A$
+\item $\{ 4 \} \in \{ \{a\} | a \in A \}$
+\item $\{2\} \cup \{\{2,4\} \}\subset A$
+  \end{enumerate}
+    
+\vspace{30pt}
+  { \large \underline{解答: \hspace{13cm}}}
+  
+\vspace{30pt}
+問題4.$A = \{ 1, \{1\}, \text{岩井}\}$とする. ベキ集合$\mathfrak{P}(A)$の元を全て列挙せよ. 
+ただし$1 \neq\text{岩井}$かつ$\{ 1\} \neq \text{岩井}$を仮定して良い.\footnote{当初「$1 \neq\text{岩井}$かつ$\{ 1\} \neq \text{岩井}$」を証明しようとしたが, 証明できなかった. 「1も岩井は集合ではないから自明でしょ」と思われるが, 自然数1は集合を用いて構成するので(応用問題の順序数の部分を参照のこと), 岩井が集合でないことは自明ではない. }
+
+\vspace{80pt}
+  { \large \underline{解答: \hspace{13cm}}}
+\newpage
+
+ \begin{center}
+\section{集合の直積・写像・集合系の演算}
+\label{sec-2}
+\end{center}
+
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    $A,B$を集合, $a, a' \in A$, $b, b' \in B$とする. 
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item 2つのもの$a,b$から作られた対$(a,b)$を順序対という. 
+    \item $(a, b)=(a', b')$  $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ $a=a'$かつ$b=b'$.
+    \item 集合の直積$A \times B:= \{ (a,b) | a \in A, b \in B\}$.
+    \end{enumerate}
+ \end{tcolorbox}
+ 
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    $A,B$を集合とする. $f :A \to B$が写像(関数)とは, 任意の$a \in A$について, $f(a)$という$B$の元を一つ対応させる規則のこととする. 
+  
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $A$を$f$の始域(定義域)といい, $B$を$f$の終域(値域)という. 
+    \item $f, g : A \to B$を写像とする. $f=g$ $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ 任意の$a \in A$について$f(a)=g(a)$.
+    \item $A_1 \subset A$を部分集合とする. $A_1$の$f$による像
+    $$f(A_1):= \{ f(a_1) | a_1 \in A_1\} \subset B \text{とする．}$$ 
+    \item $B_1 \subset B$を部分集合とする. $B_1$の$f$による逆像
+    $$f^{-1}(B_1):= \{ a \in A | f(a) \in B_1\} \subset A \text{とする．}$$ 
+    \item 写像$f : A \to B, g : B \to C$について, 合成$g \circ f : A \to C$を, 任意の$a \in A$について$(g \circ f)(a):=g(f(a))$として定義する.
+    \end{enumerate}
+ \end{tcolorbox}
+ 
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+ $X$を空でない集合とする. 
+  
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item 空でない集合$\Lambda$からある集合族(ある集合のからなる集合)への写像$A$を集合系という. もっと厳密に言えば
+    写像
+    $$
+\begin{array}{ccccc}
+A: &\Lambda& \rightarrow & \mathfrak{P}(X)& \\
+&\lambda& \longmapsto & 
+A_{\lambda}
+ &
+\end{array}
+$$
+を$X$の部分集合系という. 
+$X$について言及しない場合は, 単に集合系という. 
+集合系を
+$$
+(A_{\lambda} | \lambda \in \Lambda)
+\quad
+\text{または}
+\quad
+(A_{\lambda})_{\lambda \in \Lambda}
+$$
+とかき, $\lambda$を添字, $\Lambda$を添字集合という. 
+\item 集合系$(A_{\lambda} | \lambda \in \Lambda)$について, 和集合を以下で定義する．
+$$
+\bigcup_{\lambda \in \Lambda}A_{\lambda}:=\{a| \text{ある$\lambda$があって$a \in A_{\lambda}$} \}.
+$$
+\item 集合系$(A_{\lambda} | \lambda \in \Lambda)$について, 共通部分を以下で定義する．
+$$
+\bigcap_{\lambda \in \Lambda}A_{\lambda}:=\{a| \text{任意の$\lambda \in \Lambda$について$a \in A_{\lambda}$} \}.
+$$
+    \end{enumerate}
+ \end{tcolorbox}
+ 
+ \newpage
+ \begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8.5cm}}}
+%{\footnotesize }
+\end{flushleft}
+
+問題1. 写像$f : \R \to \R$を次で定める. 
+$$
+\begin{array}{ccccc}
+f: &\R& \rightarrow & \R& \\
+&x& \longmapsto & 
+x^2
+ &
+\end{array}
+$$
+$$
+\begin{array}{llcc}
+&(1) f((-2, 1)) \cap f((-1, 3)) \text{を求めよ.} &  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+&(2)f((-2, 1) \cap (-1,3))\text{を求めよ.} &  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+& (3) f^{-1}((-2,  4))\text{を求めよ.}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+& (4)f(f^{-1}((-1,4)))\text{を求めよ.}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+& (5)f^{-1}f((-1, 4))\text{を求めよ.}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+\end{array}
+$$
+
+問題2. $X, Y$を空でない集合とし, $A \subset X, B \subset Y$を空でない部分集合とする． 
+$$
+(X \times Y)\setminus (A \times B)
+=
+((X \setminus A) \times Y) \cup (X \times (Y \setminus B))
+$$
+の証明が完成するように空欄をうめよ. 
+ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明].
+$(x,y) \in X \times Y$について「$(x, y) \in (X \times Y)\setminus (A \times B)$であることは
+$x \not \in A$ \boxed{\phantom{hogehoge}} $y \not \in B$であることと同値」であることに注意する.
+
+まず$(X \times Y)\setminus (A \times B)
+\subset
+((X \setminus A) \times Y) \cup (X \times (Y \setminus B))$を示す.
+
+$(x, y) \in (X \times Y)\setminus (A \times B)$とする.
+このとき$x \not \in A$  \boxed{\phantom{hogehoge}} $y \not \in B$である.
+$x \not \in A$のときは$(x, y) \in (X \setminus A) \times Y$, 
+$y \not \in B$のときは$(x, y) \in X \times (Y \setminus B)$が成り立つ.
+よって$(x, y) \in (X \setminus A) \times Y \cup   X \times (Y \setminus B)$が言える. 
+
+次に$(X \times Y)\setminus (A \times B)
+\supset
+((X \setminus A) \times Y) \cup (X \times (Y \setminus B))$を示す.
+
+$(x, y) \in (X \setminus A) \times Y$ならば, $x\boxed{\phantom{hogehoge}} A$より, $(x, y) \in (X \times Y)\setminus (A \times B)$である. 
+$(x,y)\in X \times (Y \setminus B)$ならば, $y \boxed{\phantom{hogehoge}} B$より, $(x, y) \in (X \times Y)\setminus (A \times B)$である. 
+よって$(x, y) \in (X \setminus A) \times Y$\boxed{\phantom{hogehoge}}$(x, y) \in X \times (Y \setminus B)$ならば$x \in (X \times Y)\setminus (A \times B)$より言えた. 
+
+以上より$(X \times Y)\setminus (A \times B)
+=
+((X \setminus A) \times Y) \cup (X \times (Y \setminus B))$である.
+
+\begin{itembox}[l]{語句群}
+かつ \quad または \quad 任意の \quad ある \quad $\subset$ \quad $\supset$
+\quad $\in$ \quad $\not\in$ 
+\end{itembox}
+
+
+%%%%%%%%%%%%%%
+\begin{comment}
+[証明].
+$(x,y) \in X \times Y$について「$(x, y) \in (X \times Y)\setminus (A \times B)$であることは
+$x \not \in A$ または$y \not \in B$であることと同値」であることに注意する.
+
+まず$(X \times Y)\setminus (A \times B)
+\subset
+((X \setminus A) \times Y) \cup (X \times (Y \setminus B))$を示す.
+
+$(x, y) \in (X \times Y)\setminus (A \times B)$とする.
+このとき$x \not \in A$ または$y \not \in B$である.
+$x \not \in A$のときは$(x, y) \in (X \setminus A) \times Y$, 
+$y \not \in B$のときは$(x, y) \in X \times (Y \setminus B)$が成り立つ.
+よって$(x, y) \in (X \setminus A) \times Y \cup  \in  X \times (Y \setminus B)$が言える. 
+
+次に$(X \times Y)\setminus (A \times B)
+\supset
+((X \setminus A) \times Y) \cup (X \times (Y \setminus B))$を示す.
+
+$(x, y) \in (X \setminus A) \times Y$ならば, $x \not \in A$より, $(x, y) \in (X \times Y)\setminus (A \times B)$である. 
+$(x,y)\in X \times (Y \setminus B)$ならば, $y \not \in B$より, $(x, y) \in (X \times Y)\setminus (A \times B)$である. 
+よって$(x, y) \in (X \setminus A) \times Y$または$(x, y) \in X \times (Y \setminus B)$ならば$x \in (X \times Y)\setminus (A \times B)$より言えた. 
+
+以上より$(X \times Y)\setminus (A \times B)
+=
+((X \setminus A) \times Y) \cup (X \times (Y \setminus B))$である.
+  \end{comment}
+  %%%%%%%%%%%%%%%%%%%%%%%
+  
+
+%%%%%%%%%%%%%%
+\begin{comment}
+
+  
+\begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $f([-2, 2]) \cap f([1, 3])$を求めよ.  \quad \underline{解答欄: \hspace{8cm}}
+  \item $f([-2, 2] \cap [1,3])$を求めよ. \quad \underline{解答欄: \hspace{8cm}}
+  \item $f^{-1}([-2,  4])$を求めよ.\quad \underline{解答欄: \hspace{8cm}}
+  \item $f(f^{-1}([-1,4]))$を求めよ.\quad \underline{解答欄: \hspace{8cm}}
+ \item $f^{-1}f([-1, 4])$を求めよ. \quad \underline{解答欄: \hspace{8cm}}
+  \end{enumerate}
+   \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $(\bigcap_{\lambda \in \Lambda}A_{\lambda})^c = \bigcup_{\lambda \in \Lambda}A_{\lambda}^c$
+  \item $f^{-1}(\bigcap_{\lambda \in \Lambda}A_{\lambda}) = \bigcap_{\lambda \in \Lambda}f^{-1}A_{\lambda}$
+  \end{enumerate} 
+  問題3. $f: X \to Y$を写像とする. $Y$の部分集合$A,  B$について$A \subset B$ならば$f^{-1}A \subset f^{-1}B$の証明が完成するように空欄をうめよ. 
+ただし空欄には後記の語句群から適切な語句・記号を選んで記入すること.
+
+[証明.]
+$f$
+
+問題3.  $X$を空でない集合とし$X$の部分集合系を$(A_{\lambda} | \lambda \in \Lambda)$とする. $(\bigcap_{\lambda \in \Lambda}A_{\lambda})^c = \bigcup_{\lambda \in \Lambda}A_{\lambda}^c$の証明が完成するように空欄をうめよ. 
+ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明.]
+まず$(\bigcap_{\lambda \in \Lambda}A_{\lambda})^c  \subset \bigcup_{\lambda \in \Lambda}A_{\lambda}^c$を示す.
+$y \in  (\bigcap_{\lambda \in \Lambda}A_{\lambda})^c$とは, 「\boxed{\phantom{hogehoge}}$\lambda \in \Lambda$について$y \in A_\lambda$」と同値である. 
+よって$x \in (\bigcap_{\lambda \in \Lambda}A_{\lambda})^c$ならば, $x \not \in \bigcap_{\lambda \in \Lambda}A_{\lambda}$より, \boxed{\phantom{hogehoge}}$\lambda \in \Lambda$があって$x \not \in A_{\lambda}$となる. よって$x \in \bigcup_{\lambda \in \Lambda}A_{\lambda}^c$である.
+
+次に$(\bigcap_{\lambda \in \Lambda}A_{\lambda})^c  \supset \bigcup_{\lambda \in \Lambda}A_{\lambda}^c$を示す.
+任意の$\lambda$について$\bigcap_{\lambda \in \Lambda}A_{\lambda} \boxed{\phantom{hogehoge}} A_{\lambda}$である.
+よって$(\bigcap_{\lambda \in \Lambda}A_{\lambda})^c \boxed{\phantom{hogehoge}} A_{\lambda}^c$となる. 
+よって$\lambda$に関して和集合をとれば$(\bigcap_{\lambda \in \Lambda}A_{\lambda})^c  \supset \bigcup_{\lambda \in \Lambda}A_{\lambda}^c$となる.
+
+以上より $(\bigcap_{\lambda \in \Lambda}A_{\lambda})^c = \bigcup_{\lambda \in \Lambda}A_{\lambda}^c$である. 
+\begin{itembox}[l]{語句群}
+かつ \quad または \quad 任意の \quad ある \quad $\subset$ \quad $\supset$
+\quad $\in$ \quad $\not\in$ 
+\end{itembox}
+
+
+  \end{comment}
+  %%%%%%%%%%%%%%%%%%%%%%%
+
+\medskip
+問題3.  $X$を空でない集合とし$X$の部分集合系を$(A_{\lambda} | \lambda \in \Lambda)$とする. $(\bigcap_{\lambda \in \Lambda}A_{\lambda})^c = \bigcup_{\lambda \in \Lambda}A_{\lambda}^c$の証明が完成するように空欄をうめよ. 
+ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明.]
+まず$(\bigcap_{\lambda \in \Lambda}A_{\lambda})^c  \subset \bigcup_{\lambda \in \Lambda}A_{\lambda}^c$を示す.
+$y \in  \bigcap_{\lambda \in \Lambda}A_{\lambda}$とは, 「\boxed{\phantom{hogehoge}}$\lambda \in \Lambda$について$y \in A_\lambda$」と同値である. 
+よって$x \in (\bigcap_{\lambda \in \Lambda}A_{\lambda})^c$ならば, $x \not \in \bigcap_{\lambda \in \Lambda}A_{\lambda}$より, \boxed{\phantom{hogehoge}}$\lambda \in \Lambda$があって$x \not \in A_{\lambda}$となる. よって$x \in \bigcup_{\lambda \in \Lambda}A_{\lambda}^c$である.
+
+次に$(\bigcap_{\lambda \in \Lambda}A_{\lambda})^c  \supset \bigcup_{\lambda \in \Lambda}A_{\lambda}^c$を示す.
+任意の$\lambda$について$\bigcap_{\lambda \in \Lambda}A_{\lambda} \boxed{\phantom{hogehoge}} A_{\lambda}$である.
+よって$(\bigcap_{\lambda \in \Lambda}A_{\lambda})^c \boxed{\phantom{hogehoge}} A_{\lambda}^c$となる. 
+よって$\lambda$に関して和集合をとれば$(\bigcap_{\lambda \in \Lambda}A_{\lambda})^c  \supset \bigcup_{\lambda \in \Lambda}A_{\lambda}^c$となる.
+
+以上より $(\bigcap_{\lambda \in \Lambda}A_{\lambda})^c = \bigcup_{\lambda \in \Lambda}A_{\lambda}^c$である. 
+
+\medskip
+\begin{itembox}[l]{語句群}
+かつ \quad または \quad 任意の \quad ある \quad $\subset$ \quad $\supset$
+\quad $\in$ \quad $\not\in$ 
+\end{itembox}
+
+%[注意]今回は演習のためにこのように丁寧に書いているが, 証明においてはもう少し簡略して書いて良い. (上は丁寧に書きすぎてわかりづらい.)
+
+ \newpage
+ \begin{center}
+\section{全射・単射}
+\label{sec-4}
+\end{center}
+ \begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8.5cm}}}
+{\footnotesize }
+\end{flushleft}
+
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    $A,B$を集合, $f :A \to B$を写像とする. 
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $f :A \to B$が全射$\stackrel{\mathrm{def}}{\Longleftrightarrow}$ 任意の$b \in B$について, ある$a \in A$があって$b = f(a)$.
+    \item $f :A \to B$が単射 $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ $a_1, a_2 \in A$について, $f(a_1) \neq f(a_2)$ならば$a_1 \neq a_2$.
+    \\ $\stackrel{}{\Longleftrightarrow}$ $a_1, a_2 \in A$について, $f(a_1)=f(a_2)$ならば$a_1 = a_2$.
+    \item $1_{A}: A \to A$が恒等写像$\stackrel{\mathrm{def}}{\Longleftrightarrow}$ 任意の$a \in A$について$1_A(a)=a$となる写像. 
+    \item 部分集合$X \subset A$について, $i : X\hookrightarrow A$が包含写像$\stackrel{\mathrm{def}}{\Longleftrightarrow}$ 任意の$x \in X$について$i(x)=x \in A$となる写像. 
+    \item $f :A \to B$が全単射(1対1の対応) $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ $f$が全射かつ単射.
+    \\ $\stackrel{}{\Longleftrightarrow}$ ある$g : B\to A$があって, $g \circ f = 1_A$かつ$f \circ g = 1_B$が成り立つ. この$g$を$f$の逆写像といい$f^{-1} : B \to A$で表す. (逆像の記号と同じことに注意.)
+    \end{enumerate}
+ \end{tcolorbox}
+ 
+ \medskip
+ 問題1. $f : X \to Y$を空でない集合の間の写像とし, $A \subset X$を空でない部分集合とする.
+ 「$f$が単射ならば$A=f^{-1}(f(A))$である」の証明が完成するように空欄をうめよ. 
+ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明.] $x \in A$について$f(x) \in f(A)$である. これより$A \boxed{\phantom{hogehoge}} f^{-1}(f(A))$である.
+
+逆の包含を示す.
+$x \in f^{-1}(f(A))$とする. 
+$f(x) \in f(A)$であるので, ある$a \in A$があって$f(x) \boxed{\phantom{hogehoge}} f(a)$である.
+よって$f$は単射なので, $x \boxed{\phantom{hogehoge}} a \in A$である. 
+
+以上より$f$が単射ならば$A=f^{-1}(f(A))$である.
+
+
+\begin{itembox}[l]{語句群}
+任意の \quad ある \quad $\subset$ \quad $\supset$
+\quad $\in$ \quad $\not\in$ \quad $=$ \quad $\neq$　
+\end{itembox}
+
+\medskip
+ 問題2. $f : X \to Y$を空でない集合の間の写像とし, $B \subset Y$を空でない部分集合とする.
+ 「 $f$が全射ならば$B=f(f^{-1}(B))$」の証明が完成するように空欄をうめよ. 
+ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明.] $x \in f^{-1}(B)$ならば$f(x) \in B$である. これより$B \boxed{\phantom{hogehoge}}f(f^{-1}(B))$である. 
+
+逆の包含を示す.
+$y \in B$とする. 
+$f$が全射なので, \boxed{\phantom{hogehoge}}$a \in X$があって, $y = f(a)$となる. 
+$f(a)=y \in B$より$a \boxed{\phantom{hogehoge}}  f^{-1}(B)$である.
+よって$y = f(a) \in f(f^{-1}(B))$となる. 
+
+以上より$f$が全射ならば$B=f(f^{-1}(B))$である.
+
+\begin{itembox}[l]{語句群}
+任意の \quad ある \quad \quad $\subset$ \quad $\supset$
+\quad $\in$ \quad $\not\in$ \quad $=$ \quad $\neq$　
+\end{itembox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+ 問題1. $f : X \to Y$を空でない集合の間の写像とし, $A \subset X$を空でない部分集合とする.
+ 「$f$が単射ならば$A=f^{-1}(f(A))$である」の証明が完成するように空欄をうめよ. 
+ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明.] $x \in A$について$f(x) \in f(A)$である. これより$A \subset f^{-1}(f(A))$である.
+
+逆の包含を示す.
+$x \in f^{-1}(f(A))$とする. 
+$f(x) \in f(A)$であるので, ある$a \in A$があって$f(x) = f(a)$である.
+よって$f$は単射なので, $x=a \in A$である. 
+
+以上より$f$が単射ならば$A=f^{-1}(f(A))$である.
+
+\medskip
+ 問題2. $f : X \to Y$を空でない集合の間の写像とし, $B \subset Y$を空でない部分集合とする.
+ 「 $f$が全射ならば$B=f(f^{-1}(B))$」の証明が完成するように空欄をうめよ. 
+ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明.] $x \in f^{-1}(B)$ならば$f(x) \in B$である. これより$B \supset f(f^{-1}(B))$である. 
+
+逆の包含を示す.
+$y \in B$とする. 
+$f$が全射なので, ある$a \in X$があって, $y = f(a)$となる. 
+$f(a)=y \in B$より$a \in f^{-1}(B)$である.
+よって$y = f(a) \in f(f^{-1}(B))$となる. 
+
+以上より$f$が全射ならば$B=f(f^{-1}(B))$」である.
+
+
+  [問題3のヒント.]　下の例はどれかの主張の反例を与える.
+  $$
+\begin{array}{ccccc}
+f: &\{ 1\}& \rightarrow &  \{ -1,1\}& \\
+&x& \longmapsto & 
+x
+ &
+\end{array}
+$$
+  $$
+\begin{array}{ccccc}
+g: &\{ -1, 1\}& \rightarrow &  \{ 1\}& \\
+&x& \longmapsto & 
+x^2
+ &
+\end{array}
+$$
+
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+
+
+
+
+問題3.  $A,B,C$は空でない集合とし, $f : A \to B, g : B \to C$を写像とする． 次のうち正しい主張を全て選べ．
+\begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item $g \circ f$が単射ならば$f$は単射.
+\item $g \circ f$が単射ならば$g$は単射.
+%$f: \{ 1\} \to \{ -1,1\}, x \mapsto x$, $g : \{ 1, -1\} \to \{1\}, x \mapsto |x|$
+\item $g \circ f$が全射ならば$f$は全射.
+\item $g \circ f$が全射ならば$g$は全射.
+%\item$f: \{ 1\} \to \{ -1,1\}, x \mapsto x$, $g : \{ 1, -1\} \to \{1\}, x \mapsto |x|$
+ \item $f$と$g$が単射ならば$g \circ f$は単射.
+  \item $f$と$g$が全射ならば$g \circ f$は全射.
+ \item $f$が単射で$g$が全射ならば, $g \circ f$は全射. 
+ \item $f$が単射で$g$が全射ならば, $g \circ f$は単射.
+  \item $f$が全射で$g$が単射ならば, $g \circ f$は単射. 
+   \item $f$が全射で$g$が単射ならば, $g \circ f$は全射. 
+\end{enumerate}
+    
+\vspace{30pt}
+  { \large \underline{解答: \hspace{13cm}}}
+  
+
+\newpage
+  
+ \begin{center}
+\section{濃度の大小}
+\label{sec-5}
+\end{center}
+
+ \begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8.5cm}}}
+{\footnotesize }
+\end{flushleft}
+
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    $A,B, C$を集合とする,
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $A$と$B$の濃度が等しい. $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ ある全単射$f : A \to B$が存在する.
+    \item $A$と$B$の濃度が等しいとき$A \sim B$と書く． 以下の3条件(同値関係)が成り立つ.
+     \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $A \sim A$.
+  \item $A \sim B$ならば, $B \sim A$.
+  \item $A \sim B$かつ$B \sim C$ならば, $A \sim C$.
+  \end{enumerate}
+  \item $F(A, B):= \{ f : A \to B| \text{$f$は写像}\}$とかく. $B^A$や${\rm Map}(A,B)$などの書き方もある.
+  \item $\N$と濃度が等しい集合を可算集合という. 有限集合と可算集合をまとめて高々可算集合という. 
+  \item $A$は$B$より濃度が小さい. $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ $A \not \sim B$かつ単射$f : A \to B$が存在する. このとき$B$は$A$より濃度が大きいという. 選択公理(後述)を仮定すれば, $A$と$B$の濃度を比較できる. %つまり「$A$は$B$より濃度が小さい, $A \sim B$, $A$は$B$より濃度が大きい」に3つしか起こり得ない. 
+    \end{enumerate}
+ \end{tcolorbox}
+ 
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+\begin{thm}
+$A, B$を集合とする.
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item $F(A, \{0, 1\}) \sim \mathfrak{P}(A)$. ここで$F(A, \{0, 1\}):=\{ f : A \to \{0,1\} | \text{$f$は写像}\}$とする. 
+  \item $\N \sim \Z \sim \Q$
+  \item $\Q \not \sim \R$. つまり$\R$は可算ではない(非加算).
+  \item $(0,1) \sim \R \sim \R \times \R$.
+  \item (カントール) $\mathfrak{P}(A) \to A$となる単射や, $A \to \mathfrak{P}(A)$となる全射はともに存在しない. 特に$A \not \sim \mathfrak{P}(A)$
+  \item (カントール・ベルンシュタイン). $f :A \to B$なる単射と, $g : B \to A$なる単射が存在するとき, ある全単射$h : A \to B$が存在する. 特に$A \sim B$.
+    \end{enumerate}
+    \end{thm}
+ \end{tcolorbox}
+ 
+以下, 自然数の集合を$\N:= \{ \text{自然数の集合}\} = \{ 0,1,2,\ldots\}$とする. 
+
+問題1. 偶数の集合$2\N := \{ n | n \in \N \}$とおく. 「$\N$と$2\N$の濃度が等しい」証明が完成するように空欄をうめよ. 
+ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明]
+「$\N$と$2\N$の濃度が等しい」の定義は, \boxed{\phantom{hogehoge}}な写像$f : \N \to 2\N$が存在することである．
+
+  $$
+\begin{array}{ccccc}
+f: &\N& \rightarrow & 2\N& \\
+&x& \longmapsto & 
+2x
+ &
+\end{array}
+$$
+とおく.
+任意の$y \in 2\N$について, $y=2n$となる$n \in \N$がある. よって$y=f(n)$となるので, $f$は\boxed{\phantom{hogehoge}}である.
+一方, 任意の$a,b \in \N$について, $f(a)=f(b)$ならば$2a=2b$となり, $a=b$である. よって$f$は\boxed{\phantom{hogehoge}}である. 
+以上より, $f$は\boxed{\phantom{hogehoge}}なので, $\N$と$2\N$の濃度が等しい.
+
+\begin{itembox}[l]{語句群}
+全射 \quad 単射\quad 全単射 
+%\quad カントールの定理 \quad ベルンシュタインの定理(カントール・ベルンシュタインの定理)
+%\quad $\subset$ \quad $\supset$\quad $\in$ \quad $\not\in$ \quad $=$ \quad $\neq$　
+\end{itembox}
+
+[注意] 同様にして, 奇数の集合, 整数全体の集合$\Z$は$\N$の濃度が等しい. 
+
+\newpage
+問題2. 「有理数の集合$\Q$, $\N \times \N$はともに$\N$と濃度が等しい」証明が完成するように空欄をうめよ. 
+ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明]
+$e: \N \hookrightarrow \N \times \N$を$n \mapsto (n,0)$で定義すれば, $e$は\boxed{\phantom{hogehoge}}である.
+また
+  $$
+\begin{array}{ccccc}
+f: &\N \times \N& \rightarrow & \N& \\
+&(x, y)& \longmapsto & 
+2^{x}(2y+1)
+ &
+\end{array}
+$$
+とおくと$f$は\boxed{\phantom{hogehoge}}である. 以上より\boxed{\phantom{hogehoge}}
+から$\N$から$\N \times \N$への全単射が存在し, $\N$と$\N \times \N$の濃度は等しい. 
+
+次に包含写像$i : \N \hookrightarrow \Q$を考えるとこれは\boxed{\phantom{hogehoge}}である. 
+また
+  $$
+\begin{array}{ccccc}
+g: &\Q& \rightarrow & \N \times \Z& \\
+&\frac{n}{m}& \longmapsto & 
+(m,n)
+ &
+\end{array}
+$$
+とおく. ただし$\frac{n}{m}$は既約分数で表し$m \in \N$であることを約束する. 
+すると$g$は\boxed{\phantom{hogehoge}}である.
+
+今$\N \sim \N \times \N \sim \N \times \Z$であるので, $h : \N \times \Z \to \N$という\boxed{\phantom{hogehoge}}が存在する. 
+よって$h \circ g : \Q \to \N$は\boxed{\phantom{hogehoge}}である.
+よって$i : \N \hookrightarrow \Q$も$h \circ g : \Q \to \N$も\boxed{\phantom{hogehoge}}なので, \boxed{\phantom{hogehoge}}
+から$\N$から$\Q$への全単射が存在し, $\N \boxed{\phantom{hogehoge}}\Q$である. 
+
+\begin{itembox}[l]{語句群}
+全射 \quad 単射\quad 全単射 
+\quad カントールの定理 \quad ベルンシュタインの定理(カントール・ベルンシュタインの定理)
+\quad $\sim$ \quad $\le$ \quad $\ge$ 
+%\quad $\subset$ \quad $\supset$\quad $\in$ \quad $\not\in$ \quad $=$ \quad $\neq$　
+\end{itembox}
+
+
+
+問題3.  「$\N \times \R \sim \R$」の証明が完成するように空欄をうめよ. 
+ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明]. $\N \times \R\sim \R$の定義は$\N \times \R$と$\R$の間に\boxed{\phantom{hogehoge}}が存在することである.
+
+$\R \boxed{\phantom{hogehoge}}(0,1)$であるので, 全単射$h : \R \to (0,1)$が存在する. 
+よって
+  $$
+\begin{array}{ccccc}
+f: &\N \times \R& \rightarrow & \R& \\
+&(n,x)& \longmapsto & 
+n+h(x)
+ &
+\end{array}
+$$
+とおけば$f$は\boxed{\phantom{hogehoge}}となる.
+
+また
+  $$
+\begin{array}{ccccc}
+g: &\R& \rightarrow &\N \times \R& \\
+&x& \longmapsto & 
+(0,x)
+ &
+\end{array}
+$$
+とおけば$g$は\boxed{\phantom{hogehoge}}となる.
+
+よって$f : \N \times \R \to \R$と$g : \R \to \N \times \R$はともに\boxed{\phantom{hogehoge}}なので, \boxed{\phantom{hogehoge}}から, $\N \times \R$と$\R$の間に全単射が存在する.
+
+
+\begin{itembox}[l]{語句群}
+全射 \quad 単射\quad 全単射 
+\quad カントールの定理 \quad ベルンシュタインの定理(カントール・ベルンシュタインの定理)
+\quad $\sim$ \quad $\le$ \quad $\ge$
+%\quad $\subset$ \quad $\supset$\quad $\in$ \quad $\not\in$ \quad $=$ \quad $\neq$　
+\end{itembox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+ 
+以下, 自然数の集合を$\N:= \{ \text{自然数の集合}\} = \{ 0,1,2,\ldots\}$とする. 
+
+問題1. 偶数の集合$2\N := \{ n | n \in \N \}$とおく. 「$\N$と$2\N$の濃度が等しい」証明が完成するように空欄をうめよ. 
+ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明]
+$\N$と$2\N$の濃度が等しいの定義は, $f : \N \to 2\N$という全単射な写像が存在することである．
+
+  $$
+\begin{array}{ccccc}
+f: &\N& \rightarrow & 2\N& \\
+&x& \longmapsto & 
+2x
+ &
+\end{array}
+$$
+とおく.
+任意の$y \in 2\N$について, $y=2n$となる$n \in \N$がある. よって$y=f(n)$となるので, $f$は全射である.
+一方, 任意の$a,b \in \N$について, $f(a)=f(b)$ならば$2a=2b$となり, $a=b$である. よって$f$は単射である. 
+
+以上より, $f$は全単射なので, $\N$と$2\N$の濃度が等しい.
+
+\begin{itembox}[l]{語句群}
+全射 \quad 単射\quad 全単射 
+%\quad カントールの定理 \quad ベルンシュタインの定理(カントール・ベルンシュタインの定理)
+%\quad $\subset$ \quad $\supset$\quad $\in$ \quad $\not\in$ \quad $=$ \quad $\neq$　
+\end{itembox}
+
+[注意] 同様にして, 奇数の集合, 整数全体の集合$\Z$は$\N$の濃度が等しい. 
+
+問題2. 「有理数の集合$\Q$, $\N \times \N$はともに$\N$と濃度が等しい」証明が完成するように空欄をうめよ. 
+ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明]
+
+まず$\N$と$\N \times \N$の濃度が等しいことだが, 
+これは以下の写像
+  $$
+\begin{array}{ccccc}
+f: &\N \times \N& \rightarrow & \N& \\
+&(x, y)& \longmapsto & 
+2^{x-1}(2y-1)
+ &
+\end{array}
+$$
+とおくと$f$が全単射になるので言える. 
+
+次に包含写像$i : \N \hookrightarrow \Q$を考えるとこれは単射である. 
+また
+  $$
+\begin{array}{ccccc}
+g: &\Q& \rightarrow & \N \times \Z& \\
+&\frac{n}{m}& \longmapsto & 
+(m,n)
+ &
+\end{array}
+$$
+とおく. ただし$\frac{n}{m}$は既約分数で表し$m \in \N$であることを約束する. 
+すると$g$は単射である.
+
+今$\N \sim \N \times \N \sim \N \times \Z$であるので, $h : \N \times \Z \to \N$という全単射が存在する. 
+よって$h \circ g : \Q \to \N$は単射である.
+よって$i : \N \hookrightarrow \Q$も$h \circ g : \Q \to \N$も単射なので, ベルンシュタインの定理(カントール・ベルンシュタインの定理)
+から$\N$から$\Q$への全単車が存在し, $\N \sim \Q$である. 
+
+\begin{itembox}[l]{語句群}
+全射 \quad 単射\quad 全単射 
+\quad カントールの定理 \quad ベルンシュタインの定理(カントール・ベルンシュタインの定理)
+\quad $\sim$ \quad $\le$ \quad $\ge$
+%\quad $\subset$ \quad $\supset$\quad $\in$ \quad $\not\in$ \quad $=$ \quad $\neq$　
+\end{itembox}
+
+
+
+問題3.  「$\N \times \R \sim \R$の証明が完成するように空欄をうめよ. 
+ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明]. $\N \times \R\sim \R$の定義は$\N \times \R$と$\R$の間に全単射が存在することである.
+
+$\R \sim (0,1)$であるので, 全単射$h : \R \to (0,1)$が存在する. 
+よって
+  $$
+\begin{array}{ccccc}
+f: &\N \times \R& \rightarrow & \R& \\
+&(n,x)& \longmapsto & 
+n+h(x)
+ &
+\end{array}
+$$
+とおけば$f$は単射となる.
+
+また
+  $$
+\begin{array}{ccccc}
+f: &\R& \rightarrow &\N \times \R& \\
+&x& \longmapsto & 
+(0,x)
+ &
+\end{array}
+$$
+とおけば$f$は単射となる.
+
+
+よって$f : \N \times \R \setminus \R$と$g : \R \to \N \times \R$はともに単射なので, ベルンシュタインの定理(カントール・ベルンシュタインの定理)から, $\N \times \R$と$\R$の間に全単射が存在する.
+
+
+\begin{itembox}[l]{語句群}
+全射 \quad 単射\quad 全単射 
+\quad カントールの定理 \quad ベルンシュタインの定理(カントール・ベルンシュタインの定理)
+\quad $\sim$ \quad $\le$ \quad $\ge$
+%\quad $\subset$ \quad $\supset$\quad $\in$ \quad $\not\in$ \quad $=$ \quad $\neq$　
+\end{itembox}
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%
+
+ \newpage
+
+ \begin{center}
+\section{同値関係(二項関係)・商集合}
+\label{sec-6}
+\end{center}
+
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    $X$を集合とする,
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item $\rho$が集合$X$上の二項関係とは, 任意の$(a, b) \in X \times X$について, 満たすか満たさないかが判定できる規則のこと. 
+ \item 対$(a, b)$が二項関係$\rho$を満たすとき$a \rho b$とかく. 
+  \item $X$上の二項関係$\rho$についてグラフ$G(\rho):= \{ (a, b) \in X \times X | a \rho b\}$とする.
+  \item $\sim$を$X$上の二項関係とする. $\sim$が次を満たすとき, $\sim$を同値関係という.
+       \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item (反射律) 任意の$x \in X$について$x \sim x$.
+  \item (対称律) $x \sim y$ならば, $y \sim x$.
+  \item (推移律) $x \sim y$かつ$y \sim z$ならば, $x \sim z$.
+  \end{enumerate}
+  \item $\sim$を同値関係とする. $x \in X$について, $C(x):=\{ y \in X | x \sim y\}$を$x$の同値類という. $C(x) \cap C(y) \neq\varnothing$$\stackrel{}{\Longleftrightarrow}$ $x \sim y$ $\stackrel{}{\Longleftrightarrow}$ $C(x)=C(y)$である.
+  \item $X/\sim := \{ C(x) | x \in X\}$を商集合という. $C \in X/\sim$について$C=C(x)$となる$x \in X$が存在する. この$x$を$X$の代表という. (代表の取り方は一つとは限らない).
+  \item 自然な射影(商写像)$\pi : X \to X/\sim$を$\pi(x):=C(x)$で定める. $\pi(x)=\pi(y)$$\stackrel{}{\Longleftrightarrow}$ $x \sim y$である. 
+        \end{enumerate}
+ \end{tcolorbox}
+ 
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    $X$を集合とする,
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+   \item $\le$を$X$上の二項関係とする. $\le$が次を満たすとき, $\le$を順序関係といい$(X, \le)$を半順序集合という.
+       \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item (反射律) 任意の$x \in X$について$x \le x$.
+  \item (推移律) $x \le y$かつ$y \le z$ならば, $x \le z$.
+  \item (反対称律) $x \le y$かつ$y \le x$ならば, $x=y$.
+  \end{enumerate}
+  \item 半順序集合$(X, \le)$が全順序集合$\stackrel{\mathrm{def}}{\Longleftrightarrow}$任意の$x,y \in X$について, $x \le y$または$y \le x$.
+  \item 半順序集合の間の写像$f : (X, \le_X) \to (Y, \le_Y)$が順序を保つ. 
+  $\stackrel{\mathrm{def}}{\Longleftrightarrow}$　$x \le_X x'$ならば$f(x) \le_Y f(x')$.
+  \item 半順序集合の間の写像$f : (X, \le_X) \to (Y, \le_Y)$が順序同型写像 $\stackrel{\mathrm{def}}{\Longleftrightarrow}$
+  $f$全単射かつ$f, f^{-1}$がともに順序を保つ. このとき$ (X, \le_X)$と$ (Y, \le_Y)$は順序同型という.
+    \item 半順序集合$(X, \le)$と空でない部分集合$A \subset X$について次を定義する．
+      \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $x$が$A$の最小元. $\stackrel{\mathrm{def}}{\Longleftrightarrow}$$x \in A$かつ任意の$a \in A$について$x \le a$. このとき$x = \min A$とかく.
+  \item $y$が$A$の最大元. $\stackrel{\mathrm{def}}{\Longleftrightarrow}$$y \in A$かつ任意の$a \in A$について$a \le y$. このとき$y = \max A$とかく.
+  \item $u$が$A$の(一つの)下界. $\stackrel{\mathrm{def}}{\Longleftrightarrow}$任意の$a \in A$について$u \le a$. 
+  \item $u$が$A$の下限. $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ $A$の下界集合の最大元. $u = \inf A$とかく.
+  \item $v$が$A$の(一つの)上界. $\stackrel{\mathrm{def}}{\Longleftrightarrow}$任意の$a \in A$について$a \le v$. 
+  \item $v$が$A$の上限. $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ $A$の上界集合の最小元. $v = \sup A$とかく.
+  \end{enumerate}
+        \end{enumerate}
+ \end{tcolorbox}
+
+\newpage
+ \begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8.5cm}}}
+{\footnotesize }
+\end{flushleft}
+
+問題1. 次の二項関係$\sim$のうち同値関係であるものを全て選べ. 
+\begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+ \item 整数の集合$\Z$において, $a, b \in \Z$の二項関係$a \sim b$を「$a-b$は5で割り切れる」とする. 
+  \item 整数の集合$\Z$において, $a, b \in \Z$の二項関係$a \sim b$を「$a-b$は2と5で割り切れる」とする. 
+ \item 整数の集合$\Z$において, $a, b \in \Z$の二項関係$a \sim b$を「$a-b$は2または5で割り切れる」とする. 
+ \item 実数の集合$\R$において, $a, b \in \R$の二項関係$a \sim b$を「$a-b \in \Q$」とする.
+ \item 実数の集合$\R$において, $a, b \in \R$の二項関係$a \sim b$を「$a-b \in \R \setminus \Q$」とする.
+  \item 実数の集合$\R$において, $a, b \in \R$の二項関係$a \sim b$を「$a \in [0,1]$かつ$b \in [0,1]$」とする.  
+  \item 実数の集合$\R$において, $a, b \in \R$の二項関係$a \sim b$を「$a \in [0,1]$または$b \in [0,1]$」とする. 
+ \item $\R^{2} \setminus \{ 0\}$において, $\bm{a}, \bm{b} \in \R^{2} \setminus \{ 0\}$の二項関係$\bm{a} \sim \bm{b}$を「0でない実数$\lambda$が存在して$\bm{a} = \lambda \bm{b}$となる」とする. 
+\end{enumerate}
+    
+\vspace{10pt}
+  { \large \underline{解答: \hspace{13cm}}}
+  
+  \medskip
+  問題2. 実数の集合$\R$に通常の順序$\le$を入れて, $(\R, \le)$を半順序集合とみる. 
+  次の値を求めよ. ただし存在しない場合は"なし"と答えよ. 
+  $$
+\begin{array}{llcc}
+&(1) (0,1)\text{の最大値}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+&(2)(0,1) \cup \{ -2\} \text{の最小値}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+&(3) \Q \cap (0,1)\text{の下限}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+&(4) \Q \text{の上限}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+%&(5)  \Z \text{の上限}&\quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+\end{array}
+$$
+
+問題3. 「$X$を集合, $\sim$を$X$の同値関係, $\pi : X\to X/\sim $を自然な射影とする. 
+さらに集合$Y$と写像$f : X \to Y$で, 以下の($\sharp$)が成り立つと仮定する. 
+$$
+x \sim y \text{ならば} f(x)=f(y) \text{がなりたつ}\quad \text{($\sharp$)}
+$$	
+このときある写像$\widetilde{f} : X/\sim \to Y$で$\widetilde{f} \circ \pi =f$となるものがただ一つ存在する.」
+
+以上の主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明].
+まず$\widetilde{f} : X/\sim \to Y$が存在することを示す. 
+$a \in X/\sim$とする. 
+このとき$\pi$は\boxed{\phantom{hogehoge}}なので$\pi(x) =a$となる$x \in \boxed{\phantom{hogehoge}}$が存在する．
+そこで$\widetilde{f}(a):=f(x)$として定める.
+
+$\widetilde{f}$が$x$の取り方によらないことを示す.%\footnote{$\widetilde{f}$はwell-definedであるという. }
+つまり$a=\pi(x)=\pi(y)$なる$x,y \in X$について, $f(x)=f(y)$を示せば良い.
+ここで$\pi(x)=\pi(y)$ならば$x \boxed{\phantom{hogehoge}} y$である. 
+よって仮定($\sharp$)から$f(x)=f(y)$となる.
+また$f$の定め方から$\widetilde{f} \circ \pi =f$は明らかである.
+よって存在性が言えた. 
+
+次に唯一性を示す. つまり「$\widetilde{f}, \widetilde{g} : X/\sim \to Y$で$\widetilde{f} \circ \pi =f = \widetilde{g} \circ \pi $ならば$\widetilde{f}=\widetilde{g}$」であることを示す.
+上のような$\widetilde{f}, \widetilde{g} :  X/\sim  \to Y$をとる. 
+示すことは, 「任意の$a\in  \boxed{\phantom{hogehoge}}$について$\widetilde{f}(a)=\widetilde{g}(a)$」である.
+$a \in  \boxed{\phantom{hogehoge}}$とする. 
+$\pi$は全射なので$\pi(x) =a$となる$x \in X$が存在する．
+よって
+$$
+\widetilde{f}(a) =
+\widetilde{f}(\pi(x)) =
+\boxed{\phantom{hogehoge}}
+=
+\widetilde{g}(\pi(x)) =
+\widetilde{g}(a) \text{となり言えた.}
+$$
+
+
+\begin{itembox}[l]{語句群}
+全射 \quad 単射\quad 全単射 
+%\quad カントールの定理 \quad ベルンシュタインの定理(カントール・ベルンシュタインの定理)
+\quad $\sim$ \quad $\le$ \quad $\ge$
+\quad $X$ \quad $Y$ \quad $X /\sim$
+\quad $f(x)$ \quad $\widetilde{f}(x)$ \quad $\widetilde{g}(x)$ \quad $f(a)$
+%\quad $\subset$ \quad $\supset$\quad $\in$ \quad $\not\in$ \quad $=$ \quad $\neq$　
+\end{itembox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+問題3. 「$X$を集合, $\sim$を$X$の同値関係, $\pi : X\to X/\sim $を自然な射影とする. 
+さらに集合$Y$と写像$f : X \to Y$で
+$$
+x \sim y \text{ならば} f(x)=f(y) \text{がなりたつ}\quad \text{($\sharp$)}
+$$	
+ものが存在するとする. 
+このときある写像$\widetilde{f} : X/\sim \to Y$で$\widetilde{f} \circ \pi =f$となるものがただ一つ存在する.」
+
+以上の主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明].
+まず$\widetilde{f} : X/\sim \to Y$が存在することを示す. 
+$a \in X/\sim$とする. 
+このとき$\pi$は全射なので$\pi(x) =a$となる$x \in X$が存在する．
+そこで$\widetilde{f}(a):=f(x)$として定める.
+
+$\widetilde{f}$が$x$の取り方によらないことを示す.%\footnote{$\widetilde{f}$はwell-definedであるという. }
+つまり$a=\pi(x)=\pi(y)$なる$x,y \in X$について, $f(x)=f(y)$を示せば良い.
+ここで$\pi(x)=\pi(y)$ならば$x \sim y$である. 
+よって仮定($\sharp$)から$f(x)=f(y)$となる.
+
+また$f$の定め方から$\widetilde{f} \circ \pi =f$は明らかである.
+よって存在性が言えた. 
+
+次に唯一性を示す. つまり「$\widetilde{f}, \widetilde{g} : X/\sim \to Y$で$\widetilde{f} \circ \pi =f = \widetilde{g} \circ \pi $ならば$\widetilde{f}=\widetilde{g}$」であることを示す.
+上のような$\widetilde{f}, \widetilde{g} :  X/\sim  \to Y$をとる. 
+示すことは, 任意の$a\in  X/\sim $について$\widetilde{f}(a)=\widetilde{g}(a)$である.
+$a \in  X/\sim $とする. 
+$\pi$は全射なので$\pi(x) =a$となる$x \in X$が存在する．
+よって
+$$
+\widetilde{f}(a) =
+\widetilde{f}(\pi(x)) =
+f(x)
+=
+\widetilde{g}(\pi(x)) =
+\widetilde{g}(a) \text{となり言えた.}
+$$
+\end{comment}
+%%%%%%%%%%%%%%%%
+ 
+
+  \newpage
+
+
+ \begin{center}
+\section{整列集合}
+\label{sec-7}
+\end{center}
+
+ \begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8.5cm}}}
+{\footnotesize }
+\end{flushleft}
+
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    $(X, \le)$を半順序集合とする.
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item $(X, \le)$が整列集合 $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ 空でない部分集合$A \subset X$について最小元$\min A$が存在する. 
+  整列集合は全順序集合である.
+  \item $a < b$ $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ $a \le b$かつ$a \neq b$.
+  \item $(X, \le)$が整列集合とする. 
+  $a \in X$について$a$の切片$X\langle a\rangle:= \{ x \in X | x < a\}$とする. 
+   \end{enumerate}
+ \end{tcolorbox}
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+\begin{thm}
+    $(X, \le)$を整列集合とする. 
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item $\varphi : (X, \le) \to (X, \le)$が順序を保つ単射ならば, 任意の$x \in X$について$x \le \varphi(x)$.
+  \item $(X, \le_X)$, $(Y, \le_Y)$を整列集合とするとき, 次のいずれかただ一つのみが成り立つ. 
+        \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $X$と$Y$が順序同型
+  \item $X$と$Y$のある切片$Y\langle b\rangle$が順序同型.
+  \item $X$のある切片$X\langle a\rangle$と$Y$が順序同型.
+  \end{enumerate}
+  \item (超限帰納法)$(X, \le)$を整列集合とし, $a \in A$についてある命題$P(a)$が与えられているとする.
+  以下の二つを仮定する. 
+          \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $P(\min X)$が真.
+  \item 任意の$x \in X$について, 「全ての$y \in X \langle x\rangle$について$P(y)$が真ならば, $P(x)$も真である」がなりたつ.
+  \end{enumerate}
+  このとき任意の$a \in X$について$P(a)$は真である.(なお$X = \N$のときの超限帰納法は数学的帰納法である.)
+    \end{enumerate}
+    \end{thm}
+ \end{tcolorbox}
+ 
+ 問題1. $\N:= \{ \text{自然数の集合}\} = \{ 0,1,2,\ldots\}$とし, $(X, \le_X):=(\N, \le)$とする. ここで$\le$は通常の順序である. 
+ 次に$Y=\{ 1, 2 \} \times \N$とし, 
+ $$
+ (x, n) < (y, m)
+ \Longleftrightarrow
+ \text{「$x<y$」} \text{または}
+  \text{「$x=y$かつ$n < m$」} 
+ $$
+ とする. そして$(x, n) \le_Y (y, m)$を「$(x, n) <(y, m)$または$(x,n)=(y,m)$」として定義する.
+ すると$(Y,\le_Y)$は半順序集合になる.
+ 
+実は$(X, \le_X)$, $(Y, \le_Y)$はともに整列集合になる. 
+ よって上の定理から, 次のいずれかただ一つのみが成り立つ. 
+  \begin{enumerate}[label=主張(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $X$と$Y$が順序同型
+  \item $X$と$Y$のある切片$Y\langle b\rangle$が順序同型.
+  \item $X$のある切片$X\langle a\rangle$と$Y$が順序同型.
+ \end{enumerate}
+
+上の$X,Y$については主張(1), (2), (3)のどれが成り立つか答えよ. 
+また(2)を選んだ場合は「$X$と$Y\langle b\rangle$が順序同型」となる$b$を求め, 
+(3)を選んだ場合は「$X\langle a\rangle$と$Y$が順序同型」となる$a$を求めよ.
+なお(1)を選んだ場合, 該当する欄は空白にしておいて良い.
+
+\vspace{5pt}
+{ \large \underline{解答: 主張\hspace{2cm}が正しい. さらに$a$または$b$は\hspace{2cm}である.} }
+  
+\newpage
+
+問題2. 集合と二項関係の組$(X, \le)$について, 次の条件(a)$\sim$(d)を考える．
+
+ \begin{itembox}[l]{条件}
+\begin{enumerate}[label=(\alph*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+ \item 整列集合である.
+ \item 全順序集合であるが整列集合ではない.
+ \item 半順序集合であるが, 全順序集合ではない. 
+ \item 半順序集合ではない.
+\end{enumerate}
+\end{itembox}
+
+以下の集合と二項関係の組$(X, \le)$は上の(a)$\sim$(d)のうちどれを満たすか答えよ.
+\begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+ \item $(\R, \le)$. $\le$は通常の順序とする. 
+ \item $(\Q, \le)$. $\le$は通常の順序とする. 
+ \item $(\N, \le)$. $\le$は通常の順序とする. 
+\item $(\R \times \R, \le). $ただし二項関係$(x,y) \le (a, b)$を$x \le a$かつ$y \le b$とする. 
+\item $(\mathfrak{P}(\N), \le)$. ただし二項関係$A \le B$を$A \subset B$とする. ($\mathfrak{P}(\N)$は$\N$のベキ集合である.)
+\item $(\N \setminus \{ 0,1\}, \le_{\N})$. ただし$a \le_{\N} b$を「$b=na$となる0でない自然数$n$が存在する($a$は$b$を割り切る)」とする.
+\item $(\Z\setminus \{ 0,1, -1\}, \le_{\Z})$. ただし$a \le_{\Z} b$を「$b=na$となる0でない整数$n$が存在する」とする.
+\end{enumerate}
+    
+\begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+\item \underline{解答.\hspace{4cm}}
+\item \underline{解答.\hspace{4cm}}\item \underline{解答.\hspace{4cm}}\item \underline{解答.\hspace{4cm}}
+\item \underline{解答.\hspace{4cm}}\item \underline{解答.\hspace{4cm}}\item \underline{解答.\hspace{4cm}}
+
+\end{enumerate}
+
+\medskip
+問題3. 「整列集合$X$はいかなる切片$X\langle a\rangle$とも順序同形にならない」の主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+\medskip
+[証明.]
+$(X, \le)$が$(X\langle a\rangle, \le)$と順序同型であると仮定する.
+$f : X \to X\langle a\rangle$を順序同型とする. 
+すると包含写像$i : X\langle a\rangle \to X$は順序を保つので, 
+$i \circ f : X\to X$は\boxed{\phantom{hogehoge}}になる.
+よって$a \boxed{\phantom{hogehoge}} i \circ f(a)$となる. しかし$i \circ f(a) \in X\langle a\rangle$より$i \circ f(a) \boxed{\phantom{hogehoge}} a$となり矛盾である. 
+
+
+%整列集合のあいことなる切片は互いに順序同形にならない
+
+ \begin{itembox}[l]{語句群}
+ 順序を保つ全射 \quad 順序を保つ単射 \quad 順序同型　
+ \quad $\le$  \quad $\ge$  \quad $<$  \quad $>$  \quad $=$ \quad $\neq$　\quad $\in$ \quad $\not\in$ 
+%全射 \quad 単射\quad 全単射 
+%\quad カントールの定理 \quad ベルンシュタインの定理(カントール・ベルンシュタインの定理)
+%\quad $\sim$ \quad 
+%\quad $X$ \quad $Y$ \quad $X /\sim$
+%\quad $f(x)$ \quad $\widetilde{f}(x)$ \quad $\widetilde{g}(x)$ \quad $f(a)$
+%\quad $\subset$ \quad $\supset$\quad $\in$ \quad $\not\in$ \quad $=$ \quad $\neq$　
+\end{itembox}
+
+%%%%%%%%%%%%%%%%%%
+\begin{comment}
+$(X, \le)$が$(X\langle a\rangle, \le)$と順序同型であると仮定する.
+$f : X \to X\langle a\rangle$を順序同型とする. 
+すると包含写像$i : X\langle a\rangle　\to X$は順序を保つので
+$i \circ f : X\to X$は順序を保つ単射になる.
+よって$a \le i \circ f(a)$となる. しかし$f(a) \in X\langle a\rangle$より$f(a) < a$なり矛盾である. 
+\end{comment}
+%%%%%%%%%%%%%%%%
+
+ 
+ \newpage
+ 
+ \begin{center}
+\section{選択公理}
+\label{sec-8}
+\end{center}
+
+  \begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8.5cm}}}
+{\footnotesize }
+\end{flushleft}
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    $\Lambda$を空でない集合, $(A_{\lambda} | \lambda \in \Lambda)$を$\Lambda$を添字集合とする集合系とする. 
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item 集合系の直積$\prod_{\lambda \in \Lambda} A_{\lambda}$を次で定める.
+  $$
+  \prod_{\lambda \in \Lambda} A_{\lambda}
+  :=\{  f : \Lambda \to \bigcup_{\lambda \in \Lambda}A_{\lambda} | f(\lambda) \in A_{\lambda}\}
+  $$
+  また各$A_{\lambda}$を直積因子という. 
+  \item $\Lambda = \{ 1, 2\}$のとき, $\prod_{\lambda \in \Lambda} A_{\lambda}=A_1 \times A_2$となる. これは$f : \Lambda \to \bigcup_{\lambda \in \Lambda} $について, $f_1 :=f(1) \in A_1, f_2:=f(2) \in A_2$とすると, $f$と$(f_1, f_2)$は一対一に対応するからである. 
+\item 任意の$\lambda \in \Lambda$について, $ \prod_{\lambda \in \Lambda} A_{\lambda}$から$A_{\lambda}$の(第$\lambda$)射影を以下で定義する. 
+$$
+\begin{array}{ccccc}
+p_{\lambda} : &\prod_{\lambda \in \Lambda} A_{\lambda}& \rightarrow &A_{\lambda}& \\
+&f& \longmapsto & 
+f(\lambda)
+ &
+\end{array}
+$$　
+   \end{enumerate}
+ \end{tcolorbox}
+ 
+ 
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{dfn}[選択公理]
+    $\Lambda$を空でない集合, $(A_{\lambda} | \lambda \in \Lambda)$を$\Lambda$を添字集合とする集合系とする. 
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item (選択公理) 「任意の$\lambda \in \Lambda$について$A_{\lambda} \neq \varnothing$ならば, $\prod_{\lambda \in \Lambda} A_{\lambda} \neq \varnothing$である」という\underline{公理}を選択公理という.
+  \item 上において$f \in \prod_{\lambda \in \Lambda} A_{\lambda}$を選択関数という. これは任意の$\lambda \in \Lambda$について, $A_{\lambda}$の元$f(\lambda) \in A_{\lambda}$を一つ選択していることに由来する.
+  \item $X$を空でない集合とする. $\prod_{B \in \mathfrak{P}(X) \setminus \{ \varnothing\}} B$の元$f$を$X$上の選択関数という. 
+  これは任意の空でない$X$の部分集合$B \subset X$について, $B$の元$f(B) \in B$を一つ選択していることに由来する. 
+  \end{enumerate}
+    \end{dfn}
+ \end{tcolorbox}
+ 
+ 問題1.  選択公理を仮定する.
+  「任意の空でない集合の間の全射$f :X \to Y$について, ある写像$g : Y \to X$が存在して$f \circ g = id_Y$である.」
+  この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+ 
+ [証明.]
+$f :X \to Y$を空でない集合の間の全射とする. 
+ $y \in Y$について$A_{y}:=f^{-1}(y)$とおく. 
+ すると任意の$y\in Y$について$A_{y} \neq \varnothing$なので, \boxed{\phantom{hogehoge}}から
+$\prod_{y \in Y} A_{y} \neq \varnothing$となる.
+
+そこで$g \in \prod_{y \in Y} A_{y}$とする. 
+$g$ は$Y$から\boxed{\phantom{hogehoge}}への写像である. 
+$\bigcup_{y \in Y}A_{y} \subset X$に注意すれば, 
+$$
+\begin{array}{ccccc}
+g : &Y& \rightarrow &X& \\
+&y& \longmapsto & 
+g(y)
+ &
+\end{array}
+$$　
+と定めることができる. 
+$g \in \prod_{y \in Y} A_{y}$なので, 任意の$y \in Y$について
+$g(y) \in \boxed{\phantom{hogehoge}}$となる.
+$A_y =f^{-1}(y)$なので, $f(g(y))=y$となる. 
+
+ \begin{itembox}[l]{語句群}
+選択関数 \quad 選択公理 \quad 直積因子
+\quad $\prod_{y \in Y} A_{y}$
+\quad $\bigcup_{y \in Y}A_{y}$
+\quad $\bigcap_{y \in Y}A_{y}$
+\quad $A_y$
+\quad $\Lambda$
+\quad $\varnothing$
+\end{itembox}
+
+
+\newpage
+
+問題2. 「$\Lambda$を空でない集合, $(A_{\lambda} | \lambda \in \Lambda)$を$\Lambda$を添字集合とする集合系, 
+$p_{\mu}: \prod_{\lambda \in \Lambda} A_{\lambda} \to A_{\mu}$は第$\mu$射影とする. 
+さらに集合$Y$と写像の族$g_{\lambda} : Y \rightarrow A_\lambda $が存在すると仮定する. 
+
+このとき写像$g : Y \rightarrow \prod_{\lambda \in \Lambda} A_{\lambda}$
+で任意の$\mu \in \Lambda$について$g_{\mu} = p_{\mu} \circ g $となるものがただ一つ存在する.」
+
+以上の主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+\medskip
+[証明.]
+まず$g : Y \rightarrow \prod_{\lambda \in \Lambda} A_{\lambda}$を以下のように構成する.
+$y \in Y$について$\Lambda$から$\bigcup_{\lambda \in \Lambda}A_{\lambda} $への写像$g(y)$を
+$$
+g(y)(\lambda):=g_{\lambda}(y)
+\quad
+(\text{$\lambda \in \Lambda$})
+$$
+として定める. 
+すると任意の$\lambda$について$g(y)(\lambda) \in \boxed{\phantom{hogehoge}}$であるので, 
+$g(y) \in\boxed{\phantom{hogehoge}}$となる.
+
+この$g$が「任意の$\mu \in \Lambda$について$g_{\mu} = p_{\mu} \circ g $である」ことを示す.
+$\mu \in \Lambda$をとると$ p_{\mu} $の定義から,
+$$
+\text{任意の$y\in Y$について}
+\quad
+ p_{\mu} \circ g(y)
+ =
+\boxed{\phantom{hogehoge}}
+=
+g_{\mu}(y)
+$$
+である. 
+よって$g_{\mu} = p_{\mu} \circ g$である. 
+
+次に唯一性を示す.
+$g, h : Y \rightarrow \prod_{\lambda \in \Lambda} A_{\lambda}$とする. 
+$$
+\text{任意の$\mu \in \Lambda$について$g_{\mu} = p_{\mu} \circ g = p_{\mu} \circ h$
+となるならば$g=h$}
+$$
+を示せば良い. 
+上のような$g,h$をとる. 
+ここで
+$$
+\text{$g=h$は「任意の$y \in Y$について$g(y) = h(y)$」
+と同値である.}
+$$
+さらに$y \in Y$について, $g(y), h(y) \in \boxed{\phantom{hogehoge}}$なので, 
+$$
+\text{$g(y)=h(y)$は
+「任意の$\lambda \in \Lambda$について
+$g(y)(\lambda)=h(y)(\lambda)$」と同値である.}
+$$
+以上より任意の$y \in Y$と$\lambda \in \Lambda$について, 
+$
+g(y)(\lambda)=h(y)(\lambda)
+$
+を示せば良い. 
+ここで$g(y)(\lambda) \in \boxed{\phantom{hogehoge}}$である. 
+
+今$g,h$の仮定から, 「任意の$\mu \in \Lambda$について$g_{\mu} = p_{\mu} \circ g = p_{\mu} \circ h$」である. 
+よって任意の$y \in Y$と$\lambda \in \Lambda$について, 
+$$
+g(y)(\lambda)
+=
+p_{\lambda}(g(y))
+=
+\boxed{\phantom{hogehoge}}
+=
+p_{\lambda}(h(y))
+=
+h(y)(\lambda)
+$$
+であるので$g=h$である. 
+
+
+ \begin{itembox}[l]{語句群}
+ %ある \quad 任意の \quad 
+$\Lambda$
+\quad $\lambda$
+\quad $\mu$
+\quad $\varnothing$
+\quad $A_\lambda$
+\quad $\bigcup_{\lambda \in \Lambda}A_{\lambda}$
+\quad $\bigcap_{\lambda \in \Lambda}A_{\lambda}$
+\quad $\prod_{\lambda \in \Lambda} A_{\lambda}$
+ \\
+$g(\mu)$
+\quad $g(y)(\mu)$
+\quad $g_{\mu}(y)$
+\quad $p_{\mu}(y)$
+\quad $g(y)$
+\quad $g(\lambda)$
+\quad $g(y)(\lambda)$
+\quad $g_{\lambda}(y)$
+\quad $p_{\lambda}(y)$
+\end{itembox}
+
+[注意]今回は演習のためにこのように書いているが, 証明としては非常に良くない. 
+試験等で行う証明においてはもう少し簡略してわかりやすく書いたほうが良いと思う. (少なくともいくつかの議論は省略して良い.)
+
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \begin{comment}
+ 
+ 問題1.  選択公理を仮定する.
+  「任意の空でない集合の間の全射$f :X \to Y$について, ある写像$g : Y \to X$が存在して$f \circ g = id_Y$である.」
+  この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+ 
+ [証明.]
+$f :X \to Y$を空でない集合の間の全射とする. 
+ $y \in Y$について$A_{y}:=f^{-1}(y)$とおく. 
+ すると任意の$y\in Y$について$A_{y} \neq \varnothing$なので, 選択公理から
+$\prod_{y \in Y} A_{y} \neq \varnothing$となる.
+
+そこで$g \in \prod_{y \in Y} A_{y}$とする. 
+$g$ は$Y$から$\bigcup_{y \in Y}A_{y}$への写像である. 
+$\bigcup_{y \in Y}A_{y} \subset X$に注意すれば, 
+$$
+\begin{array}{ccccc}
+g : &Y& \rightarrow &X& \\
+&y& \longmapsto & 
+f(y)
+ &
+\end{array}
+$$　
+と定めることができる. 
+$g \in \prod_{y \in Y} A_{y}$なので, 任意の$y \in Y$について
+$g(y) \in A_y = f^{-1}(y)$となる.
+よって$f(g(y))=y$となる. 
+
+ \begin{itembox}[l]{語句群}
+ 順序を保つ全射 \quad 順序を保つ単射 \quad 順序同型　
+ \quad $\le$  \quad $\ge$  \quad $<$  \quad $>$  \quad $=$ \quad $\neq$　\quad $\in$ \quad $\not\in$ 
+%全射 \quad 単射\quad 全単射 
+%\quad カントールの定理 \quad ベルンシュタインの定理(カントール・ベルンシュタインの定理)
+%\quad $\sim$ \quad 
+%\quad $X$ \quad $Y$ \quad $X /\sim$
+%\quad $f(x)$ \quad $\widetilde{f}(x)$ \quad $\widetilde{g}(x)$ \quad $f(a)$
+%\quad $\subset$ \quad $\supset$\quad $\in$ \quad $\not\in$ \quad $=$ \quad $\neq$　
+\end{itembox}
+
+
+\newpage
+
+問題1. 「$\Lambda$を空でない集合, $(A_{\lambda} | \lambda \in \Lambda)$を$\Lambda$を添字集合とする集合系, 
+$p_{\mu}: \prod_{\lambda \in \Lambda} A_{\lambda} \to A_{\mu}$は第$\mu$射影とする. 
+さらに集合$Y$と写像の族$g_{\lambda} : Y \rightarrow A_\lambda $が存在すると仮定する. 
+
+このとき写像$g : Y \rightarrow \prod_{\lambda \in \Lambda} A_{\lambda}$
+で任意の$\mu \in \Lambda$について$g_{\mu} = p_{\mu} \circ g $となるものがただ一つ存在する.」
+
+以上の主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+\medskip
+[証明.]
+まず$g : Y \rightarrow \prod_{\lambda \in \Lambda} A_{\lambda}$を以下のように構成する.
+$y \in Y$について$\Lambda$から$\bigcup_{\lambda \in \Lambda}A_{\lambda} $への写像$g(y)$を
+$$
+g(y)(\lambda):=g_{\lambda}(y)
+\quad
+(\text{$\lambda \in \Lambda$})
+$$
+として定める. 
+すると任意の$\lambda$について$g(y)(\lambda) \in A_{\lambda}$であるので, $g(y) \in \prod_{\lambda \in \Lambda} A_{\lambda}$となる.
+
+この$g$が「任意の$\mu \in \Lambda$について$g_{\mu} = p_{\mu} \circ g $である」ことを示す.
+$\mu \in \Lambda$をとると$ p_{\mu} $の定義から,
+$$
+\text{任意の$y\in Y$について}
+\quad
+ p_{\mu} \circ g(y)
+ =
+g(y)(\mu)
+=
+g_{\mu}(y)
+$$
+である. 
+よって$g_{\mu} = p_{\mu} \circ g$である. 
+
+次に唯一性を示す.
+$g, h : Y \rightarrow \prod_{\lambda \in \Lambda} A_{\lambda}$とする. 
+$$
+\text{任意の$\mu \in \Lambda$について$g_{\mu} = p_{\mu} \circ g = p_{\mu} \circ h$
+となるならば$g=h$}
+$$
+を示せば良い. 
+上のような$g,h$をとる. 
+ここで
+$$
+\text{$g=h$は「任意の$y \in Y$について$g(y) = h(y)$」
+と同値である.}
+$$
+さらに$y \in Y$について, $g(y), h(y) \in \prod_{\lambda \in \Lambda} A_{\lambda}$なので, 
+$$
+\text{$g(y)=h(y)$は
+「任意の$\lambda \in \Lambda$について
+$g(y)(\lambda)=h(y)(\lambda)$」と同値である.}
+$$
+以上より任意の$y \in Y$と$\lambda \in \Lambda$について, 
+$
+g(y)(\lambda)=h(y)(\lambda)
+$
+を示せば良い. 
+
+今$g,h$の仮定から, 「任意の$\mu \in \Lambda$について$g_{\mu} = p_{\mu} \circ g = p_{\mu} \circ h$」である. 
+よって任意の$y \in Y$と$\lambda \in \Lambda$について, 
+$$
+g(y)(\lambda)
+=
+p_{\lambda}(g(y))
+=
+g_{\lambda}(y)
+=
+p_{\lambda}(h(y))
+=
+h(y)(\lambda)
+$$
+であるので$g=h$である. 
+
+
+ \begin{itembox}[l]{語句群}
+ 順序を保つ全射 \quad 順序を保つ単射 \quad 順序同型　
+ \quad $\le$  \quad $\ge$  \quad $<$  \quad $>$  \quad $=$ \quad $\neq$　\quad $\in$ \quad $\not\in$ 
+%全射 \quad 単射\quad 全単射 
+%\quad カントールの定理 \quad ベルンシュタインの定理(カントール・ベルンシュタインの定理)
+%\quad $\sim$ \quad 
+%\quad $X$ \quad $Y$ \quad $X /\sim$
+%\quad $f(x)$ \quad $\widetilde{f}(x)$ \quad $\widetilde{g}(x)$ \quad $f(a)$
+%\quad $\subset$ \quad $\supset$\quad $\in$ \quad $\not\in$ \quad $=$ \quad $\neq$　
+\end{itembox}
+
+[注意]今回は演習のためにこのように書いているが, 証明としては非常に良くない. 
+試験等で行う証明においてはもう少し簡略してわかりやすく書いたほうが良いと思う. (少なくともいくつかの議論は省略して良い.)
+
+ 
+ 
+ 
+ 問題1. 次の主張を考える. 
+ \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item 選択公理
+  \item 任意の空でない集合の間の全射$f :X \to Y$について, ある写像$g : Y \to X$が存在して$f \circ g = id_Y$である.
+  \end{enumerate}
+  すると(1)と(2)は同値である. この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+ 
+ [証明.]
+(1)ならば(2)を示す. (つまり選択公理を仮定して(2)を示す)
+ 任意の空でない集合の間の全射$f :X \to Y$とする. 
+ $y \in Y$について$A_{y}:=f^{-1}(y)$とおく. 
+ すると任意の$y\in Y$について$A_{y} \neq \varnothing$なので, 選択公理から
+$\prod_{y \in Y} A_{y} \neq \varnothing$となる.
+そこで$g \in \prod_{y \in Y} A_{y}$とすると, 
+$g$ は$Y$から$\bigcup_{y \in Y}A_{y}$の写像で$g(y) \in A_y = f^{-1}(y)$である.
+以上より$\bigcup_{y \in Y}A_{y} \subset X$なので
+$g : Y \to X$を$y \mapsto g(y)$で定めれば, 
+$g(y) \in A_y = f^{-1}(y)$なので$f(g(y))=y$となる. 
+
+(2)ならば(1)を示す. (つまり(2)を仮定して選択公理を示す.)
+$\Lambda$を空でない集合, $(A_{\lambda} | \lambda \in \Lambda)$を$\Lambda$を添字集合とする集合系で, 任意の$\lambda$について$A_{\lambda} \neq \varnothing$となるものとする.
+ここで$W = \bigcup_{\lambda \in \Lambda} X_\lambda, Z=\bigcup_{\lambda \in \Lambda}(\{ \lambda\} \times X_\lambda)$とおき$p : \Lambda \times W \to \Lambda$を第一射影, $q : \Lambda \times W \to W$を第二射影とする.
+すると $Z \subset \Lambda \times W$なので
+%$Z=\bigcup_{\lambda \in \Lambda}(\{ \lambda\} \times X_\lambda), Y=\bigcup_{\lambda}X_\lambda$とおく
+$$
+p|_{Z}: Z \to \Lambda \quad f((\lambda, x_{\lambda})) = \lambda
+$$
+を考えると,  これは全射である. 
+以上より(2)の仮定より, ある写像$g : \Lambda \to Z$が存在して$p|_{Z} \circ g = id_\Lambda$となるものが存在する. 
+$\lambda \in \Lambda$について$g(\lambda) \in  Z=\bigcup_{\lambda \in \Lambda}(\{ \lambda\} \times X_\lambda)$より, ある$x_\lambda \in X_{\lambda}$があって$g(\lambda)=(\lambda, x_\lambda) $とかける. 
+
+今
+$$
+\varphi=q|_{Z} \circ g : \lambda \to Z \to W
+$$
+を考えると$\varphi : \Lambda \to \bigcup_{\lambda \in \Lambda}$であり
+$\lambda \in \Lambda$について$q|_{Z}(g(\lambda))=q|_{Z}(\lambda, x_\lambda) =x_\lambda \in X_\lambda$
+であるので, $\varphi \in \prod_{\lambda \in \Lambda} A_{\lambda}$である. 
+
+
+
+ 問題1. $X$を空でない集合$\sim$を同値関係とする. $x \in X$について$C(x) \subset X$を$x$の同値類とする.
+ $X$の部分集合$S \subset X$が
+ \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $X/\sim = \{ C(x) | x \in S\}$
+  \item $x, y \in S$かつ$x \neq y$ならば$C(x) \neq C(y)$
+  \end{enumerate}
+を満たすとき, $S$は$X /\sim$の完全代表系という. 
+このとき$X = \cup_{x \in S}C(x)$とかける. 
+ 
+ 選択公理を仮定すれば, 完全代表系は存在する.
+ この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+ 
+ [証明.]
+ $\Lambda=X/\sim$とする. これは空でない集合である. 
+ $\lambda \in \Lambda$について集合$A_{\lambda}$を次のように定める.
+ $\lambda \in \Lambda$をとると, $x \in X$があって$\lambda =C(x)$とかける.
+ そこで$A_{\lambda}:=C(x)$と定義する. (これは当然のように$x$の取り方によらない)
+ 
+ 今$A_{\lambda}$は空ではないので, 選択公理から選択関数
+ $f \in \prod_{\lambda}A_{\lambda}$が存在する. 
+ そこで$S := \{f(\lambda) | \lambda \in \Lambda\}$とおく. $A_{\lambda} \subset X$なので, $S \subset X$となる.
+ 
+ これが完全代表系であることを示そう.
+ (1) $X/\sim := \{ C(x) |x \in X\}$であるので$X/\sim \supset \{ C(x) | x \in S\}$は明らか.
+ 逆の包含を示す. これは任意の$C(y) \in X/\sim$について, $\mu=C(y)$とおくとき$C(y)=C(f(\mu))$であることを示せば良い. 
+今$\mu \in \Lambda$であるので, 
+ $f(\mu) \in A_{\mu}$となる. 定義から$A_{\mu}=C(y)$より$f(\mu) \in C(y)$となるので, $f(\mu) \sim y$であり, $C(f(\mu)) = C(y)$となる. よって示せた.
+ 
+ (2). $x, y \in S$かつ$x \neq y$とする.
+ $x=f(\lambda), y=f(\mu)$となる$\lambda, \mu \in \Lambda$が存在する.
+ \end{comment}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ 
+ 
+ 
+ \newpage
+ 
+ \begin{center}
+\section{ツォルンの補題と整列可能定理}
+\label{sec-9}
+\end{center}
+
+
+  \begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8.5cm}}}
+{\footnotesize }
+\end{flushleft}
+
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+$(X, \le)$を半順序集合とする
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item 部分集合$S \subset X$が全順序部分集合 $\stackrel{\mathrm{def}}{\Longleftrightarrow}$  任意の$x, y \in S$について$x \le y$か$y \le x$のどちらかが成り立つこと.
+\item $(X, \le)$が帰納的 $\stackrel{\mathrm{def}}{\Longleftrightarrow}$  任意の全順序部分集合$S \subset X$について, 上界を持つこと.(つまりある$v \in X$があって任意の$s \in S$について$s \le v$となること.)
+\item $a \in X$が極大元 $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ $a \le x$かつ$a \neq x$なる$x \in X$が存在しない$\stackrel{}{\Longleftrightarrow}$ $a \le x$ならば$a=x$.
+   \end{enumerate}
+ \end{tcolorbox}
+ 
+ 
+ 
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+以下の命題は(ZF公理系(ツェルメロ・フレンケル公理系))において同値な命題である. 
+    \begin{enumerate}[label=(\arabic*).]
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item (選択公理) 任意の$\lambda \in \Lambda$について$A_{\lambda} \neq \varnothing$ならば, $\prod_{\lambda \in \Lambda} A_{\lambda} \neq \varnothing$である. 
+  \item (ツォルンの補題) 帰納的な半順序集合は少なくとも一つの極大元を持つ. 
+  \item (整列可能定理) 任意の集合$X$について, ある順序$\le$があって$(X,\le)$は整列集合になる. 
+  \end{enumerate}
+    \end{thm}
+    つまり選択公理を認めれば, ツォルンの補題や整列可能定理は成り立つ. 
+ \end{tcolorbox}
+ 
+[補足] 選択公理と同値な命題は数多くある. \url{https://alg-d.com/math/ac/list.html}
+を参照.\footnote{選択公理を認めたZF公理系をZFC公理系という.この辺りは私は全くの素人なので, alg-dさんのYoutube\url{https://www.youtube.com/@alg-dx}に譲る.}% 私はalg-dさんと面識はない(もしかしたら学部の時の飲み会で見たことあるかも)が, IPMUの原和平さんの友達とのことである. (記憶が正しければalg-dさんのアイコンの画像は原さんが描いたはずである.)} 
+
+
+ 
+問題1.  選択公理を仮定すると, 集合$X, Y$について, (1), (2), (3)のいずれかただ一つのみが成り立つ.
+$$
+\text{(1)$X \sim Y$}
+\quad
+\text{(2) $X$は$Y$より濃度が小さい.}
+\quad
+\text{(3) $Y$は$X$より濃度が小さい.}
+%%  \item $X$は$Y$より濃度が小さい.
+ % \item $Y$は$X$より濃度が小さい.
+$$
+  %\begin{enumerate}[label=(\arabic*).]
+%    \setlength{\parskip}{0cm} 
+%  \setlength{\itemsep}{0cm} 
+%  \item $X \sim Y$
+%%  \item $X$は$Y$より濃度が小さい.
+ % \item $Y$は$X$より濃度が小さい.
+%  \end{enumerate}
+ この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+\medskip
+ [証明.]まず上の(1), (2), (3)のうち二つ以上が成り立つことはあり得ないことを示す. 
+$X$は$Y$より濃度が小さいの定義は「$X \not \sim Y$」かつ「単射$X \to Y$が存在する」である.
+よって(1)と(2), (1)と(3)がともに成り立つことはあり得ない.
+また(2)と(3)がともに成り立てば, \boxed{\phantom{hogehoge}}から, 全単射$X \to Y$が存在する.
+よって(1)が成り立ち矛盾する. つまり(2)と(3)がともに成り立つことはあり得ない.
+
+次に(1), (2), (3)のどれかが成り立つことを示す.
+\boxed{\phantom{hogehoge}}から$X$や$Y$上にある順序$\le_X, \le_Y$が存在して$(X, \le), (Y, \le_Y)$は整列集合となる. 
+よって
+$$
+\text{(a)$X$と$Y$が順序同型}
+\quad
+\text{(b) $X$と$Y$のある切片$Y\langle b\rangle$が順序同型.}
+\quad
+\text{(c) $X$のある切片$X\langle a\rangle$と$Y$が順序同型.}
+%%  \item $X$は$Y$より濃度が小さい.
+ % \item $Y$は$X$より濃度が小さい.
+$$
+%\begin{enumerate}[label=(\alph*).]
+% \setlength{\parskip}{0cm}
+%  \setlength{\itemsep}{0pt}
+%  \item $X$と$Y$が順序同型
+%  \item $X$と$Y$のある切片$Y\langle b\rangle$が順序同型.
+%  \item $X$のある切片$X\langle a\rangle$と$Y$が順序同型.
+%  \end{enumerate}
+  のいずれか一つが成り立つ. 
+  (a)の場合は\boxed{\phantom{hogehoge}}が成り立つ.
+ (b)の場合は包含写像$Y\langle b\rangle \hookrightarrow Y$を用いて, 単射$X \hookrightarrow Y$を構成できる. 
+ この場合は\boxed{\phantom{hogehoge}}と\boxed{\phantom{hogehoge}}のどちらかが成り立つ . 
+ (c)の場合は\boxed{\phantom{hogehoge}}と\boxed{\phantom{hogehoge}}のどちらかが成り立つ. 以上より言えた. 
+  
+ \begin{itembox}[l]{語句群}
+選択公理 \quad ツォルンの補題 \quad 整列可能定理 \quad カントールの定理 \quad ベルンシュタインの定理(カントール・ベルンシュタインの定理)  \quad 超限帰納法 \quad (1)
+\quad (2) \quad (3)
+\end{itembox}
+\newpage
+
+
+ 問題2. $(X, \le_X)=(\N, \le)$とする. ここで$\le$は通常の順序である. 
+ 次に$Y=\N \cup \{ -1\}$とし, 
+ $$
+x < y
+ \Longleftrightarrow
+ \text{「$y=-1$」} \text{または}
+  \text{「$x,y \in \N$かつ$x<y$」} 
+ $$
+ とする. \footnote{「$x,y \in \N$かつ$x<y$」における"$<$"は$\N$の順序とする.}
+ そして$x \le_Y y$を「$x<y$または$x=y$」として定義する.
+ すると%$(Y,\le_Y)$は半順序集合になる.
+$(X, \le_X)$, $(Y, \le_Y)$はともに整列集合になる. 
+この$(X, \le_X)$, $(Y, \le_Y)$に関する以下の主張のうち正しいものを全て選べ.
+$$
+\begin{array}{lll}
+\text{(1)$X \sim Y$}
+&
+\text{(2) $X$は$Y$より濃度が小さい.}
+&
+\text{(3) $Y$は$X$より濃度が小さい.}
+\\
+\text{(4)$X$と$Y$が順序同型}
+&
+\text{(5) $X$と$Y$のある切片$Y\langle b\rangle$が順序同型.}
+&
+\text{(6) $X$のある切片$X\langle a\rangle$と$Y$が順序同型.}
+\end{array}
+$$
+ 
+{ \large \underline{解答: \hspace{6cm}} }
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+  \begin{enumerate}[label=(\arabic*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $(X, \le_X)$と$(Y, \le_Y)$が順序同型
+  \item $(X, \le_X)$と$(Y, \le_Y)$のある切片$Y\langle b\rangle$が順序同型.
+  \item $(X, \le_X)$のある切片$X\langle a\rangle$と$(Y, \le_Y)$が順序同型.
+  \item $X \sim Y$ ($X$と$Y$の濃度は等しい).
+ \item $X$は$Y$より濃度が小さい.
+ \item $Y$は$X$より濃度が小さい.
+  \end{enumerate}
+  
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{cor}
+選択公理を認めれば以下が成り立つ. 
+    \begin{enumerate}[label=(\arabic*).]
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item 任意の集合$X, Y$について, 以下の(a), (b), (c)のいずれかただ一つのみが成り立つ.
+$$
+\text{(a)$X \sim Y$}
+\quad
+\text{(b) $X$は$Y$より濃度が小さい.}
+\quad
+\text{(c) $Y$は$X$より濃度が小さい.}
+$$
+  \item ベクトル空間$V$の基底は必ず存在する.
+    \end{enumerate}
+    \end{cor}
+ \end{tcolorbox}
+
+\medskip
+
+
+ [証明.]まず上の(1), (2), (3)のうち二つ以上が成り立つことはあり得ないことを示す. 
+$X$は$Y$より濃度が小さいの定義は「$X \not \sim Y$」かつ「単射$X \to Y$が存在する」である.
+よって(1)と(2), (1)と(3)がともに成り立つことはあり得ない.
+また(2)と(3)がともに成り立てば, カントールベルンシュタインの定理から, 全単射$X \to Y$が存在する.
+よって(1)が成り立ち矛盾する. つまり(2)と(3)がともに成り立つことはあり得ない.
+
+次に(1), (2), (3)のどれかが成り立つことを示す.
+整列可能定理から$X$や$Y$上にある順序$\le_X, \le_Y$が存在して$(X, \le), (Y, \le_Y)$は整列集合となる. 
+よって
+$$
+\text{(a)$X$と$Y$が順序同型}
+\quad
+\text{(b) $X$と$Y$のある切片$Y\langle b\rangle$が順序同型.}
+\quad
+\text{(c) $X$のある切片$X\langle a\rangle$と$Y$が順序同型.}
+%%  \item $X$は$Y$より濃度が小さい.
+ % \item $Y$は$X$より濃度が小さい.
+$$
+%\begin{enumerate}[label=(\alph*).]
+% \setlength{\parskip}{0cm}
+%  \setlength{\itemsep}{0pt}
+%  \item $X$と$Y$が順序同型
+%  \item $X$と$Y$のある切片$Y\langle b\rangle$が順序同型.
+%  \item $X$のある切片$X\langle a\rangle$と$Y$が順序同型.
+%  \end{enumerate}
+  のいずれか一つが成り立つ. 
+  (a)の場合は(1)が成り立つ.
+ (b)の場合は包含写像$Y\langle b\rangle \hookrightarrow Y$を用いて, 単射$X \hookrightarrow Y$を構成できる. 
+ この場合は(1)と(2)のどちらかが成り立つ . 
+ (c)の場合は(1)と(3)のどちらかが成り立つ. 以上より言えた. 
+  
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+  
+問題3. $K$を体とし, $V$を$K$上の(空でない)ベクトル空間とする. 
+(無限でもいい)部分集合$B \subset V$において以下を定義する. \footnote{以下の用語はこの授業でのみの用語である.}
+  \begin{enumerate}[label=(\Alph*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $B$が線形独立 $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ 任意の$a_1,\ldots, a_n \in K$と任意の$v_1, \ldots, v_n \in B$について$a_1 v_1 + \cdots + a_n v_n=0  \in V$ならば$a_1 = \cdots = a_n=0$である.
+  \item $B$が$V$を生成する.  $\stackrel{\mathrm{def}}{\Longleftrightarrow}$任意の$v \in V$について, ある$a_1,\ldots, a_n \in K$と$v_1, \ldots, v_n \in B$があって, $v = a_1 v_1 + \cdots + a_n v_n$となる. 
+  \end{enumerate}
+上の(A)と(B)を満たすとき$B$は$V$の基底という. 
+
+選択公理を仮定すると, ベクトル空間$V$の基底は必ず存在する. この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明]. $\mathcal{W} := \{ B \subset V | \text{$B$が線形独立}\}$
+とし, $B_1 \le B_2$という順序を$B_1 \subset B_2$として定義する.
+$V$は空ではないので$\mathcal{W}$は空ではない. 
+
+$\mathcal{W}$が帰納的な半順序集合であることを示す.
+つまり「任意の\boxed{\phantom{hogehoge}}部分集合$\mathcal{S} \subset \mathcal{W}$について\boxed{\phantom{hogehoge}}を持つこと」を示す. 
+$\mathcal{S}$をそのような部分集合とし
+$B_{\infty}:=\cup_{B \in \mathcal{S}}B\text{とおく.}$
+%$B_{\infty} \subset V$である
+
+まず$B_{\infty} \in\mathcal{W}$を示す. 
+定義から任意の$a_1,\ldots, a_n \in K$と$v_1, \ldots, v_n \in B_{\infty}$について
+$$a_1 v_1 + \cdots  + a_n v_n=0  \in V \text{ならば}
+a_1 = \cdots = a_n=0
+\quad \text{($\sharp$)}
+$$
+を示せば良い.
+今$v_i \in B_{\infty}=\cup_{B \in \mathcal{S}}B$より, $v_i \in B_i$となる$B_i\in \mathcal{S}$が存在する.
+$B_1, B_2 \in \mathcal{S}$で$\mathcal{S}$は\boxed{\phantom{hogehoge}}集合より, $B_1 \le B_2$または$B_2 \le B_1$が存在する.
+以上より$B_1 \subset B_2$または$B_2 \subset B_1$である.
+これを有限回繰り返して, ある$1 \le N \le n$があって, $\cup_{i=1}^{n}B_i \subset B_N$となる. 
+$v_i \in B_N$かつ$B_N \in \mathcal{W}$より, $\mathcal{W}$の定義から($\sharp$)が言える. 
+
+次に$B_{\infty}$が$\mathcal{S}$の\boxed{\phantom{hogehoge}}であることを示す. 
+つまり任意の$B\in \mathcal{S}$について, $B \le B_{\infty}$を示せば良い. 
+これは$B_{\infty}:=\cup_{B \in \mathcal{S}}B$より明らかである. 
+
+以上より\boxed{\phantom{hogehoge}}から, $(\mathcal{W} ,\le)$は\boxed{\phantom{hogehoge}}元$M$を持つ. 
+
+$M$が基底であることを示す.
+もし基底でないならば, $M$が$V$を生成しない.((B)を満たさない).
+つまりある$v \in V$があって, 
+$v = a_1 v_1 + \cdots + a_n v_n$となるような, $a_1,\ldots, a_n \in K$や$v_1, \ldots, v_n \in M$は存在しない.
+よって$M^{*}:= M \cup \{ v\}$
+とおくと$M \subset M^{*}$かつ$M \neq M^{*}$である. 
+これは$M$の\boxed{\phantom{hogehoge}}性に矛盾する.
+よって$M$は$V$の基底となる． 
+
+ \begin{itembox}[l]{語句群}
+選択公理 \quad ツォルンの補題 \quad 整列可能定理 \quad  超限帰納法 \quad 
+帰納的\quad 半順序 \quad 全順序 \quad 整列  \\
+最小 \quad 最大 \quad 極小　\quad 極大　 \quad 上界　\quad 下界　\quad 上限 \quad 下限
+\end{itembox}
+%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+問題3. $K$を体とし, $V$を$K$上の(空でない)ベクトル空間とする. 
+(無限でもいい)部分集合$B \subset V$において以下を定義する. \footnote{以下の用語はこの授業でのみの用語である.}
+  \begin{enumerate}[label=(\Alph*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item $B$が線形独立 $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ 任意の$a_1,\ldots, a_n \in K$と任意の$v_1, \ldots, v_n \in B$について$a_1 v_1 + \cdots a_n v_n=0  \in V$ならば$a_1 = \cdots = a_n=0$である.
+  \item $B$が$V$を生成する.  $\stackrel{\mathrm{def}}{\Longleftrightarrow}$任意の$v \in V$について, ある$a_1,\ldots, a_n \in K$と$v_1, \ldots, v_n \in B$があって, $v = a_1 v_1 + \cdots a_n v_n$となる. 
+  \end{enumerate}
+上の(A)と(B)を満たすとき$B$は$V$の基底という. 
+
+選択公理を仮定すると, ベクトル空間$V$の基底は必ず存在する. この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+[証明]. $\mathcal{W} := \{ B \subset V | \text{$B$が線形独立}\}$
+とし, $B_1 \le B_2$という順序を$B_1 \subset B_2$として定義する.
+$V$は空ではないので$\mathcal{W}$は空ではない. 
+
+$\mathcal{W}$が帰納的な半順序集合であることを示す.
+つまり「任意の全順序部分集合$\mathcal{S} \subset \mathcal{W}$について上界を持つこと」を示す. 
+$\mathcal{S}$をそのような部分集合とし
+$B_{\infty}:=\cup_{B \in \mathcal{S}}B\text{とおく.}$
+%$B_{\infty} \subset V$である
+
+まず$B_{\infty} \in\mathcal{W}$を示す. 
+定義から任意の$a_1,\ldots, a_n \in K$と$v_1, \ldots, v_n \in B_{\infty}$について
+$$a_1 v_1 + \cdots a_n v_n=0  \in V \text{ならば}
+a_1 = \cdots = a_n=0
+\quad \text{($\sharp$)}
+$$
+を示せば良い.
+今$v_i \in B_{\infty}=\cup_{B \in \mathcal{S}}B$より, $v_i \in B_i$となる$B_i\in \mathcal{S}$が存在する.
+$B_1, B_2 \in \mathcal{S}$で$\mathcal{S}$は全順序集合より, $B_1 \le B_2$または$B_2 \le B_1$が存在する.
+以上より$B_1 \subset B_2$または$B_2 \subset B_1$である.
+これを有限回繰り返して, ある$1 \le N \le n$があって, $\cup_{i=1}^{n}B_i \subset B_N$となる. 
+$v_i \in B_N$かつ$B_N \in \mathcal{W}$より, $\mathcal{W}$の定義から($\sharp$)が言える. 
+
+次に$B_{\infty}$が$\mathcal{S}$の上界であることを示す. 
+つまり任意の$B\in \mathcal{S}$について, $B \le B_{\infty}$を示せば良い. 
+これは$B_{\infty}:=\cup_{B \in \mathcal{S}}B$より明らかである. 
+
+以上よりツォルンの補題から, $(\mathcal{W} ,\le)$は極大元$M$を持つ. 
+
+$M$が基底であることを示す.
+もし基底でないならば, $M$が$V$を生成しない.((B)を満たさない).
+つまりある$v \in V$があって, 
+$v = a_1 v_1 + \cdots a_n v_n$となるような, $a_1,\ldots, a_n \in K$や$v_1, \ldots, v_n \in M$は存在しない.
+よって$M^{*}:= M \cup \{ v\}$
+とおくと$M \subset M^{*}$かつ$M \neq M^{*}$である. 
+これは$M$の極大性に矛盾する.
+よって$M$は$V$の基底となる． 
+
+ \begin{itembox}[l]{語句群}
+選択公理 \quad ツォルンの補題 \quad 整列可能定理 
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%
+
+
+ 
+ \newpage
+ 
+ \begin{center}
+\section{ユークリッド空間の位相}
+\label{sec-10}
+\end{center}
+
+   \begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8.5cm}}}
+{\footnotesize }
+\end{flushleft}
+
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+$\R$を実数の集合, $\R^n$を$\R$の$n$個の直積とする. 
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item $x=(x_1, \ldots, x_n), y=(y_1, \ldots, y_n) \in \R$について, ユークリッド距離$d^{(n)}$を以下で定める. 
+$$
+d^{(n)}(x, y):= \sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2 + \cdots +(x_n - y_n)^2 }
+$$
+\item $a \in \R^n$, $\varepsilon >0$について, $B_{n}(a, \varepsilon):= \{ x \in \R^n \ d^{(n)}(a, x) < \varepsilon\}$を$a$を中心とし$\varepsilon$を半径とする開球体とする.
+\item $M \subset \R^n$を部分集合, $a \in \R^n$とする.
+    \begin{enumerate}[label=(\arabic*).]
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item $a$が$M$の内点 $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ ある$\varepsilon >0$があって, $B_{n}(a, \varepsilon)\subset M$.
+  \item $M$の内部$M^i := \{ x \in \R^n| \text{$x$は$M$の内点}\}$($M^{\circ}$とも書く)
+  \item $a$が$M$の触点$\stackrel{\mathrm{def}}{\Longleftrightarrow}$ 任意の$\varepsilon >0$について, $B_{n}(a, \varepsilon) \cap M \neq \varnothing$.
+    \item $M$の閉包$\overline{M} := \{ x \in \R^n| \text{$x$が$M$の触点}\}$ ($M^a$とも書く)
+   \item $a$が$M$の境界$\stackrel{\mathrm{def}}{\Longleftrightarrow}$ 任意の$\varepsilon >0$について, $B_{n}(a, \varepsilon) \cap M \neq \varnothing$かつ$B_{n}(a, \varepsilon) \cap M^c \neq \varnothing$.
+    \item $M$の境界$M^f := \{ x \in \R^n| \text{$x$は$M$の境界}\}$($\partial M$とも書く)
+  \end{enumerate}
+  \item $M \subset \R^n$が開集合$\stackrel{\mathrm{def}}{\Longleftrightarrow}$ $M^i =M$.
+  \item $M \subset \R^n$が閉集合$\stackrel{\mathrm{def}}{\Longleftrightarrow}$ $\overline{M} =M$.
+   \end{enumerate}
+ \end{tcolorbox}
+ 
+ 
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+    \begin{enumerate}[label=(\arabic*).]
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item (三角不等式) $d^{(n)}(x, z) \le d^{(n)}(x, y) + d^{(n)}(y, z)$.
+  \item (コーシーシュワルツの不等式) $(\sum_{i=1}^{n}x_i y_i)^2 \le (\sum_{i=1}^{n}x_{i}^2 ) \cdot (\sum_{i=1}^{n}y_{i}^2)$.
+  \item $M^i \subset M \subset \overline{M}$.
+  \item $M$が開集合ならば$M^c = \R^n \setminus M$は閉集合. $M$が閉集合ならば$M^c = \R^n \setminus M$は開集合. 
+  \item $\mathscr{O}(\R^n):=\{ U | \text{$U$は$\R^n$の開集合}\} $とおく. (これは$\R^n$の開集合系と呼ばれる.)このとき以下の3条件が成り立つ.
+\begin{enumerate}
+\setlength{\parskip}{0cm}
+  	\setlength{\itemsep}{0pt} 
+ \item $\R^n \in \mathscr{O}$かつ$\varnothing \in \mathscr{O}$.
+    \item $O_1, \ldots, O_n \in \mathscr{O}$ならば$O_1 \cap \cdots \cap O_n \in \mathscr{O}$.
+    \item $\{ O_{\lambda} \}_{\lambda \in \Lambda }$を$\mathscr{O}$の元からなる集合系(無限個でもいい)とすると$
+    \cup_{ \lambda \in \Lambda  }O_{\lambda} \in \mathscr{O}$.
+    \end{enumerate}
+\end{enumerate}
+\end{thm}
+ \end{tcolorbox}
+ 
+上の$\mathscr{O}(\R^n)$の性質は一般の距離空間でも成り立つ. 
+後期の授業では上の$\mathscr{O}(\R^n)$の性質を逆手にとって, 一般の集合$X$について位相空間$(X, \mathscr{O})$を定義する. 
+ 
+ %以下この問題において$\R^n$にユークリッド距離を入れたものを考える
+\medskip 
+ 問題1. $\R$の部分集合
+$$M=\{ -1\} \cup (2,3] \cup \left\{ 1 -\frac{1}{n} \,\,| \,\, n \in \N \setminus \{ 0\}\right\}$$について以下を求めよ. 
+ただし$\R$にはユークリッド距離を入れる. 
+  $$
+\begin{array}{llcc}
+&(1) \text{$M$の内部 $M^i$ ($=M^{\circ}$)}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+&(2)\text{$M$の閉包 $\overline{M}$($=M^{a}$)}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+&(3) \text{$M$の境界 $M^f$($=\partial M$)}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+%&(4) \Q \text{の上限}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+%&(5)  \Z \text{の上限}&\quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+\end{array}
+$$
+
+\newpage
+ 問題2. 
+$\R^2$の部分集合$\Q^2$について, 以下を求めよ.ただし$\R^2$にはユークリッド距離を入れる. 
+  $$
+\begin{array}{llcc}
+&(1) \Q^2\text{の内部}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+&(2)\Q^2\text{の閉包}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+&(3) \Q^2\text{の境界}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+%&(5)  \Z \text{の上限}&\quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+\end{array}
+$$
+
+
+\medskip
+  問題3.   「部分集合$M\subset \R^n$が閉集合ならば$M^c = \R^n \setminus M$は開集合である.」
+この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+\medskip
+ [証明.]　
+ $M$が閉集合であると仮定する. $M^c$が開集合を示す. 
+ つまり\boxed{\phantom{hogehoge}}を示せば良い. 
+ 
+\boxed{\phantom{hogehoge}}は常に成り立つので逆の包含を示す.
+$x \in M^c$とする. 
+今$M$は閉集合なので, $y \in M$について, \boxed{\phantom{hogehoge}}$\varepsilon >0$について, $B_{n}(y, \varepsilon) \cap M \boxed{\phantom{hogehoge}} \varnothing$となる.
+
+よって$x \in M^c$について, \boxed{\phantom{hogehoge}}$\varepsilon >0$があって,  $B_{n}(y, \varepsilon) \cap M \boxed{\phantom{hogehoge}} \varnothing$となる.
+よって$B_{n}(y, \varepsilon) \subset M^c$が成り立つ.
+以上より
+$$
+\text{ある$\varepsilon >0$があって$B_{n}(y, \varepsilon) \subset M^c$が成り立つ}
+$$
+ため$x \in (M^c)^i$となる. 
+よって$M^c$が開集合である.
+
+
+  \begin{itembox}[l]{語句群}
+ある \quad 任意の  \quad  $\subset$ \quad $\supset$
+\quad $\in$ \quad $\not\in$ \quad $=$ \quad $\neq$　 \\ 
+$M^c = \overline{M^c}$ \quad $M^c \subset \overline{M^c}$ \quad$ M^c \supset \overline{M^c}$ \quad 
+$M^c = (M^c)^i$ \quad $(M^c)^i \subset M^c $\quad$ (M^c)^i \supset M^c$
+\end{itembox}
+
+
+\medskip
+問題4.  「部分集合$M\subset \R^n$が開集合ならば$M^c = \R^n \setminus M$は閉集合である.」
+この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+ [証明.]　$M$が開集合であると仮定する. $M^c$が閉集合を示す. 
+ つまり\boxed{\phantom{hogehoge}}を示せば良い. 
+ 
+\boxed{\phantom{hogehoge}}は常に成り立つので逆の包含を示す.
+これは$\overline{M^c} \cap M = \varnothing$を示すことと同値である. 
+$x \in \overline{M^c} \cap M$となる$x$が存在したと仮定する.
+$M$は開集合なので, \boxed{\phantom{hogehoge}}$\varepsilon >0$があって, $B_{n}(a, \varepsilon)\boxed{\phantom{hogehoge}}M$となる. 
+一方$x \in \overline{M^c}$より, $B_{n}(a, \varepsilon) \cap M^c \boxed{\phantom{hogehoge}}\varnothing$である.
+以上より
+$$
+\varnothing \boxed{\phantom{hogehoge}} B_{n}(a, \varepsilon) \cap M^c 
+\subset M \cap M^c = \varnothing
+$$
+となり矛盾. 
+よって$M^c$は閉集合である.
+  
+    \begin{itembox}[l]{語句群}
+ある \quad 任意の  \quad  $\subset$ \quad $\supset$
+\quad $\in$ \quad $\not\in$ \quad $=$ \quad $\neq$　 \\ 
+$M^c = \overline{M^c}$ \quad $M^c \subset \overline{M^c}$ \quad$ M^c \supset \overline{M^c}$ \quad 
+$M^c = (M^c)^i$ \quad $(M^c)^i \subset M^c $\quad$ (M^c)^i \supset M^c$
+\end{itembox}
+
+ %$^{\bullet}$ $M^i$は$M$に含まれる最大の開集合. $\overline{M}$は$M$を含む最小の閉集合.(これは後の距離空間でも成り立つ)
+
+ [補足] 問題3,4の主張は後の距離空間でも成り立つ. 
+ %また同様に$「M$が閉集合ならば$M^c = \R^n \setminus M$は開集合」や「$\overline{M}$は$M$を含む最小の閉集合」も成り立つ. 
+ 
+% \item $^{\bullet}$ 次の問いに答えよ.
+%\begin{enumerate}
+% \setlength{\parskip}{0cm}
+%  \setlength{\itemsep}{0pt} 
+%\item $(0,1)$が$\R$の開集合であることを示せ.
+%\item $[0,1]$が$\R$の閉集合であることを示せ.
+%\item 開集合でも閉集合でもない$\R$の部分集合を一つ答えよ.
+%%\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   \begin{comment}
+   
+     問題3.   「部分集合$M\subset \R^n$が閉集合ならば$M^c = \R^n \setminus M$は開集合である.」
+この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+\boxed{\phantom{hogehoge}}
+\medskip
+ [証明.]　
+ $M$が閉集合であると仮定する. $M^c$が開集合を示す. 
+ つまり$M^c = (M^c)^i$を示せば良い. 
+ 
+ $(M^c)^i \subset M^c $は常に成り立つので逆の包含を示す.
+$x \in M^c$とする. 
+今$M$は閉集合なので, $y \in M$について, 任意の$\varepsilon >0$について, $B_{n}(y, \varepsilon) \cap M \neq \varnothing$となる.
+よって$x \in M^c$について, ある$\varepsilon >0$があって,  $B_{n}(y, \varepsilon) \cap M = \varnothing$となる.
+$B_{n}(y, \varepsilon) \cap M = \varnothing$から$B_{n}(y, \varepsilon) \subset M^c$が成り立つ.
+以上より
+$$
+\text{ある$\varepsilon >0$があって$B_{n}(y, \varepsilon) \subset M^c$が成り立つ}
+$$
+ため$x \in (M^c)^i$となる. 
+
+
+
+  \begin{itembox}[l]{語句群}
+ある \quad 任意の  \quad  $\subset$ \quad $\supset$
+\quad $\in$ \quad $\not\in$ \quad $=$ \quad $\neq$　 \\ 
+$M^c = \overline{M^c}$ \quad $M^c \subset \overline{M^c}$ \quad$ M^c \supset \overline{M^c}$ \quad 
+$M^c = (M^c)^i$ \quad $(M^c)^i \subset M^c $\quad$ (M^c)^i \supset M^c$
+\end{itembox}
+
+
+ 問題4.  「部分集合$M\subset \R^n$において, $M^i$は$M$に含まれる最大の開集合.」
+この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+\boxed{\phantom{hogehoge}}
+ [証明.]　
+ まず$M^i$が開集合を示す. これは$(M^i)^i = M^i$を示せば良い
+ $(M^i)^i \subset M^i$は常に成り立つので逆側の包含を示す. 
+ $a \in M^i$とする. 
+ 示すことはある$\varepsilon$
+仮定からある$\varepsilon >0$があって, $B_{n}(a, \varepsilon)\subset M$となる.
+この$B_{n}(a, \varepsilon)$について$B_{n}(a, \varepsilon) \subset M^i$を示す.
+これは任意の$y \in B_{n}(a, \varepsilon)$について, ある$\delta>0$があって
+$B_{n}(y, \delta) \subset M$を示せば良い.
+ 
+今$y \in B_{n}(a, \varepsilon)$について
+$\delta:=\frac{\varepsilon - d^{(n)}(y, a)}{2}$とおくと
+$z \in B_{n}(y, \delta) $　について
+$$
+d^{(n)}(z,a)
+\le d^{(n)}(z,y) + d^{(n)}(y,a)
+< \delta + d^{(n)}(y, a)
+= \frac{\varepsilon +d^{(n)}(y, a)}{2}
+< \varepsilon
+$$
+となるので$ B_{n}(y, \delta)  \subset B_{n}(a, \varepsilon)\subset M$
+となる.
+   \end{comment}
+
+ \newpage
+ 
+ \begin{center}
+\section{距離空間の定義}
+\label{sec-11}
+\end{center}
+
+   \begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8.5cm}}}
+{\footnotesize }
+\end{flushleft}
+
+
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    空でない集合$X$と実数値関数$d : X \times X \rightarrow \R$に関して, 次の条件を満たすとき$(X,d)$は\underline{距離空間}であるという.
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item 任意の$x,y \in X$について$d(x,y) \geqq 0$. $d(x,y)=0$であることと$x=y$は同値. 
+    \item 任意の$x,y \in X$について$d(x,y)=d(y,x)$.
+    \item (三角不等式) 任意の$x,y,z \in X$について$d(x,z) \leqq d(x,y) + d(y,z)$. 
+    \end{enumerate}
+ \end{tcolorbox}
+ 
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+$(X,d)$を距離空間とする. 
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item $a \in X$, $\varepsilon >0$について, $N(a, \varepsilon):= \{ x \in \R^n \ d(a, x) < \varepsilon\}$を$a$の$\varepsilon$近傍という.
+\item $M \subset X$を部分集合, $a \in X$とする.
+    \begin{enumerate}[label=(\arabic*).]
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item $a$が$M$の内点 $\stackrel{\mathrm{def}}{\Longleftrightarrow}$ ある$\varepsilon >0$があって, $N(a, \varepsilon)\subset M$.
+  \item $M$の内部$M^i := \{ x \in \R^n| \text{$x$は$M$の内点}\}$($M^{\circ}$とも書く).
+  \item $a$が$M$の触点$\stackrel{\mathrm{def}}{\Longleftrightarrow}$ 任意の$\varepsilon >0$について, $N(a, \varepsilon) \cap M \neq \varnothing$.
+    \item $M$の閉包$\overline{M} := \{ x \in \R^n| \text{$x$が$M$の触点}\}$ ($M^a$とも書く).
+   \item $a$が$M$の境界$\stackrel{\mathrm{def}}{\Longleftrightarrow}$ 任意の$\varepsilon >0$について, $N(a, \varepsilon) \cap M \neq \varnothing$かつ$N(a, \varepsilon) \cap M^c \neq \varnothing$.
+    \item $M$の境界$M^f := \{ x \in \R^n| \text{$x$は$M$の境界}\}$($\partial M$とも書く).
+  \end{enumerate}
+  \item $M \subset X$が開集合$\stackrel{\mathrm{def}}{\Longleftrightarrow}$ $M^i =M$.
+  \item $M \subset X$が閉集合$\stackrel{\mathrm{def}}{\Longleftrightarrow}$ $\overline{M} =M$.
+   \end{enumerate}
+ \end{tcolorbox}
+ 
+ 
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+    $(X, d)$を距離空間とし, $A \subset X$を空でない部分集合とする.
+    $$
+    d(x, A):= \inf \{ d(x, a) | a \in A\}  
+    $$
+    とおくとき次が成り立つ
+    \begin{enumerate}[label=(\arabic*).]
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+  \item $|d(x, A) - d(y, A)| \le d(x, y)$.
+  \item $a \in \overline{A}$($A$の触点) $\Longleftrightarrow$ $d(x, A)=0$. 
+    \item $a \in A^i$($A$の内点)$\Longleftrightarrow$ $d(x, A^c)>0$. 
+\end{enumerate}
+\end{thm}
+ \end{tcolorbox}
+ 
+ \medskip
+ 問題1. 「 $(X, d)$を距離空間とする. 部分集合$A, B \subset X$について$(A \cap B)^{i}=A^i \cap B^i$が成り立つ」
+この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+ [証明.]　
+ $A \cap B \subset A$ならば$(A \cap B)^i \subset A^i$である.
+ よって$(A \cap B)^{i} \subset A^i \cap B^i$である.
+ 
+ 逆向きの包含を示す. 
+ $x \in A^i \cap B^i$とする.
+$x \in A^i$より, \boxed{\phantom{hogehoge}}$\varepsilon_1$があって$N(x, \varepsilon_1) \subset A$となる. 
+同様に$x \in B^i$より, \boxed{\phantom{hogehoge}}$\varepsilon_2$があって$N(x, \varepsilon_2) \subset B$となる. 
+よって
+$\varepsilon:=\boxed{\phantom{hogehoge}}$とおくと
+$N(x, \varepsilon) \subset A \cap B $となるので, $x \in (A \cap B)^{i}$
+となる. よって$(A \cap B)^{i}=A^i \cap B^i$である. 
+
+  \begin{itembox}[l]{語句群}
+ある \quad 任意の \quad  $\max\{ \varepsilon_1, \varepsilon_2\} $\quad $\min\{ \varepsilon_1, \varepsilon_2\} $ \quad $\frac{\varepsilon_1 + \varepsilon_2}{2}$
+\end{itembox}
+ 
+ %%%%%%%%%%%%%%
+ \begin{comment}
+
+
+問題1. 「 $(X, d)$を距離空間とする. 部分集合$A, B \subset X$について$(A \cap B)^{i}=A^i \cap B^i$が成り立つ」
+この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+\medskip
+ [証明.]　
+ $A \cap B \subset A$ならば$(A \cap B)^i \subset A^i$である.
+ よって$(A \cap B)^{i} \subset A^i \cap B^i$である.
+ 
+ 逆向きの包含を示す. 
+ $x \in A^i \cap B^i$とする.
+$x \in A^i$より, ある$\varepsilon_1$があって$N(x, \varepsilon_1) \subset A$となる. 
+同様に$x \in B^i$より, ある$\varepsilon_2$があって$N(x, \varepsilon_2) \subset B$となる. 
+よって
+$\varepsilon:=\min\{ \varepsilon_1, \varepsilon_2\} $おくと
+$N(x, \varepsilon) \subset A \cap B $となるので, $x \in (A \cap B)^{i}$
+となる. よって$(A \cap B)^{i}=A^i \cap B^i$である. 
+
+  \begin{itembox}[l]{語句群}
+ある \quad 任意の \quad
+\end{itembox}
+
+ \end{comment}
+ %%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+問題2.
+$C[0,1] := \{ f : [0,1] \rightarrow \R \,|\, \text{$f$は実数値連続関数}\}$とおく. $f_n \in C[0,1]$となる関数列$\{ f_{n}\}_{n=1}^{\infty}$と$f \in C[0,1]$について
+以下の定義(a)$\sim$(e)を考える．
+ \begin{itembox}[l]{定義}
+\begin{enumerate}[label=(\alph*).]
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt}
+  \item 任意の$\varepsilon>0$と任意の$N$について, ある$x\in [0,1]$があって, $N<n$ならば$|f_{n}(x)-f(x)|<\varepsilon$.
+ \item 任意の$x\in [0,1]$と任意の$\varepsilon>0$について, ある$N$があって, $N<n$ならば$|f_{n}(x)-f(x)|<\varepsilon$. 
+ \item ある$N$があって, 任意の$\varepsilon>0$と任意の$x\in [0,1]$について, $N<n$ならば$|f_{n}(x)-f(x)|<\varepsilon$. 
+ \item 任意の$x\in [0,1]$について, ある$N$があって, 任意の$\varepsilon>0$について, $N<n$ならば$|f_{n}(x)-f(x)|<\varepsilon$. 
+ %\item 任意の$x\in [0,1]$について, ある$N$があって, 任意の$\varepsilon>0$について, $N<n$ならば$|f_{n}(x)-f(x)|<\varepsilon$. 
+ \item  任意の$\varepsilon>0$について, ある$N$があって, 任意の$x\in [0,1]$について, $N<n$ならば$|f_{n}(x)-f(x)|<\varepsilon$. 
+\end{enumerate}
+\end{itembox}
+
+(1). 「関数列$\{ f_{n}\}_{n=1}^{\infty}$が$f \in C[0,1]$に各点収束する」の定義を表すものを(a)$\sim$(e)の中から選べ.
+
+(2).  「関数列$\{ f_{n}\}_{n=1}^{\infty}$が$f \in C[0,1]$に一様収束する」の定義を表すものを(a)$\sim$(e)の中から選べ.
+
+\medskip
+\underline{解答欄: (1).\hspace{2cm} (2).\hspace{2cm}}
+%  \item $[0,1]$上の連続関数の列$f_{i}$が$[0,1]$上の関数$f$に一様収束するならば, $f$は$[0,1]$上で連続であることを示せ. 
+%$$
+
+\medskip
+問題3. 「$C[0,1]:= \{f | \text{ $f$ は$[0,1]$上の実数値連続関数} \}$
+とし$f,g \in C[0,1]$について
+$$
+d_{\infty}(f,g) := \sup_{x \in [0,1]} \{ |f(x) - g(x)|\}
+$$
+と定める.  
+このとき$(C[0,1],d_{\infty})$が距離空間である.」
+この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+\medskip
+ [証明.]　$[0,1]$上の連続関数は\boxed{\phantom{hogehoge}}値をもつので, $d(f,g)$はwell-definedである.(つまり$d(f,g)$が存在しないことはない.)
+ $(C[0,1],d_{\infty})$が距離空間の定義1-3を満たすことを示す. 
+
+(1).  $f, g \in C[0,1]$について, $\sup_{x \in [0,1]} \{ |f(x) - g(x)|\} \boxed{\phantom{hogehoge}} 0$である.
+よって$d(f, g)\ge0$となる．
+また$d(f, g)=0$を仮定する. 任意の$x \in [0,1]$について
+$$
+|f(x)- g(x)| \boxed{\phantom{hogehoge}}\sup_{x \in [0,1]} \{ |f(x) - g(x)|\}=d(f,g)=0
+$$
+となり, $f(x)-g(x)=0$である. よって.$f=g$となる.
+
+(2) $d(f, g)=d(g,f)$を示す. 
+任意の$x \in [0,1]$について
+$|f(x) - g(x)| = |g(x) - f(x)| \le d(g, f)$である.
+%$|f(x) - g(x)| = |g(x) - f(x)| \le \sup_{x \in [0,1]} \{ |g(x) - f(x)|\} =d(g, f)$である.
+よって左辺を$x$に関してsupを取れば
+$$
+d(f, g) \boxed{\phantom{hogehoge}} \sup_{x \in [0,1]} \{ |f(x) - g(x)|\}  \le d(g,f)
+$$
+である. 同様にして$d(g, f) \le d(f,g)$が言える. 
+
+(3). 三角不等式$d(f,h) \boxed{\phantom{hoge}} d(f,g) + d(g,h)$を示す.
+任意の$x \in [0,1]$について
+$$
+|f(x)-h(x)|
+\le
+|f(x)-g(x)|
++
+|g(x)-h(x)|
+\le
+ \sup_{x \in [0,1]} \{ |f(x) - g(x)| \}
+ +
+ \sup_{x \in [0,1]} \{ |g(x) - h(x)| \} 
+ =
+ d(f, g) + d(g, h)
+$$
+となる. よって左辺を$x$に関してsupを取れば
+$d(f, h)=\sup_{x \in [0,1]} \{ |f(x) - h(x)| \}
+\boxed{\phantom{hoge}} d(f, g) + d(g, h)
+$
+となりいえた.
+以上より $(C[0,1],d_{\infty})$は距離空間となる. 
+
+
+
+  \begin{itembox}[l]{語句群}
+最大 \quad 最小 \quad $\le$ \quad $=$ \quad $\ge$
+\end{itembox}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+
+問題3. 「引き続き$C[0,1]:= \{f | \text{ $f$ は$[0,1]$上の実数値連続関数} \}$
+とし$f,g \in C[0,1]$について
+$$
+d_{\infty}(f,g) := \sup_{x \in [0,1]} \{ |f(x) - g(x)|\}
+$$
+と定める.  
+このとき$(C[0,1],d_{\infty})$が距離空間である.」
+この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+
+\medskip
+ [証明.]　
+ $[0,1]$上の連続関数に最大値は存在するので, $d(f,g)$はwell-definedである.(つまり$d(f,g)$が存在しないことはない.)
+ $(C[0,1],d_{\infty})$が距離空間の定義1-3を満たすことを示す. 
+
+(1).  $f, g \in C[0,1]$について, $\sup_{x \in [0,1]} \{ |f(x) - g(x)|\} \ge 0$である.
+よって$d(f, g)\ge0$となる．
+また$d(f, g)=0$を仮定する. 任意の$x \in [0,1]$について
+$$
+|f(x)- g(x)| \le \sup_{x \in [0,1]} \{ |f(x) - g(x)|\}=d(f,g)=0
+$$
+となり, $f(x)-g(x)=0$である. よって.$f=g$となる.
+
+(2) $d(f, g)=d(g,f)$を示す. 
+任意の$f, g$, $x \in X$について
+$|f(x) - g(x)| = |g(x) - f(x)| \le d(g, f)$である.
+%$|f(x) - g(x)| = |g(x) - f(x)| \le \sup_{x \in [0,1]} \{ |g(x) - f(x)|\} =d(g, f)$である.
+よって左辺を$x$に関してsupを取れば
+$$
+d(f, g)=\sup_{x \in [0,1]} \{ |f(x) - g(x)|\}  \le d(g,f)
+$$
+である. 同様にして$d(g, f) \le d(f,g)$が言えるので示せた. 
+
+(3). 三角不等式$f, g, h \in C[0,1]$について$d(f,h) \leqq d(f,g) + d(g,h)$を示す.
+$x \in [0,1]$について
+$$
+|f(x)-h(x)|
+\le
+|f(x)-g(x)|
++
+|g(x)-h(x)|
+\le
+ \sup_{x \in [0,1]} \{ |f(x) - g(x)| \}
+ +
+ \sup_{x \in [0,1]} \{ |g(x) - h(x)| \} 
+ =
+ d(f, g) + d(g, h)
+$$
+となる. よって左辺を$x$に関してsupを取れば
+$d(f, h)=\sup_{x \in [0,1]} \{ |f(x) - h(x)| \}
+\le d(f, g) + d(g, h)
+$
+となりいえた.
+以上より $(C[0,1],d_{\infty})$は距離空間となる. 
+
+
+
+  \begin{itembox}[l]{語句群}
+ある \quad 任意の \quad
+\end{itembox}
+
+
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \newpage
+ 
+ \begin{center}
+\section{距離空間の近傍系と連続写像}
+\label{sec-12}
+\end{center}
+  \begin{flushleft}
+{ \large \underline{学籍番号: \hspace{4cm} 名前  \hspace{8.5cm}}}
+{\footnotesize }
+\end{flushleft}
+ 
+\begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    $(X, d_X), (Y, d_Y)$を距離空間とする. 
+    \begin{enumerate}
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+\item  $a \in X$とする. $U \subset X$が$a$の近傍$\stackrel{\mathrm{def}}{\Longleftrightarrow}$$a \in U^i$($a$が$U$の内点).
+\item $a$の近傍系$\mathfrak{N}(a):= \{ U | \text{$U$は$a$の近傍}\}$.
+\item 写像$f :X \to Y$が$a \in X$で連続$\stackrel{\mathrm{def}}{\Longleftrightarrow}$任意の$\varepsilon >0$について, ある$\delta>0$が存在して,
+$$
+d_X(x, a) < \delta
+\quad
+\text{ならば}
+\quad
+d_Y(f(x), f(a)) < \varepsilon.
+$$
+$\stackrel{}{\Longleftrightarrow}$任意の$f(a)$の近傍$V \subset Y$について, ある$a$の近傍$U \subset X$が存在して, $f(U) \subset V$.
+\end{enumerate}
+ \end{tcolorbox}
+ 開集合と同様, 近傍系についても4つほど満たすべきものがあり, 近傍系もまた一般の位相空間(後期の授業の内容)で定義できる.\footnote{ただ近傍系は開集合よりも重要度が低い気がする. 私は位相の演習を2回ほどやったが, 近傍系の定義は忘れていた. }
+
+ %%%%%%%%%%%%%%%%%
+ \begin{comment}
+
+
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+ $(X, d)$を距離空間, $a \in X$とする. $a$の近傍系$\mathfrak{N}(a)$について以下が成り立つ. 
+\begin{enumerate}[label=(\arabic*).]
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $X \in \mathfrak{N}(a)$. $U \in \mathfrak{N}(a)$ならば$a \in U$.
+    \item $U_1, U_2 \in \mathfrak{N}(a)$ならば$U_1 \cap U_2 \in \mathfrak{N}(a)$.
+    \item $U \in \mathfrak{N}(a)$かつ$U \subset V \subset X$ならば$V \in \mathfrak{N}(a)$.
+    \item 任意の$U \in \mathfrak{N}(a)$について, ある$V \in \mathfrak{N}(a)$があって, $b \in V$ならば$U \in \mathfrak{N}(b)$となる． 
+    \end{enumerate}
+        \end{thm}
+ \end{tcolorbox}
+  \end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \begin{tcolorbox}[
+    colback = white,
+    colframe = black!35!black,
+    fonttitle = \bfseries,
+    breakable = true]
+    \begin{thm}
+    $(X, d_X), (Y, d_Y)$を距離空間, $f : X \to Y$を写像とするとき以下は同値.
+\begin{enumerate}[label=(\arabic*).]
+    \setlength{\parskip}{0cm} 
+  \setlength{\itemsep}{0cm} 
+    \item $f :X \to Y$は任意の$a \in X$で連続.(各点で連続)
+    \item 任意の$Y$の開集合$O\subset Y$について, $f^{-1}(O)$は$X$の開集合.
+     \item 任意の$Y$の閉集合$F\subset Y$について, $f^{-1}(F)$は$X$の閉集合.
+    \item $X$の部分集合$A \subset X$について, $f(\overline{A}) \subset \overline{f(A)}$が成り立つ. 
+    \end{enumerate}
+        \end{thm}
+        上の(1)から(4)のどれかが成り立つとき, $f : X \to Y$は連続という. 
+ \end{tcolorbox}
+ 開集合と同様, 連続についても一般の位相空間(後期の授業の内容)で定義できる.
+ これは上の条件の(2)を用いる.
+ 
+ \medskip
+
+ 
+ 問題1. 「$A$を距離空間$(X, d)$の部分集合とし, $f : X \rightarrow \R$を$f(x) =d(x,A):= \inf_{y \in A} d(x,y)$で定めると$f$は連続である」この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+また$\R$にはユークリッド距離を入れる. 
+
+ [証明.]　教科書の定理から, $x, y \in X$について. 
+$$
+|f(x)-f(y)|=
+ |d(x, A)-d(y, A)| \le d(x,y)
+ $$
+ であることに注意する.
+ 
+$f$が\boxed{\phantom{hogehoge}}$a \in X$で連続を示す. 
+$a \in X$とする. 
+\boxed{\phantom{hogehoge}}$\varepsilon >0$について, $\delta=\boxed{\phantom{hogehoge}}$ととると, $d(x, a)<\delta$ならば
+$$|f(x) - f(a)|\le d(x, a) < \varepsilon
+$$
+となる. よって$f$が$a $で連続でありいえた. 
+
+
+  \begin{itembox}[l]{語句群}
+ある \quad 任意の \quad  $\delta$ \quad $N$ \quad $\varepsilon$ \quad $2 \varepsilon$  \quad $x$ \quad $2x$ \quad $f(x)$ \quad $f(a)$
+\end{itembox}
+%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+ 
+ 問題1. 「$A$を距離空間$(X, d)$の部分集合とし, $f : X \rightarrow \R$を$f(x) =d(x,A):= \inf_{y \in A} d(x,y)$で定めると$f$は連続である」この主張の証明が完成するように空欄をうめよ. ただし空欄には後記の語句群から適切な語句・記号を一つ選んで記入すること.
+また$\R$にはユークリッド距離を入れる. 
+
+ [証明.]　教科書の定理から, $x, y \in X$について. 
+$$
+|f(x)-f(y)|=
+ |d(x. A)-d(y, A)| \le d(x,y)
+ $$
+ であることに注意する.
+ 
+$f$が任意の$a \in X$で連続を示す. 
+$a \in X$とする. 
+任意の$\varepsilon >0$について, $\delta=\varepsilon$ととると, $d(x, a)<\delta$ならば
+$$|f(x) - f(a)|\le d(x, y) < \varepsilon
+$$
+となる. よって$f$が$a 
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+問題2.  
+$d$を$\R^2$のユークリッド距離とする. 
+部分集合$Y \subset \R^2$と$x \in \R^2$について$d(x,Y):= \inf_{y \in Y} d(x,y)$と定め, $X, Y \subset \R^2$という部分集合について, 
+$d(X, Y)=\inf_{x \in X} d(x,Y)$として定める. 
+
+$$A=\{ (x, 0) | x \in \R\}
+\quad
+B=\{ (x, \frac{1}{x}) | x \in \R \setminus \{ 0\} \}
+$$について以下の値を求めよ. (ただし$(0,1), (\sqrt{2},1) \in \R^2$である.)
+  $$
+\begin{array}{llcc}
+(1)& d((0,1), A)&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+(2)&d(A,B)&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+(3)&d((\sqrt{2},1), \Q^2) &  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+(4)& d(\R^2 \setminus \Q^2, \Q^2)&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+%&(4) \Q \text{の上限}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+%&(5)  \Z \text{の上限}&\quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+\end{array}
+$$
+
+\medskip
+問題3. 次の距離と空間を定義する.
+\begin{enumerate}
+ \setlength{\parskip}{0cm}
+  \setlength{\itemsep}{0pt} 
+  \item $\R^n$について$d$をユークリッド距離とする. 
+\item $x,y \in \R^n$に対して, 
+$$
+d_{1}(x,y) = \sum_{i=1}^{n} |x_i - y_i|
+$$
+とおく. $d_{1}$はマンハッタン距離と呼ばれる.
+\item $\R^n$について$d_{\delta}$を
+\begin{equation}
+d_{\delta}(x,y) 
+=
+  \begin{cases*}
+0& \text{$x=y$のとき} \\
+1& \text{$x\neq y$のとき}
+  \end{cases*}
+\end{equation}
+とおく. $d_{\delta}$は離散距離と呼ばれる. 
+\item $C[0,1]:= \{f | \text{ $f$ は$[0,1]$上の実数値連続関数} \}$
+とし$f,g \in C[0,1]$について
+$$
+d_{\infty}(f,g) := \sup_{x \in [0,1]} \{ |f(x) - g(x)|\}
+$$
+と定める.  $(C[0,1],d_{\infty})$は距離空間となる.
+\end{enumerate}
+
+以下の写像が"連続"か"連続でない"かを判定せよ. 
+$$
+\begin{array}{llcc}
+(1)&F : (\R^2, d) \to (\R^2, d_1) ; (x, y) \mapsto (x,y)&  \quad & \text{\underline{解答欄: \hspace{5cm}}}\\
+(2)&F : (\R^2, d_1) \to (\R^2, d) ; (x, y) \mapsto (x,y) &  \quad & \text{\underline{解答欄: \hspace{5cm}}}\\
+(3)&F : (\R^2, d) \to (\R^2, d_{\delta}) ; (x, y) \mapsto (x,y) &  \quad & \text{\underline{解答欄: \hspace{5cm}}}\\
+(4)&F : (\R^2, d_{\delta}) \to (\R^2, d) ; (x, y) \mapsto (x,y) &  \quad & \text{\underline{解答欄: \hspace{5cm}}}\\
+(5)&F : (C[0, 1], d_{\infty}) \to (\R, d)  ; f \mapsto f(\frac{1}{2}) &  \quad & \text{\underline{解答欄: \hspace{5cm}}}\\
+(6)&F : (C[0, 1], d_{\infty}) \to (\R, d_{\delta})  ; f \mapsto f(\frac{1}{2}) &  \quad & \text{\underline{解答欄: \hspace{5cm}}}\\
+(7)&F : (C[0, 1], d_{\infty}) \to (\R, d)  ; f \mapsto \int_{[0,1]}f dx &  \quad & \text{\underline{解答欄: \hspace{5cm}}}\\
+(8)&F : (C[0, 1], d_{\infty}) \to (\R, d)  ; f \mapsto \int_{[0,1]}f^2 dx &  \quad & \text{\underline{解答欄: \hspace{5cm}}}\\
+%&(4) \Q \text{の上限}&  \quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+%&(5)  \Z \text{の上限}&\quad & \text{\underline{解答欄: \hspace{8cm}}}\\
+\end{array}
+$$
+ 
+ここで$F: (\R^2, d) \to (\R^2, d_1) ; (x, y) \mapsto (x,y)$とは次の略記である.
+$$
+\begin{array}{ccccc}
+F: &\R^2& \rightarrow &\R^2& \\
+&(x, y) & \longmapsto & 
+(x, y) 
+ &
+\end{array}
+$$　
+また$F : (\R^2, d) \to (\R^2, d_1)$が連続とは, 「$F$が距離空間$(\R^2, d) $から距離空間$(\R^2, d_1)$への連続」であることを意味する. 
+(特に任意の$(x,y) \in (\R^2, d) $で$F$が連続であることを要請する.)
+
+
+
+  
+
+ 
+ \end{document}
