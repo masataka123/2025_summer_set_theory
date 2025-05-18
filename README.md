@@ -141,7 +141,7 @@
 - 第1回 (2025/04/15). [基礎問題1の解答](https://masataka123.github.io/2025_summer_set_theory/material/1_基礎問題解答.pdf)
 - (2025/04/22). 休講
 - 第2回 (2025/05/7).  [基礎問題2の解答](https://masataka123.github.io/2025_summer_set_theory/material/2_基礎問題解答.pdf)
-- 第3回 (2025/05/13). 
+- 第3回 (2025/05/13). [基礎問題3の解答](https://masataka123.github.io/2025_summer_set_theory/material/2_基礎問題解答.pdf)
 - 第4回 (2025/05/20). 
 - 第5回 (2025/05/27). 
 - 第6回 (2025/06/03). 
