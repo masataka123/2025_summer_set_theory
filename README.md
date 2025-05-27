@@ -143,7 +143,7 @@
 - 第2回 (2025/05/7).  [基礎問題2の解答](https://masataka123.github.io/2025_summer_set_theory/material/2_基礎問題解答.pdf)
 - 第3回 (2025/05/13). [基礎問題3の解答](https://masataka123.github.io/2025_summer_set_theory/material/3_基礎問題解答.pdf)
 - 第4回 (2025/05/20). [基礎問題5の解答](https://masataka123.github.io/2025_summer_set_theory/material/5_基礎問題解答.pdf) [コメント] 授業では同値関係を先にやったので, 5章の問題を先にやりました. 
-- 第5回 (2025/05/27). 
+- 第5回 (2025/05/27). [基礎問題4の解答](https://masataka123.github.io/2025_summer_set_theory/material/4_基礎問題解答.pdf)
 - 第6回 (2025/06/03). 
 - 第7回 (2025/06/10). 
 - 第8回 (2025/06/17). 
